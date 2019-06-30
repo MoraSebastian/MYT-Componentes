@@ -72,7 +72,12 @@ public class AgregarTipo extends JFrame implements ActionListener{
 				JOptionPane.showMessageDialog(null, "NO SE HA ESPECIFICADO EL TIPO");
 			}else {
 				String[] datos = new String[2];
-				datos[0] = Integer.toString(Integer.parseInt(micontrolador.ConsultaSencilla("maxid", "tipotarea").get(0))+1);
+				if(micontrolador.ConsultaSencilla("maxid", "tipotarea").get(0) == null) { 
+					datos[0] = "1";
+				}else {
+					datos[0] = Integer.toString(Integer.parseInt(micontrolador.ConsultaSencilla("maxid", "tipotarea").get(0))+1);
+				}
+				
 				datos[1] = "'" + tfTipot.getText() + "'";
 				
 				for(int i=0; i<2; i++) {
