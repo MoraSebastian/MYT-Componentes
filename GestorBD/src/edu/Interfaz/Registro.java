@@ -132,12 +132,17 @@ public class Registro extends JPanel implements ActionListener{
 		cbTipo = new JComboBox();
 		cbTipo.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		cbTipo.setBackground(Color.WHITE);
-		cbTipo.setBounds(168, 272, 105, 23);
-		cbTipo.addItem("");
+		cbTipo.setBounds(168, 272, 105, 23);		
 		nombres = micontrolador.ConsultaSencilla("nombre", "tipotarea");
-		for (int i = 0; i < nombres.size(); i++) {
-			cbTipo.addItem(nombres.get(i));
-		}
+		if(nombres == null ) {
+			cbTipo.addItem("");
+		}else {
+			cbTipo.addItem("");
+			//System.out.println("nombres.get(0): "+nombres.get(0));
+			for (int i = 0; i < nombres.size(); i++) {
+				cbTipo.addItem(nombres.get(i));
+			}
+		}		
 		add(cbTipo);
 		
 		cbMateria = new JComboBox();
@@ -146,6 +151,7 @@ public class Registro extends JPanel implements ActionListener{
 		cbMateria.setBounds(168, 463, 230, 23);
 		nombres = micontrolador.ConsultaSencilla("nombre", "materia");
 		cbMateria.addItem("");
+		
 		for(int i=0; i<nombres.size(); i++) {			
 			cbMateria.addItem(nombres.get(i));
 		}		
@@ -179,7 +185,7 @@ public class Registro extends JPanel implements ActionListener{
 			boolean validar = true;
 			if(taDescripcion.getText().equals("")){
 				validar = false;
-				JOptionPane.showMessageDialog(null, "NO SE HA LLENADO EL CAMPO DE DESCRIPCIÓN");
+				JOptionPane.showMessageDialog(null, "NO SE HA LLENADO EL CAMPO DE DESCRIPCIÃ“N");
 			}	
 			if(tfNombre.getText().equals("")) {
 				validar = false;
