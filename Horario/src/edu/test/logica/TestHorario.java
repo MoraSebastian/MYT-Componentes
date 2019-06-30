@@ -141,8 +141,7 @@ public class TestHorario {
 		} catch (Exception e) {
 			System.out.println(e.getLocalizedMessage());
 			e.printStackTrace();
-		}
-		
+		}		
 	}
 	
 	@Ignore
@@ -171,5 +170,14 @@ public class TestHorario {
 		System.out.println(mapa.put(1, false));
 		mapa.remove(1);
 		System.out.println(mapa.put(1, true));
+	}
+	
+	@Test
+	public void testEnum() {
+		System.out.println("-------------------Test Enumn----------------------");
+		Enum[]tipos = TipoFranjaEnum.values();
+		for(Enum e : tipos) {
+			System.out.println(e.name());
+		}
 	}
 }
