@@ -137,6 +137,7 @@ public class TestHorario {
 			franja = new Franja();
 			System.out.println("limpio");
 			franja.mostrarNombresFranjas();
+			System.out.println();
 		} catch (Exception e) {
 			System.out.println(e.getLocalizedMessage());
 			e.printStackTrace();
