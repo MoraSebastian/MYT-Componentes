@@ -6,13 +6,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-/**
- * Clase para clonar objetos sin que el clon o el orginal se vean afectados por el cambio en el otro objeto.
- * @author Estefanía
- *
- */
 public class Clonable {
 
+	/**
+	 * Método para realizar una clonación profunda de un objeto; con esto, al copiar un objeto, la copia no afecta al original cuando se es modificada. 
+	 * @param object
+	 * @return object(copia)
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
     public static Object clonarConProfundidad(Object object) throws IOException, ClassNotFoundException {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);

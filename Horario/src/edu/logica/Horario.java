@@ -14,36 +14,6 @@ public abstract class Horario {
 	protected int numeroDia;
 	private Franja localizadorFranja;
 	
-
-//	public Boolean comprobarCapacidad(Franja[] franjas, Franja franjaNueva) {
-//		if (franjas.length > 0) {
-//			int horasFranjas = 0;
-//			for (int i = 0; i < franjas.length; i++) {
-//				horasFranjas += franjas[i].getHoras();
-//			}
-//			if (horasFranjas == HORAS_POR_DIA) {
-//				// Ese día no tiene capacidad.
-//				return null;
-//			}
-//			if (horasFranjas + franjaNueva.getHoras() > HORAS_POR_DIA) {
-//				// No se puede agregar la franja entera en un día, se mira capacidad del próximo
-//				// día.
-//				int horasProximoDia = (horasFranjas + franjaNueva.getHoras()) - HORAS_POR_DIA;
-//				Franja franjaPrimerDia;
-//				try {
-//					franjaPrimerDia = (Franja) Clonable.clonarConProfundidad(franjaNueva);
-//					franjaPrimerDia.setHoras(franjaNueva.getHoras()-horasProximoDia);
-//					Franja franjaSegundoDia = (Franja) Clonable.clonarConProfundidad(franjaNueva);
-//				} catch (ClassNotFoundException e) {
-//					e.printStackTrace();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-//		return null;
-//	}
-
 	private void crearPrimerLocalizador() {
 		if(localizador == null) {
 			localizador = this;

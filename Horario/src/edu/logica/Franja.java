@@ -54,7 +54,7 @@ public class Franja extends Horario {
 	public void agruparFranjaDia() throws Exception {
 		crearLocalizadorPrimerVez();
 		usarDiasDelLocalizador();
-		if (comprobarCamposHoras()) {
+		if (!comprobarCamposHoras()) {
 			throw new Exception("Mensaje de excepción: no hay campo en esa franja horaria");
 		}
 		franjasDia.add(this);

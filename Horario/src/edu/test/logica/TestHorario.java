@@ -85,6 +85,11 @@ public class TestHorario {
 			franja = new Franja();
 			franja.setTiempoInicio(12);
 			franja.setTiempoFinal(17);
+			List<Integer> listaHoras = new ArrayList<>();
+			for(int i = franja.getTiempoInicio(); i< franja.getTiempoFinal();i++) {
+				listaHoras.add(i);
+			}
+			franja.setHoras(listaHoras);
 			franja.setNombreFranja("franja 1");
 			franja.setTipoFranja(TipoFranjaEnum.MATERIA);
 			franja.agruparFranjaDia();
@@ -92,6 +97,11 @@ public class TestHorario {
 			franja = new Franja();
 			franja.setTiempoInicio(0);
 			franja.setTiempoFinal(4);
+			listaHoras = new ArrayList<>();
+			for(int i = franja.getTiempoInicio(); i< franja.getTiempoFinal();i++) {
+				listaHoras.add(i);
+			}
+			franja.setHoras(listaHoras);
 			franja.setNombreFranja("franja 2");
 			franja.setTipoFranja(TipoFranjaEnum.DESCANSO);
 			franja.agruparFranjaDia();
@@ -99,13 +109,23 @@ public class TestHorario {
 			franja = new Franja();
 			franja.setTiempoInicio(6);
 			franja.setTiempoFinal(8);
+			listaHoras = new ArrayList<>();
+			for(int i = franja.getTiempoInicio(); i< franja.getTiempoFinal();i++) {
+				listaHoras.add(i);
+			}
+			franja.setHoras(listaHoras);
 			franja.setNombreFranja("franja 3");
 			franja.setTipoFranja(TipoFranjaEnum.TRANSPORTE);
 			franja.agruparFranjaDia();
 			//--
 			franja = new Franja();
-			franja.setTiempoInicio(10);
+			franja.setTiempoInicio(8);
 			franja.setTiempoFinal(12);
+			listaHoras = new ArrayList<>();
+			for(int i = franja.getTiempoInicio(); i< franja.getTiempoFinal();i++) {
+				listaHoras.add(i);
+			}
+			franja.setHoras(listaHoras);
 			franja.setNombreFranja("franja 4");
 			franja.setTipoFranja(TipoFranjaEnum.TIEMPO_LIBRE);
 			franja.agruparFranjaDia();
@@ -113,6 +133,10 @@ public class TestHorario {
 			//--Conexión de franjas con los días.
 			lunes.setLocalizadorFranja(franja.getLocalizador());
 			lunes.getLocalizadorFranja().mostrarNombresFranjas();
+			franja.desagruparFranjaDia();
+			franja = new Franja();
+			System.out.println("limpio");
+			franja.mostrarNombresFranjas();
 		} catch (Exception e) {
 			System.out.println(e.getLocalizedMessage());
 			e.printStackTrace();
