@@ -155,6 +155,7 @@ public class RegistroSubT extends JPanel implements ActionListener{
 		cbMateria.setBackground(Color.WHITE);
 		cbMateria.setBounds(168, 463, 230, 23);		
 		nombres = micontrolador.ConsultaSencilla("nombre", "materia");
+		cbMateria.addItem("");
 		for (int i = 0; i < nombres.size(); i++) {
 			cbMateria.addItem(nombres.get(i));
 		}
@@ -184,11 +185,13 @@ public class RegistroSubT extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub		
 		if(e.getSource()==btnRegistrarTarea) {
-			nombres = micontrolador.ConsultaSencilla("idmateria", "'"+cbtareaPadre.getSelectedItem().toString()+"'");
-			System.out.println("nombres.get(0): "+nombres.get(0));
-			cbMateria.setSelectedItem(nombres.get(0));
-			System.out.println(cbMateria.getSelectedItem().toString());
-			
+			nombres = micontrolador.ConsultaSencilla("idmateria", "'"+cbtareaPadre.getSelectedItem().toString()+"'");			
+			if(nombres == null) {
+				cbMateria.setSelectedItem(nombres.get(0));
+				System.out.println(cbMateria.getSelectedItem().toString());
+			}else {
+				cbMateria.setSelectedItem("");
+			}									
 			//Validacion de campos vacios
 			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss"); //17/06/2014 18:19:25
 			boolean validar = true;
@@ -233,8 +236,12 @@ public class RegistroSubT extends JPanel implements ActionListener{
 						 Integer.toString(dcFechaentrega.getCalendar().get(Calendar.YEAR))+"'";
 				
 				
-				datos[6] = "'" + sdf.format(sHoraentrega.getValue()) + "'";						 
-				datos[7] = micontrolador.ConsultaSencilla(cbMateria.getSelectedItem().toString(), "materia").get(0);
+				datos[6] = "'" + sdf.format(sHoraentrega.getValue()) + "'";
+				if(cbMateria.getSelectedItem().toString().equals("")) {
+					datos[7] = "null";
+				}else {
+					datos[7] = micontrolador.ConsultaSencilla(cbMateria.getSelectedItem().toString(), "materia").get(0);
+				}				
 				datos[8] = "'" + tfNombre.getText() + "'";
 				for (int i = 0; i < datos.length; i++) {
 					System.out.println(datos[i]);

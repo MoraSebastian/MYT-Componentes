@@ -211,7 +211,11 @@ public class Registro extends JPanel implements ActionListener{
 			
 			if(validar == true) {
 				String[] datos = new String[9];
-				datos[0] = Integer.toString(Integer.parseInt(micontrolador.ConsultaSencilla("maxid", "tarea").get(0))+1);
+				if(micontrolador.ConsultaSencilla("maxid", "tarea").get(0) == null) {
+					datos[0] = "1";
+				}else {
+					datos[0] = Integer.toString(Integer.parseInt(micontrolador.ConsultaSencilla("maxid", "tarea").get(0))+1);
+				}				
 				datos[1] = "'" + taDescripcion.getText() + "'";
 				datos[2] = subtarea;
 				datos[3] = cbDificultad.getSelectedItem().toString();
