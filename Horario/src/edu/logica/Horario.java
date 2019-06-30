@@ -12,10 +12,8 @@ public abstract class Horario {
 	protected List<Horario> horarios = new ArrayList<>();
 	protected String nombreDia;
 	protected int numeroDia;
+	private Franja localizadorFranja;
 	
-	public void agregarFranjaEnDia(Franja franja, int dia) {
-
-	}
 
 //	public Boolean comprobarCapacidad(Franja[] franjas, Franja franjaNueva) {
 //		if (franjas.length > 0) {
@@ -85,10 +83,6 @@ public abstract class Horario {
 		return localizador;
 	}
 
-	public void setLocalizador(Horario localizador) {
-		Horario.localizador = localizador;
-	}
-
 	public List<Horario> getHorarios() {
 		return horarios;
 	}
@@ -108,5 +102,13 @@ public abstract class Horario {
 	}
 	public void setNumeroDia(int numeroDia) {
 		this.numeroDia = numeroDia;
+	}
+
+	public Franja getLocalizadorFranja() {
+		return localizadorFranja;
+	}
+
+	public void setLocalizadorFranja(Franja localizadorFranja) {
+		this.localizadorFranja = localizadorFranja;
 	}
 }
