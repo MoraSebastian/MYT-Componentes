@@ -3,5 +3,10 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="/Agenda/api/api.jar"/>
+	<classpathentry kind="lib" path="A:/SEBASTIAN/SEBASTIAN/UNIVERSIDAD/SEMESTRES/SEPTIMO SEMESTRE/FUNDAMENTOS DE INGENIERIA DE SOFTWARE/lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="A:/SEBASTIAN/SEBASTIAN/UNIVERSIDAD/SEMESTRES/SEPTIMO SEMESTRE/FUNDAMENTOS DE INGENIERIA DE SOFTWARE/lib/jgoodies-common-1.2.0.jar"/>
+	<classpathentry kind="lib" path="A:/SEBASTIAN/SEBASTIAN/UNIVERSIDAD/SEMESTRES/SEPTIMO SEMESTRE/FUNDAMENTOS DE INGENIERIA DE SOFTWARE/lib/jgoodies-looks-2.4.1.jar"/>
+	<classpathentry kind="lib" path="A:/SEBASTIAN/SEBASTIAN/UNIVERSIDAD/SEMESTRES/SEPTIMO SEMESTRE/FUNDAMENTOS DE INGENIERIA DE SOFTWARE/lib/junit-4.6.jar"/>
+	<classpathentry kind="lib" path="A:/SEBASTIAN/SEBASTIAN/UNIVERSIDAD/postgresql-42.2.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
