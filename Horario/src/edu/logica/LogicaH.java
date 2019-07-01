@@ -41,7 +41,8 @@ public class LogicaH implements horarioEstudiante {
 				Franja franja;
 				System.out.println(horarioDia.obtenerDiaPorNumero(i).getNombreDia());
 				Dia diaSemana = (Dia) horarioDia.obtenerDiaPorNumero(i); 
-				franja = diaSemana.getLocalizadorFranja();
+				franja = new Franja();
+				Franja.setLocalizador(diaSemana.getLocalizadorFranja());
 				franja.setTiempoInicio(horaInicio);
 				franja.setTiempoFinal(horaFinal);
 				List<Integer> listaHoras = new ArrayList<>();
@@ -50,6 +51,7 @@ public class LogicaH implements horarioEstudiante {
 				}
 				franja.setHoras(listaHoras);
 				franja.setNombreFranja(nombreF);
+				franja.setDias(dias);
 				franja.setTipoFranja(TipoFranjaEnum.valueOf(tipoF));
 				franja.agruparFranjaDia();
 				diaSemana.setLocalizadorFranja(franja);

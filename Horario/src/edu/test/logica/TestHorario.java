@@ -191,6 +191,7 @@ public class TestHorario {
 		boolean[] dias = new boolean[7];
 		String tipoF = TipoFranjaEnum.MATERIA.name();
 		int horaInicio = 0, horaFinal = 0;
+		String nombreF = "";
 		// --Creación de franjas
 		dias[0] = true;
 		dias[1] = true;
@@ -199,13 +200,81 @@ public class TestHorario {
 		dias[4] = true;
 		dias[5] = true;
 		dias[6] = true;
-		tipoF = TipoFranjaEnum.MATERIA.name();
+		tipoF = TipoFranjaEnum.DESCANSO.name();
 		horaInicio = 0;
-		horaFinal = 6;
-		String nombreF = "Franja 1";
+		horaFinal = 4;
+		nombreF = "Franja Descanso";
 		try {
 			logicaH.añadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//--
+		dias[0] = true;
+		dias[1] = true;
+		dias[2] = true;
+		dias[3] = true;
+		dias[4] = true;
+		dias[5] = false;
+		dias[6] = false;
+		tipoF = TipoFranjaEnum.MATERIA.name();
+		horaInicio = 6;
+		horaFinal = 16;
+		nombreF = "Franja materias";
+		try {
+			logicaH.añadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//--
+		dias[0] = true;
+		dias[1] = false;
+		dias[2] = true;
+		dias[3] = false;
+		dias[4] = true;
+		dias[5] = false;
+		dias[6] = true;
+		tipoF = TipoFranjaEnum.TRANSPORTE.name();
+		horaInicio = 16;
+		horaFinal = 20;
+		nombreF = "Franja Transporte";
+		try {
+			logicaH.añadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//--
+		dias[0] = false;
+		dias[1] = false;
+		dias[2] = false;
+		dias[3] = false;
+		dias[4] = false;
+		dias[5] = true;
+		dias[6] = true;
+		tipoF = TipoFranjaEnum.TIEMPO_LIBRE.name();
+		horaInicio = 20;
+		horaFinal = 24;
+		nombreF = "Franja Tiempo Libre";
+		try {
+			logicaH.añadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		dias[0] = true;
+		dias[1] = false;
+		dias[2] = true;
+		dias[3] = false;
+		dias[4] = true;
+		dias[5] = false;
+		dias[6] = true;
+		tipoF = TipoFranjaEnum.TRANSPORTE.name();
+		horaInicio = 16;
+		horaFinal = 20;
+		nombreF = "Franja cruzada";
+		try {
+			logicaH.añadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
+		} catch (Exception e) {
+			System.out.println("Mensaje: " + e.getMessage());
 			e.printStackTrace();
 		}
 		System.out.println();
