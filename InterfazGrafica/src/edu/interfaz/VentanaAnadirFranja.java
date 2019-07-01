@@ -22,7 +22,18 @@ import java.awt.event.ActionEvent;
 
 public class VentanaAnadirFranja extends JFrameGeneral {
 	private JPanel contentPane;
-
+	JComboBox cBoxTipoFranja;
+	JCheckBox chckbxLunes;
+	JCheckBox chckbxMartes;
+	JCheckBox chckbxMiercoles;
+	JCheckBox chckbxJueves;	
+	JCheckBox chckbxViernes;
+	JCheckBox chckbxSabado;
+	JCheckBox chckbxDomingo;
+	JTextField txtNombreFranja;
+	JSpinField spinFieldFinal;
+	JSpinField spinFieldInicio;
+	JButton btnAnadirFranja2;
 	public void iniciarVentana() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -45,53 +56,53 @@ public class VentanaAnadirFranja extends JFrameGeneral {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JComboBox cBoxTipoFranja = new JComboBox();
+		cBoxTipoFranja = new JComboBox();
 		cBoxTipoFranja.setBounds(294, 281, 159, 20);
 		contentPane.add(cBoxTipoFranja);
 		
-		JCheckBox chckbxLunes = new JCheckBox("Lunes");
+		chckbxLunes = new JCheckBox("Lunes");
 		chckbxLunes.setBounds(108, 192, 75, 23);
 		contentPane.add(chckbxLunes);
 		
-		JCheckBox chckbxMartes = new JCheckBox("Martes");
+		chckbxMartes = new JCheckBox("Martes");
 		chckbxMartes.setBounds(200, 192, 75, 23);
 		contentPane.add(chckbxMartes);
 		
-		JCheckBox chckbxMiercoles = new JCheckBox("Miercoles");
+		chckbxMiercoles = new JCheckBox("Miercoles");
 		chckbxMiercoles.setBounds(294, 192, 75, 23);
 		contentPane.add(chckbxMiercoles);
 		
-		JCheckBox chckbxJueves = new JCheckBox("Jueves");
+		chckbxJueves = new JCheckBox("Jueves");
 		chckbxJueves.setBounds(389, 192, 75, 23);
 		contentPane.add(chckbxJueves);
 		
-		JCheckBox chckbxViernes = new JCheckBox("Viernes");
+		chckbxViernes = new JCheckBox("Viernes");
 		chckbxViernes.setBounds(108, 232, 75, 23);
 		contentPane.add(chckbxViernes);
 		
-		JCheckBox chckbxSabado = new JCheckBox("Sabado");
+		chckbxSabado = new JCheckBox("Sabado");
 		chckbxSabado.setBounds(200, 232, 75, 23);
 		contentPane.add(chckbxSabado);
 		
-		JCheckBox chckbxDomingo = new JCheckBox("Domingo");
+		chckbxDomingo = new JCheckBox("Domingo");
 		chckbxDomingo.setBounds(294, 232, 75, 23);
 		contentPane.add(chckbxDomingo);
 		
 		
-		JTextField txtNombreFranja = new JTextField();
+		txtNombreFranja = new JTextField();
 		txtNombreFranja.setFont(new Font("Lucida Console", Font.PLAIN, 11));
 		txtNombreFranja.setText("nombreFranja");
 		txtNombreFranja.setBounds(294, 121, 159, 20);
 		contentPane.add(txtNombreFranja);
 		txtNombreFranja.setColumns(10);
 		
-		JSpinField spinFieldFinal = new JSpinField();
+		spinFieldFinal = new JSpinField();
 		spinFieldFinal.setMinimum(0);
 		spinFieldFinal.setMaximum(23);
 		spinFieldFinal.setBounds(294, 353, 159, 20);
 		contentPane.add(spinFieldFinal);
 		
-		JSpinField spinFieldInicio = new JSpinField();
+		spinFieldInicio = new JSpinField();
 		spinFieldInicio.setMinimum(0);
 		spinFieldInicio.setMaximum(23);
 		spinFieldInicio.setBounds(294, 316, 159, 20);
@@ -122,7 +133,7 @@ public class VentanaAnadirFranja extends JFrameGeneral {
 		lblDias.setBounds(109, 160, 147, 25);
 		contentPane.add(lblDias);
 		
-		JButton btnAnadirFranja2 = new JButton("");
+		btnAnadirFranja2 = new JButton("");
 		btnAnadirFranja2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean dias[] = new boolean[7];

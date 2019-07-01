@@ -1,5 +1,7 @@
 package edu.core;
 
+import java.util.Date;
+
 import javax.swing.JOptionPane;
 
 import edu.cableado.InformacionEstudiante;
@@ -46,5 +48,48 @@ public class LogicaA implements InformacionEstudiante{
 			e.printStackTrace();
 			return false;
 		}		
+	}
+
+	@Override
+	public void anadirFranja(String arg0, boolean[] arg1, String arg2, int arg3, int arg4) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void anadirSubTarea(String arg0, String arg1, int arg2, int arg3, int arg4, int arg5, Date arg6,
+			boolean arg7) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void anadirTarea(String arg0, String arg1, int arg2, int arg3, int arg4, Date arg5, boolean arg6) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eliminarFranja() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eliminarTarea() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modificarFranja() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modificarTarea() {
+		// TODO Auto-generated method stub
+		
 	}
 }

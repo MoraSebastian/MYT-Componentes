@@ -37,7 +37,7 @@ public class GestorSolicitudes {
 	}
 	public void anadirFranja(String nombreF, boolean dias[], String tipoF, int horaInicio, int horaFinal){
 		try{
-			//interfaceSolicitudes.anadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
+			interfaceSolicitudes.anadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
 		} catch (Exception e){
 			JOptionPane.showMessageDialog(null, "No se pudo añadir una franja nueva ya que el componente de Horario no está disponible");
 		}
