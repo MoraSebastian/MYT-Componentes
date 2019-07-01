@@ -1,11 +1,9 @@
 package edu.logica;
 
-import java.util.ArrayList;
 
-import java.util.List;
 
 import javax.swing.JOptionPane;
-import edu.logica.DiaEnum;
+
 import edu.cableado.consultarHorario;
 import edu.cableado.consultarTarea;
 import edu.cableado.HorarioEstudiante;
@@ -13,11 +11,9 @@ import edu.utilidades.Cargador;
 
 public class LogicaH implements HorarioEstudiante {
 
-	private Horario horarioDia = null;
-
 	@Override
 	public void H() {
-		//Crud();	
+		Crud();	
 		JOptionPane.showMessageDialog(null, "Horario");				
 	}
 	
@@ -73,8 +69,7 @@ public class LogicaH implements HorarioEstudiante {
 			} else {
 				// -- En ese dia no va la franja
 			}
-			System.out.println();
-		}
+		}	
 	}
 
 //	public void Crud(String[] datos, String tabla, boolean[] dias) {
@@ -105,7 +100,7 @@ public class LogicaH implements HorarioEstudiante {
 				consultarHorario ch = (consultarHorario) cls.newInstance();
 				ch.consultaH();
 			}
-		} catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 }
