@@ -1,7 +1,10 @@
 package edu.cableado;
 
+import java.util.ArrayList;
+
 public interface consultarTarea {
-	void RegistrarT();
+	void RegistrarT(String datos[]);
 	void consultaT();
-	void ModifciarT();
+	void ModificarT();
+	public ArrayList<String[]> CtareasPendientes();
 }

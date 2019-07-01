@@ -3,6 +3,7 @@ package edu.conexion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
@@ -10,6 +11,8 @@ import javax.swing.JOptionPane;
 public class Gestor {
 	public Connection conexion = null;	
 	protected PreparedStatement ps = null;
+	protected java.sql.Statement codigoSQL = null;
+	protected ResultSet resultados = null;
 	String pass = "CualColoco";
 	String user = "postgres";
 	protected String script = "";

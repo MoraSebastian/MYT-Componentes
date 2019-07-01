@@ -14,7 +14,7 @@ public class Controlador {
 		gestort.consultaT();
 	}
 	public void AdicionarRegistro(String[] datos, String tabla) {
-		gestort.RegistrarT(datos, tabla);
+		gestort.RegistrarT(datos);
 	}
 	public void BorrarRegistro() {
 		

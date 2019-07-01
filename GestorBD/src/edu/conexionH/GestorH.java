@@ -17,6 +17,41 @@ public class GestorH extends Gestor implements consultarHorario {
 		JOptionPane.showMessageDialog(null, "DBHorario");
 
 	}	
+	/**
+	 * Método encargado de consultar todas las tareas pendientes, sin importar ningún otro atributo
+	 */
+	public ArrayList<String[]> CtotalFranjas() {
+		Conectar();				
+		script = "select * from tarea;";
+		ArrayList<String[]> array1 = new ArrayList<String[]>();
+		try {
+			codigoSQL = conexion.createStatement();
+			resultados = codigoSQL.executeQuery(script);
+			ResultSetMetaData datos = resultados.getMetaData();
+			
+			int numeroColumnas = datos.getColumnCount();
+			
+			
+			String res ="";
+			while (resultados.next())
+		      {
+				String[] f = new String[numeroColumnas];
+				for (int i = 0; i < numeroColumnas; i++) {
+					f[i] = resultados.getString(i+1);
+				}				
+		        res=resultados.getString(1);
+		        array1.add(f);
+		        return array1;
+		      }
+			JOptionPane.showMessageDialog(null, "EL ULTIMO ID ES: "+res);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}						
+		Desconectar();
+		return null;
+	}
+	
 	@Override
 	public void RegistrarH(String[] datos, String tabla, boolean[] dias) {
 		// TODO Auto-generated method stub

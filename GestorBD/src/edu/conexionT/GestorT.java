@@ -15,16 +15,11 @@ import edu.cableado.consultarTarea;
 import edu.conexion.Gestor;
 
 public class GestorT extends Gestor implements consultarTarea {	
-	
+	ArrayList<String> array;
 	
 	@Override
 	public void consultaT() {
-		//JOptionPane.showMessageDialog(null, "DBTarea");
-		Conectar();
-		//CONSULTA SOLO PARA OBTENER EL MAXIMO ID POR AHORA
-		java.sql.Statement codigoSQL = null;
-		ResultSet resultados = null;
-		
+		Conectar();				
 		script = "select max(id_materia) from materia;";
 		try {
 			codigoSQL = conexion.createStatement();
@@ -43,13 +38,47 @@ public class GestorT extends Gestor implements consultarTarea {
 		}						
 		Desconectar();
 	}
+	
+	/**
+	 * Método encargado de consultar todas las tareas pendientes, sin importar ningún otro atributo
+	 */
+	public ArrayList<String[]> CtareasPendientes() {
+		Conectar();				
+		script = "select * from tarea;";
+		ArrayList<String[]> array1 = new ArrayList<String[]>();
+		try {
+			codigoSQL = conexion.createStatement();
+			resultados = codigoSQL.executeQuery(script);
+			ResultSetMetaData datos = resultados.getMetaData();
+			
+			int numeroColumnas = datos.getColumnCount();
+			
+			
+			String res ="";
+			while (resultados.next())
+		      {
+				String[] f = new String[numeroColumnas];
+				for (int i = 0; i < numeroColumnas; i++) {
+					f[i] = resultados.getString(i+1);
+				}				
+		        res=resultados.getString(1);
+		        array1.add(f);
+		        return array1;
+		      }
+			JOptionPane.showMessageDialog(null, "EL ULTIMO ID ES: "+res);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}						
+		Desconectar();
+		return null;
+	}
+	
 	public ArrayList<String> consultas(String caso, String tabla){
 		Conectar();
-		//CONSULTA SOLO PARA OBTENER EL MAXIMO ID POR AHORA
-		java.sql.Statement codigoSQL = null;
-		ResultSet resultados = null;
+		//CONSULTA SOLO PARA OBTENER EL MAXIMO ID POR AHORA		
 		script = "";
-		ArrayList<String> array = new ArrayList<String>();
+		array = new ArrayList<String>();
 		
 		String id = "";
 		
@@ -116,49 +145,36 @@ public class GestorT extends Gestor implements consultarTarea {
 	}
 
 	@Override
-	public void ModifciarT() {
-		// TODO Auto-generated method stub
+	public void ModificarT() {
+		Conectar();
+		
 		
 	}
 
-	public void RegistrarT(String[] datos, String tabla) {
+	public void RegistrarT(String[] datos) {
 		Conectar();
 		ps = null;
-		script = "";
-		switch(tabla) {
-		case "tarea":
-			script = "insert into tarea (id_tarea, descripcion, id_tareas, dificultad, id_tipot, fecha, hora, id_materia, nombre)" + 
-					" values(" +datos[0] + ", " +datos[1] + ", " + datos[2] + ", " + datos[3] + ", " + datos[4] + 
-					", " + datos[5] + ", " + datos[6] +  ", " + datos[7] + ", " + datos[8] + ");";
-			try {
-				ps = conexion.prepareStatement(script);
-				ps.executeUpdate();
-				JOptionPane.showMessageDialog(null, "SE HIZO EL REGISTRO DE LA TAREA");
-			}catch(Exception e) {
-				JOptionPane.showMessageDialog(null, "PAILA NO SE PUDO HACER EL REGISTRO XD");
-			}
-			break;
-		case "tipotarea":
-			script = "insert into tipotarea (id_tipot, nombre)" + 
-					" values(" +datos[0] + ", " +datos[1] + ");";
-			try {
-				ps = conexion.prepareStatement(script);
-				ps.executeUpdate();
-				JOptionPane.showMessageDialog(null, "SE HIZO EL REGISTRO DE LA TAREA");
-			}catch(Exception e) {
-				JOptionPane.showMessageDialog(null, "PAILA NO SE PUDO HACER EL REGISTRO XD");
-			}
-			break;
-		}		
+		if(consultas("maxid", "tarea").get(0) == null) {
+			datos[0] = "1";
+		}else {
+			datos[0] = consultas("maxid", "tarea").get(0);
+		}
+		script = "insert into tarea (id_tarea, descripcion, id_tareas, dificultad, id_tipot, fecha, hora, id_materia, nombre)" + 
+				" values(" +datos[0] + ", " +datos[1] + ", " + datos[2] + ", " + datos[3] + ", " + datos[4] + 
+				", " + datos[5] + ", " + datos[6] +  ", " + datos[7] + ", " + datos[8] + ");";
+		try {
+			ps = conexion.prepareStatement(script);
+			ps.executeUpdate();
+			JOptionPane.showMessageDialog(null, "SE HIZO EL REGISTRO DE LA TAREA");
+		}catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "PAILA NO SE PUDO HACER EL REGISTRO XD");
+		}
+															
 		Desconectar();
 	}
 	public void Borrar() {
 		
 	}
 	
-	@Override
-	public void RegistrarT() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

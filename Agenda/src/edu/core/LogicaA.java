@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import edu.cableado.InformacionEstudiante;
 import edu.cableado.Sugerencia;
 import edu.cableado.consultarTarea;
-import edu.cableado.horarioEstudiante;
+import edu.cableado.HorarioEstudiante;
 import edu.cableado.tareaEstudiante;
 
 import edu.utilidades.Cargador;
@@ -28,9 +28,9 @@ public class LogicaA implements InformacionEstudiante{
 	public boolean Inf() {
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(horarioEstudiante.class.getName());
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(HorarioEstudiante.class.getName());
 			if(cls != null) {
-				horarioEstudiante he = (horarioEstudiante) cls.newInstance();
+				HorarioEstudiante he = (HorarioEstudiante) cls.newInstance();
 				he.H();
 			}
 			cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
@@ -57,19 +57,6 @@ public class LogicaA implements InformacionEstudiante{
 	}
 
 	@Override
-	public void anadirSubTarea(String arg0, String arg1, int arg2, int arg3, int arg4, int arg5, Date arg6,
-			boolean arg7) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void anadirTarea(String arg0, String arg1, int arg2, int arg3, int arg4, Date arg5, boolean arg6) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void eliminarFranja() {
 		// TODO Auto-generated method stub
 		
@@ -89,6 +76,20 @@ public class LogicaA implements InformacionEstudiante{
 
 	@Override
 	public void modificarTarea() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void anadirSubTarea(String arg0, String arg1, int arg2, String arg3, String arg4, int arg5, Date arg6,
+			String arg7, boolean arg8) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void anadirTarea(String arg0, String arg1, int arg2, String arg3, int arg4, Date arg5, String arg6,
+			boolean arg7) {
 		// TODO Auto-generated method stub
 		
 	}
