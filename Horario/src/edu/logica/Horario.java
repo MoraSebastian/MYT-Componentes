@@ -37,6 +37,11 @@ public abstract class Horario {
 		horarios = new ArrayList<>();
 	}
 
+	/**
+	 * Método para obtener un objeto tipo Horario (día) según el número del día, correspondiente a la estructura DiaEnum.
+	 * @param numeroDia
+	 * @return
+	 */
 	public Horario obtenerDiaPorNumero(int numeroDia) {
 		for (Horario dia : horarios) {
 			if (dia.getNumeroDia() == numeroDia) {
@@ -46,6 +51,9 @@ public abstract class Horario {
 		return null;
 	}
 
+	/**
+	 * Método para mostrar el nombre de los días agrupados.
+	 */
 	public void mostrarDias() {
 		for (Horario dia : horarios) {
 			System.out.println(dia.nombreDia);
@@ -54,12 +62,19 @@ public abstract class Horario {
 
 	protected abstract void mostrarFranjas();
 
+	/**
+	 * Método para mostrar las franjas correspondientes a todos los días agrupados del horario.
+	 */
 	public void mostrarFranjasDeDias() {
 		for (Horario dia : horarios) {
 			dia.mostrarFranjas();
 		}
 	}
 
+	/**
+	 * Método para mostrar las franjas de un día en específico de la agrupación de Horario.
+	 * @param dia
+	 */
 	public void mostrarFranjaDeDia(Dia dia) {
 		for (Horario horarioDia : horarios) {
 			if (horarioDia.equals(dia)) {

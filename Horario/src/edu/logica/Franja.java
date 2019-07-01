@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import edu.utilidades.Clonable;
 
 public class Franja{
@@ -42,16 +44,24 @@ public class Franja{
 		}
 	}
 
+	/**
+	 * Método para agregar la franja al grupo de franjas, en él se comprueba si las horas de la franja a crear no se cruzan con las franjas ya agrupadas. 
+	 * @throws Exception
+	 */
 	public void agruparFranjaDia() throws Exception {
 		crearLocalizadorPrimerVez();
 		usarFranjasDelLocalizador();
 		if (!comprobarCamposHoras()) {
-			throw new Exception("Mensaje de excepción: no hay campo en esa franja horaria (Nombre:" + this.nombreFranja + ")");
+			throw new Exception("No hay campo para la franja " + this.nombreFranja + " en las horas especificadas.");
 		}
 		franjasDia.add(this);
 	}
 
-	public boolean comprobarCamposHoras() {
+	/**
+	 * Método para comprobar que el día tenga el espacio suficiente para la franja que va a ser agregada.
+	 * @return
+	 */
+	private boolean comprobarCamposHoras() {
 		for (Franja franjaDia : franjasDia) {
 			try {
 				List<Integer> horasAingresarCopia = (List<Integer>) Clonable.clonarConProfundidad(horas);
@@ -74,6 +84,9 @@ public class Franja{
 		franjasDia = new ArrayList<>();
 	}
 
+	/**
+	 * Método para mostrar en consola los nombres de todas las franjas del día.
+	 */
 	public void mostrarNombresFranjas() {
 		for (Franja franjaDia : franjasDia) {
 			System.out.println(franjaDia.getNombreFranja());
