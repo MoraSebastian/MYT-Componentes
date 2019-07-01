@@ -48,11 +48,6 @@ public class LogicaH implements HorarioEstudiante {
 		}
 	}
 
-	/*
-	 * @see edu.cableado.HorarioEstudiante#agregarFranja(java.lang.String,
-	 * boolean[], java.lang.String, int, int)
-	 */
-	@Override
 	/**
 	 * Método para realizar la validación y agregación de franjas según los días en
 	 * los que se vaya a crear. Teniendo en cuenta que no se puede permitir el cruce
@@ -64,6 +59,11 @@ public class LogicaH implements HorarioEstudiante {
 	 * @param horarioFinal
 	 * @throws Exception
 	 */
+	/*
+	 * @see edu.cableado.HorarioEstudiante#agregarFranja(java.lang.String,
+	 * boolean[], java.lang.String, int, int)
+	 */
+	@Override
 	public void agregarFranja(String nombreF, boolean dias[], String tipoF, int horaInicio, int horaFinal)
 			throws Exception {
 		inicializarDiasSemana();
