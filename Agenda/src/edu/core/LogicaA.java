@@ -4,10 +4,10 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
+import edu.cableado.HorarioEstudiante;
 import edu.cableado.InformacionEstudiante;
 import edu.cableado.Sugerencia;
 import edu.cableado.consultarTarea;
-import edu.cableado.horarioEstudiante;
 import edu.cableado.tareaEstudiante;
 
 import edu.utilidades.Cargador;
@@ -28,9 +28,9 @@ public class LogicaA implements InformacionEstudiante{
 	public boolean Inf() {
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(horarioEstudiante.class.getName());
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(HorarioEstudiante.class.getName());
 			if(cls != null) {
-				horarioEstudiante he = (horarioEstudiante) cls.newInstance();
+				HorarioEstudiante he = (HorarioEstudiante) cls.newInstance();
 				he.H();
 			}
 			cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
