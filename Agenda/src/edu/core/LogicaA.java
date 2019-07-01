@@ -14,6 +14,7 @@ import edu.cableado.tareaEstudiante;
 import edu.utilidades.Cargador;
 
 public class LogicaA implements InformacionEstudiante{
+	private static HorarioEstudiante horarioEstudiante = null;
 	public static void main(String[] args) {
 		
 	}
@@ -52,9 +53,16 @@ public class LogicaA implements InformacionEstudiante{
 	}
 
 	@Override
-	public void anadirFranja(String arg0, boolean[] arg1, String arg2, int arg3, int arg4) {
-		// TODO Auto-generated method stub
-		
+	public void anadirFranja(String nombreFranja, boolean[] dias, String tipoFranja, int horaInicial, int horaFinal) throws Exception{
+		if(horarioEstudiante!=null) {
+			try {
+				horarioEstudiante.agregarFranja(nombreFranja, dias, tipoFranja, horaInicial, horaFinal);
+			} catch (Exception e) {
+				throw e;
+			}
+		}else {
+			throw new Exception("El componente horario no ha sido cargado");
+		}
 	}
 
 	@Override
@@ -93,5 +101,13 @@ public class LogicaA implements InformacionEstudiante{
 			boolean arg7) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public static HorarioEstudiante getHorarioEstudiante() {
+		return horarioEstudiante;
+	}
+
+	public static void setHorarioEstudiante(HorarioEstudiante horarioEstudiante) {
+		LogicaA.horarioEstudiante = horarioEstudiante;
 	}
 }
