@@ -73,6 +73,150 @@ public class GestorT extends Gestor implements consultarTarea {
 		Desconectar();
 		return null;
 	}
+	/**
+	 * Método encargado de consultar todas las tareas pendientes por materia
+	 */
+	public ArrayList<String[]> CtareasPMateria(String nombre) {
+		Conectar();			
+		String id = consultas(nombre, "materia").get(0);
+		script = "select * from tarea" + 
+				"where id_materia = " + id + ";";
+		ArrayList<String[]> array1 = new ArrayList<String[]>();
+		try {
+			codigoSQL = conexion.createStatement();
+			resultados = codigoSQL.executeQuery(script);
+			ResultSetMetaData datos = resultados.getMetaData();
+			
+			int numeroColumnas = datos.getColumnCount();
+			
+			
+			String res ="";
+			while (resultados.next())
+		      {
+				String[] f = new String[numeroColumnas];
+				for (int i = 0; i < numeroColumnas; i++) {
+					f[i] = resultados.getString(i+1);
+				}				
+		        res=resultados.getString(1);
+		        array1.add(f);
+		        return array1;
+		      }
+			JOptionPane.showMessageDialog(null, "EL ULTIMO ID ES: "+res);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}						
+		Desconectar();
+		return null;
+	}
+	/**
+	 * Método encargado de consultar todas las tareas pendientes por tipo
+	 */
+	public ArrayList<String[]> CtareasPTipo(String nombre) {
+		Conectar();			
+		String id = consultas(nombre, "tipotarea").get(0);
+		script = "select * from tarea" + 
+				"where id_tipot = " + id + ";";
+		ArrayList<String[]> array1 = new ArrayList<String[]>();
+		try {
+			codigoSQL = conexion.createStatement();
+			resultados = codigoSQL.executeQuery(script);
+			ResultSetMetaData datos = resultados.getMetaData();
+			
+			int numeroColumnas = datos.getColumnCount();
+			
+			
+			String res ="";
+			while (resultados.next())
+		      {
+				String[] f = new String[numeroColumnas];
+				for (int i = 0; i < numeroColumnas; i++) {
+					f[i] = resultados.getString(i+1);
+				}				
+		        res=resultados.getString(1);
+		        array1.add(f);
+		        return array1;
+		      }
+			JOptionPane.showMessageDialog(null, "EL ULTIMO ID ES: "+res);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}						
+		Desconectar();
+		return null;
+	}
+	/**
+	 * Método encargado de consultar todas las tareas pendientes para una fecha
+	 */
+	public ArrayList<String[]> CtareasPFecha(String nombre) {
+		Conectar();			
+		
+		script = "select * from tarea" + 
+				"where fecha = " + nombre + ";";
+		ArrayList<String[]> array1 = new ArrayList<String[]>();
+		try {
+			codigoSQL = conexion.createStatement();
+			resultados = codigoSQL.executeQuery(script);
+			ResultSetMetaData datos = resultados.getMetaData();
+			
+			int numeroColumnas = datos.getColumnCount();
+			
+			
+			String res ="";
+			while (resultados.next())
+		      {
+				String[] f = new String[numeroColumnas];
+				for (int i = 0; i < numeroColumnas; i++) {
+					f[i] = resultados.getString(i+1);
+				}				
+		        res=resultados.getString(1);
+		        array1.add(f);
+		        return array1;
+		      }
+			JOptionPane.showMessageDialog(null, "EL ULTIMO ID ES: "+res);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}						
+		Desconectar();
+		return null;
+	}
+	/**
+	 * Método encargado de consultar todas las tareas pendientes por dificultad
+	 */
+	public ArrayList<String[]> CtareasPDificultad(String nombre) {
+		Conectar();			
+		
+		script = "select * from tarea" + 
+				"where dificultad = " + nombre + ";";
+		ArrayList<String[]> array1 = new ArrayList<String[]>();
+		try {
+			codigoSQL = conexion.createStatement();
+			resultados = codigoSQL.executeQuery(script);
+			ResultSetMetaData datos = resultados.getMetaData();
+			
+			int numeroColumnas = datos.getColumnCount();
+			
+			
+			String res ="";
+			while (resultados.next())
+		      {
+				String[] f = new String[numeroColumnas];
+				for (int i = 0; i < numeroColumnas; i++) {
+					f[i] = resultados.getString(i+1);
+				}				
+		        res=resultados.getString(1);
+		        array1.add(f);
+		        return array1;
+		      }
+			JOptionPane.showMessageDialog(null, "EL ULTIMO ID ES: "+res);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}						
+		Desconectar();
+		return null;
+	}
 	
 	public ArrayList<String> consultas(String caso, String tabla){
 		Conectar();
