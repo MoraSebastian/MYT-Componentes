@@ -2,6 +2,9 @@ package edu.logica;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 import edu.cableado.consultarHorario;
@@ -11,6 +14,7 @@ import edu.utilidades.Cargador;
 
 public class LogicaH implements HorarioEstudiante {
 
+	private Horario horarioDia = null;
 	@Override
 	public void H() {
 		Crud();	
