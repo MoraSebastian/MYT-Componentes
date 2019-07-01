@@ -12,16 +12,16 @@ public abstract class Horario {
 	protected List<Horario> horarios = new ArrayList<>();
 	protected String nombreDia;
 	protected int numeroDia;
-	private Franja localizadorFranja;
-	
+	protected Franja localizadorFranja = null;
+
 	private void crearPrimerLocalizador() {
-		if(localizador == null) {
+		if (localizador == null) {
 			localizador = this;
 		}
 	}
-	
+
 	private void usarHorariosDelLocalizador() {
-		if(horarios.isEmpty()) {
+		if (horarios.isEmpty()) {
 			horarios = localizador.horarios;
 		}
 	}
@@ -37,17 +37,36 @@ public abstract class Horario {
 		horarios = new ArrayList<>();
 	}
 
-	public void obtenerHorarioDeDia() {
-		
+	public Horario obtenerDiaPorNumero(int numeroDia) {
+		for (Horario dia : horarios) {
+			if (dia.getNumeroDia() == numeroDia) {
+				return dia;
+			}
+		}
+		return null;
 	}
-	
+
 	public void mostrarDias() {
-		for(Horario dia: horarios) {
+		for (Horario dia : horarios) {
 			System.out.println(dia.nombreDia);
 		}
 	}
 
-	protected abstract void ubicarFranja();
+	protected abstract void mostrarFranjas();
+
+	public void mostrarFranjasDeDias() {
+		for (Horario dia : horarios) {
+			dia.mostrarFranjas();
+		}
+	}
+
+	public void mostrarFranjaDeDia(Dia dia) {
+		for (Horario horarioDia : horarios) {
+			if (horarioDia.equals(dia)) {
+				horarioDia.mostrarFranjas();
+			}
+		}
+	}
 
 	public Horario getLocalizador() {
 		return localizador;
@@ -64,17 +83,23 @@ public abstract class Horario {
 	public String getNombreDia() {
 		return nombreDia;
 	}
+
 	public void setNombreDia(String nombreDia) {
 		this.nombreDia = nombreDia;
 	}
+
 	public int getNumeroDia() {
 		return numeroDia;
 	}
+
 	public void setNumeroDia(int numeroDia) {
 		this.numeroDia = numeroDia;
 	}
 
 	public Franja getLocalizadorFranja() {
+		if (localizadorFranja == null) {
+			return new Franja();
+		}
 		return localizadorFranja;
 	}
 

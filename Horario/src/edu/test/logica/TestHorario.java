@@ -15,8 +15,10 @@ import java.util.Map;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import edu.logica.Dia;
 import edu.logica.Franja;
 import edu.logica.Horario;
+import edu.logica.LogicaH;
 import edu.logica.TipoFranjaEnum;
 
 public class TestHorario {
@@ -30,7 +32,7 @@ public class TestHorario {
 			Date horaInicial = formato.parse("12");
 			System.out.println(horaInicial);
 			Date horaFinal = formato.parse("17");
-			int diferencia = (int) ((horaFinal.getTime() - horaInicial.getTime())/1000)/3600;
+			int diferencia = (int) ((horaFinal.getTime() - horaInicial.getTime()) / 1000) / 3600;
 			System.out.println(diferencia);
 			int d = horaFinal.compareTo(horaInicial);
 			System.out.println(d);
@@ -38,31 +40,32 @@ public class TestHorario {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Test
+	@Ignore
 	public void testFranjasDeHorario() {
 		System.out.println("-----------Test franja y horario-------");
-		Horario lunes  = new Franja();
+		Horario lunes = new Dia();
 		lunes.setNombreDia("Lunes");
 		lunes.setNumeroDia(1);
-		Horario martes  = new Franja();
+		Horario martes = new Dia();
 		martes.setNombreDia("Martes");
 		martes.setNumeroDia(2);
-		Horario miercoles  = new Franja();
+		Horario miercoles = new Dia();
 		miercoles.setNombreDia("Miércoles");
 		miercoles.setNumeroDia(3);
-		Horario jueves  = new Franja();
+		Horario jueves = new Dia();
 		jueves.setNombreDia("Jueves");
 		jueves.setNumeroDia(4);
-		Horario viernes  = new Franja();
+		Horario viernes = new Dia();
 		viernes.setNombreDia("Viernes");
 		viernes.setNumeroDia(5);
-		Horario sabado  = new Franja();
+		Horario sabado = new Dia();
 		sabado.setNombreDia("Sábado");
 		sabado.setNumeroDia(6);
-		Horario domingo  = new Franja();
+		Horario domingo = new Dia();
 		domingo.setNombreDia("Domingo");
 		domingo.setNumeroDia(7);
 		lunes.agruparHorario();
@@ -72,65 +75,64 @@ public class TestHorario {
 		viernes.agruparHorario();
 		sabado.agruparHorario();
 		domingo.agruparHorario();
-		List<Horario> dias =  lunes.getHorarios();
+		List<Horario> dias = lunes.getHorarios();
 		lunes.mostrarDias();
-		for(Horario dia: dias) {
+		for (Horario dia : dias) {
 			System.out.println(dia.getNombreDia() + " - " + dia.getNumeroDia());
 		}
-		System.out.println(dias);
-		//--Para las franjas
+		// --Para las franjas
 		Franja franja;
 		try {
-			
+
 			franja = new Franja();
 			franja.setTiempoInicio(12);
 			franja.setTiempoFinal(17);
 			List<Integer> listaHoras = new ArrayList<>();
-			for(int i = franja.getTiempoInicio(); i< franja.getTiempoFinal();i++) {
+			for (int i = franja.getTiempoInicio(); i < franja.getTiempoFinal(); i++) {
 				listaHoras.add(i);
 			}
 			franja.setHoras(listaHoras);
 			franja.setNombreFranja("franja 1");
 			franja.setTipoFranja(TipoFranjaEnum.MATERIA);
 			franja.agruparFranjaDia();
-			//--
+			// --
 			franja = new Franja();
 			franja.setTiempoInicio(0);
 			franja.setTiempoFinal(4);
 			listaHoras = new ArrayList<>();
-			for(int i = franja.getTiempoInicio(); i< franja.getTiempoFinal();i++) {
+			for (int i = franja.getTiempoInicio(); i < franja.getTiempoFinal(); i++) {
 				listaHoras.add(i);
 			}
 			franja.setHoras(listaHoras);
 			franja.setNombreFranja("franja 2");
 			franja.setTipoFranja(TipoFranjaEnum.DESCANSO);
 			franja.agruparFranjaDia();
-			//--
+			// --
 			franja = new Franja();
 			franja.setTiempoInicio(6);
 			franja.setTiempoFinal(8);
 			listaHoras = new ArrayList<>();
-			for(int i = franja.getTiempoInicio(); i< franja.getTiempoFinal();i++) {
+			for (int i = franja.getTiempoInicio(); i < franja.getTiempoFinal(); i++) {
 				listaHoras.add(i);
 			}
 			franja.setHoras(listaHoras);
 			franja.setNombreFranja("franja 3");
 			franja.setTipoFranja(TipoFranjaEnum.TRANSPORTE);
 			franja.agruparFranjaDia();
-			//--
+			// --
 			franja = new Franja();
 			franja.setTiempoInicio(8);
 			franja.setTiempoFinal(12);
 			listaHoras = new ArrayList<>();
-			for(int i = franja.getTiempoInicio(); i< franja.getTiempoFinal();i++) {
+			for (int i = franja.getTiempoInicio(); i < franja.getTiempoFinal(); i++) {
 				listaHoras.add(i);
 			}
 			franja.setHoras(listaHoras);
 			franja.setNombreFranja("franja 4");
 			franja.setTipoFranja(TipoFranjaEnum.TIEMPO_LIBRE);
 			franja.agruparFranjaDia();
-//			franja.mostrarNombresFranjas();
-			//--Conexión de franjas con los días.
+			// franja.mostrarNombresFranjas();
+			// --Conexión de franjas con los días.
 			lunes.setLocalizadorFranja(franja.getLocalizador());
 			lunes.getLocalizadorFranja().mostrarNombresFranjas();
 			franja.desagruparFranjaDia();
@@ -141,9 +143,9 @@ public class TestHorario {
 		} catch (Exception e) {
 			System.out.println(e.getLocalizedMessage());
 			e.printStackTrace();
-		}		
+		}
 	}
-	
+
 	@Ignore
 	@Test
 	public void testListas() {
@@ -161,23 +163,51 @@ public class TestHorario {
 		int tamañoLista = lista2.size();
 		lista2.removeAll(lista1);
 		System.out.println(lista2);
-		if(tamañoLista != lista2.size()) {
+		if (tamañoLista != lista2.size()) {
 			System.out.println("SIRVE");
 		}
-		//-------
+		// -------
 		Map<Integer, Boolean> mapa = new HashMap<>();
 		System.out.println(mapa.put(1, true));
 		System.out.println(mapa.put(1, false));
 		mapa.remove(1);
 		System.out.println(mapa.put(1, true));
 	}
-	
+
 	@Test
+	@Ignore
 	public void testEnum() {
 		System.out.println("-------------------Test Enumn----------------------");
-		Enum[]tipos = TipoFranjaEnum.values();
-		for(Enum e : tipos) {
+		Enum[] tipos = TipoFranjaEnum.values();
+		for (Enum e : tipos) {
 			System.out.println(e.name());
 		}
+	}
+
+	@Test
+	public void testLogicaH() {
+		// --Inicialización
+		LogicaH logicaH = new LogicaH();
+		boolean[] dias = new boolean[7];
+		String tipoF = TipoFranjaEnum.MATERIA.name();
+		int horaInicio = 0, horaFinal = 0;
+		// --Creación de franjas
+		dias[0] = true;
+		dias[1] = true;
+		dias[2] = true;
+		dias[3] = true;
+		dias[4] = true;
+		dias[5] = true;
+		dias[6] = true;
+		tipoF = TipoFranjaEnum.MATERIA.name();
+		horaInicio = 0;
+		horaFinal = 6;
+		String nombreF = "Franja 1";
+		try {
+			logicaH.añadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println();
 	}
 }

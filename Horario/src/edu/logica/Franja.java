@@ -7,7 +7,7 @@ import java.util.List;
 
 import edu.utilidades.Clonable;
 
-public class Franja extends Horario {
+public class Franja{
 	protected static Franja localizador;
 	private static final int HORAS_POR_DIA = 24;
 	protected List<Franja> franjasDia = new ArrayList<>();
@@ -30,22 +30,13 @@ public class Franja extends Horario {
 		dias = new boolean[7];
 	}
 
-	@Override
-	protected void ubicarFranja() {
-		int horas = HORAS_POR_DIA;
-		// int diferencia = (int) ((horaFinal.getTime() -
-		// horaInicial.getTime())/1000)/3600;
-	}
-	// protected abstract void ocuparFranja(String id, Date horaInicial, Date
-	// horaFinal);
-
 	private void crearLocalizadorPrimerVez() {
 		if (localizador == null) {
 			localizador = this;
 		}
 	}
 
-	private void usarDiasDelLocalizador() {
+	private void usarFranjasDelLocalizador() {
 		if (franjasDia.isEmpty()) {
 			franjasDia = localizador.franjasDia;
 		}
@@ -53,9 +44,9 @@ public class Franja extends Horario {
 
 	public void agruparFranjaDia() throws Exception {
 		crearLocalizadorPrimerVez();
-		usarDiasDelLocalizador();
+		usarFranjasDelLocalizador();
 		if (!comprobarCamposHoras()) {
-			throw new Exception("Mensaje de excepción: no hay campo en esa franja horaria");
+			throw new Exception("Mensaje de excepción: no hay campo en esa franja horaria (Nombre:" + this.nombreFranja + ")");
 		}
 		franjasDia.add(this);
 	}
