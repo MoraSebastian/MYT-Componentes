@@ -8,7 +8,10 @@ import edu.cableado.HorarioEstudiante;
 import edu.cableado.InformacionEstudiante;
 import edu.cableado.Sugerencia;
 import edu.cableado.consultarTarea;
+<<<<<<< HEAD
 import edu.cableado.HorarioEstudiante;
+=======
+>>>>>>> c27b917788d0e00eb7fdf060b209cc3b62a48675
 import edu.cableado.tareaEstudiante;
 
 import edu.utilidades.Cargador;
