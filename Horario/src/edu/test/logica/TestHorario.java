@@ -205,7 +205,7 @@ public class TestHorario {
 		horaFinal = 4;
 		nombreF = "Franja Descanso";
 		try {
-			logicaH.añadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
+			logicaH.agregarFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -222,7 +222,7 @@ public class TestHorario {
 		horaFinal = 16;
 		nombreF = "Franja materias";
 		try {
-			logicaH.añadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
+			logicaH.agregarFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -239,7 +239,7 @@ public class TestHorario {
 		horaFinal = 20;
 		nombreF = "Franja Transporte";
 		try {
-			logicaH.añadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
+			logicaH.agregarFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -256,7 +256,7 @@ public class TestHorario {
 		horaFinal = 24;
 		nombreF = "Franja Tiempo Libre";
 		try {
-			logicaH.añadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
+			logicaH.agregarFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -272,7 +272,7 @@ public class TestHorario {
 		horaFinal = 20;
 		nombreF = "Franja cruzada";
 		try {
-			logicaH.añadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
+			logicaH.agregarFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
 		} catch (Exception e) {
 			System.out.println("Mensaje: " + e.getMessage());
 			e.printStackTrace();

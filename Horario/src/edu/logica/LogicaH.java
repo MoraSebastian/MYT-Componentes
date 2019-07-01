@@ -8,10 +8,10 @@ import javax.swing.JOptionPane;
 import edu.logica.DiaEnum;
 import edu.cableado.consultarHorario;
 import edu.cableado.consultarTarea;
-import edu.cableado.horarioEstudiante;
+import edu.cableado.HorarioEstudiante;
 import edu.utilidades.Cargador;
 
-public class LogicaH implements horarioEstudiante {
+public class LogicaH implements HorarioEstudiante {
 
 	private Horario horarioDia = null;
 
@@ -22,7 +22,7 @@ public class LogicaH implements horarioEstudiante {
 	}
 	
 	
-	public void añadirFranja(String nombreF, boolean dias[], String tipoF, int horaInicio, int horaFinal) throws Exception{
+	public void agregarFranjaCrud(String nombreF, boolean dias[], String tipoF, int horaInicio, int horaFinal) throws Exception{
 		String datos[] = {"", ""+horaInicio, ""+horaFinal, tipoF, nombreF};	
 		Crud(datos, "bloque", dias);		
 	}
@@ -41,11 +41,12 @@ public class LogicaH implements horarioEstudiante {
 				horarioDia.agruparHorario();
 			}
 		} else {
-			// -- Ya se cre� el listado de d�as.
+			// -- Ya se creo el listado de dias.
 		}
 	}
 
-	public void añadirFranja(String nombreF, boolean dias[], String tipoF, int horaInicio, int horaFinal)
+	@Override
+	public void agregarFranja(String nombreF, boolean dias[], String tipoF, int horaInicio, int horaFinal)
 			throws Exception {
 		inicializarDiasSemana();
 		for (int i = 0; i < dias.length; i++) {
@@ -70,32 +71,44 @@ public class LogicaH implements horarioEstudiante {
 				Franja.setLocalizador(null);
 				// --
 			} else {
-				// -- En ese d�a no va la franja
+				// -- En ese dia no va la franja
 			}
 			System.out.println();
 		}
 	}
 
+//	public void Crud(String[] datos, String tabla, boolean[] dias) {
+//		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
+//		ArrayList<String> array;
+//		try {
+//			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(consultarHorario.class.getName());
+//			if (cls != null) {
+//				consultarHorario ch = (consultarHorario) cls.newInstance();
+//				//ENCONTRAR EL ID, YA QUE NO LO HACE POR DEFECTO
+//				array = ch.consultas("maxid", tabla);
+//				if(array.get(0)==null) {
+//					datos[0] = "1";
+//				}else {
+//					datos[0] = array.get(0);
+//				}
+//				ch.RegistrarH(datos, tabla, dias);											
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 	public void Crud() {
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
-		ArrayList<String> array;
 		try {
 			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(consultarHorario.class.getName());
 			if (cls != null) {
 				consultarHorario ch = (consultarHorario) cls.newInstance();
-				//ENCONTRAR EL ID, YA QUE NO LO HACE POR DEFECTO
-				array = ch.consultas("maxid", tabla);
-				if(array.get(0)==null) {
-					datos[0] = "1";
-				}else {
-					datos[0] = array.get(0);
-				}
-				ch.RegistrarH(datos, tabla, dias);											
+				ch.consultaH();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+}
 	
 	@Override
 	public void eliminarFranja(String arg0) {
@@ -114,5 +127,6 @@ public class LogicaH implements horarioEstudiante {
 	public Horario getHorarioDia() {
 		return horarioDia;
 	}
+
 
 }
