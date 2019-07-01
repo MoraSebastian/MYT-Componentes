@@ -48,6 +48,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		
 		
 		JPanel panelTareas = new JPanel();
+		panelTareas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panelTareas.setBounds(642, 136, 356, 38);
 		panel.add(panelTareas);
 		panelTareas.setBackground(new Color(254, 254, 232));
@@ -75,6 +76,12 @@ public class PanelAgenda extends JPanelAbstracto {
 		lblTextoTarea.setFont(new Font("Agency FB", Font.PLAIN, 21));
 		lblTextoTarea.setBounds(10, 10, 268, 20);
 		panelTareas.add(lblTextoTarea);
+		
+		JLabel lblFondo_1 = new JLabel("");
+		lblFondo_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFondo_1.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 42@0.75x.png")));
+		lblFondo_1.setBounds(-4, 3, 282, 34);
+		panelTareas.add(lblFondo_1);
 		
 		
 		JPanel panelTareas2 = new JPanel();
@@ -148,16 +155,250 @@ public class PanelAgenda extends JPanelAbstracto {
 		lblFondo_3.setBounds(-4, 3, 282, 34);
 		panelTareas3.add(lblFondo_3);
 		
+		JPanel panelTareas4 = new JPanel();
+		panelTareas4.setLayout(null);
+		panelTareas4.setBackground(new Color(254, 254, 232));
+		panelTareas4.setBounds(642, 253, 356, 38);
+		panel.add(panelTareas4);
 		
+		JButton btnEliminar4 = new JButton("");
+		btnEliminar4.setBounds(306, 2, 32, 34);
+		btnEliminar4.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 49@0.75x.png")));
+		btnEliminar4.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 41@0.75x.png")));
+		btnEliminar4.setOpaque(false);
+		btnEliminar4.setContentAreaFilled(false);
+		btnEliminar4.setBorderPainted(false);
+		panelTareas4.add(btnEliminar4);
 		
+		JButton btnModificar4 = new JButton("");
+		btnModificar4.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
+		btnModificar4.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
+		btnModificar4.setOpaque(false);
+		btnModificar4.setContentAreaFilled(false);
+		btnModificar4.setBorderPainted(false);
+		btnModificar4.setBounds(274, 2, 32, 34);
+		panelTareas4.add(btnModificar4);
 		
+		JLabel llblTextoTarea4 = new JLabel("Texto tarea");
+		llblTextoTarea4.setBounds(10, 10, 268, 20);
+		panelTareas4.add(llblTextoTarea4);
+		llblTextoTarea4.setFont(new Font("Agency FB", Font.PLAIN, 21));
 		
-		JLabel lblFondo_1 = new JLabel("");
-		lblFondo_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblFondo_1.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 42@0.75x.png")));
-		lblFondo_1.setBounds(-4, 3, 282, 34);
-		panelTareas.add(lblFondo_1);
+		JLabel lblFondo_4 = new JLabel("");
+		lblFondo_4.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 42@0.75x.png")));
+		lblFondo_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFondo_4.setBounds(-4, 3, 282, 34);
+		panelTareas4.add(lblFondo_4);
 		
+		JPanel panelTareas5 = new JPanel();
+		panelTareas5.setLayout(null);
+		panelTareas5.setBackground(new Color(254, 254, 232));
+		panelTareas5.setBounds(642, 292, 356, 38);
+		panel.add(panelTareas5);
+		
+		JButton btnEliminar5 = new JButton("");
+		btnEliminar5.setBounds(306, 2, 32, 34);
+		btnEliminar5.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 49@0.75x.png")));
+		btnEliminar5.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 41@0.75x.png")));
+		btnEliminar5.setOpaque(false);
+		btnEliminar5.setContentAreaFilled(false);
+		btnEliminar5.setBorderPainted(false);
+		panelTareas5.add(btnEliminar5);
+		
+		JButton btnModificar5 = new JButton("");
+		btnModificar5.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
+		btnModificar5.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
+		btnModificar5.setOpaque(false);
+		btnModificar5.setContentAreaFilled(false);
+		btnModificar5.setBorderPainted(false);
+		btnModificar5.setBounds(274, 2, 32, 34);
+		panelTareas5.add(btnModificar5);
+		
+		JLabel llblTextoTarea5 = new JLabel("Texto tarea");
+		llblTextoTarea5.setBounds(10, 10, 268, 20);
+		panelTareas5.add(llblTextoTarea5);
+		llblTextoTarea5.setFont(new Font("Agency FB", Font.PLAIN, 21));
+		
+		JLabel lblFondo_5 = new JLabel("");
+		lblFondo_5.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 42@0.75x.png")));
+		lblFondo_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFondo_5.setBounds(-4, 3, 282, 34);
+		panelTareas5.add(lblFondo_5);
+		
+		JPanel panelTareas6 = new JPanel();
+		panelTareas6.setLayout(null);
+		panelTareas6.setBackground(new Color(254, 254, 232));
+		panelTareas6.setBounds(642, 331, 356, 38);
+		panel.add(panelTareas6);
+		
+		JButton btnEliminar6 = new JButton("");
+		btnEliminar6.setBounds(306, 2, 32, 34);
+		btnEliminar6.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 49@0.75x.png")));
+		btnEliminar6.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 41@0.75x.png")));
+		btnEliminar6.setOpaque(false);
+		btnEliminar6.setContentAreaFilled(false);
+		btnEliminar6.setBorderPainted(false);
+		panelTareas6.add(btnEliminar6);
+		
+		JButton btnModificar6 = new JButton("");
+		btnModificar6.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
+		btnModificar6.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
+		btnModificar6.setOpaque(false);
+		btnModificar6.setContentAreaFilled(false);
+		btnModificar6.setBorderPainted(false);
+		btnModificar6.setBounds(274, 2, 32, 34);
+		panelTareas6.add(btnModificar6);
+		
+		JLabel llblTextoTarea6 = new JLabel("Texto tarea");
+		llblTextoTarea6.setBounds(10, 10, 268, 20);
+		panelTareas6.add(llblTextoTarea6);
+		llblTextoTarea6.setFont(new Font("Agency FB", Font.PLAIN, 21));
+		
+		JLabel lblFondo_6 = new JLabel("");
+		lblFondo_6.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 42@0.75x.png")));
+		lblFondo_6.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFondo_6.setBounds(-4, 3, 282, 34);
+		panelTareas6.add(lblFondo_6);
+		
+		JPanel panelTareas7 = new JPanel();
+		panelTareas7.setLayout(null);
+		panelTareas7.setBackground(new Color(254, 254, 232));
+		panelTareas7.setBounds(642, 370, 356, 38);
+		panel.add(panelTareas7);
+		
+		JButton btnEliminar7 = new JButton("");
+		btnEliminar7.setBounds(306, 2, 32, 34);
+		btnEliminar7.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 49@0.75x.png")));
+		btnEliminar7.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 41@0.75x.png")));
+		btnEliminar7.setOpaque(false);
+		btnEliminar7.setContentAreaFilled(false);
+		btnEliminar7.setBorderPainted(false);
+		panelTareas7.add(btnEliminar7);
+		
+		JButton btnModificar7 = new JButton("");
+		btnModificar7.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
+		btnModificar7.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
+		btnModificar7.setOpaque(false);
+		btnModificar7.setContentAreaFilled(false);
+		btnModificar7.setBorderPainted(false);
+		btnModificar7.setBounds(274, 2, 32, 34);
+		panelTareas7.add(btnModificar7);
+		
+		JLabel llblTextoTarea7 = new JLabel("Texto tarea");
+		llblTextoTarea7.setBounds(10, 10, 268, 20);
+		panelTareas7.add(llblTextoTarea7);
+		llblTextoTarea7.setFont(new Font("Agency FB", Font.PLAIN, 21));
+		
+		JLabel lblFondo_7 = new JLabel("");
+		lblFondo_7.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 42@0.75x.png")));
+		lblFondo_7.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFondo_7.setBounds(-4, 3, 282, 34);
+		panelTareas7.add(lblFondo_7);
+		
+		JPanel panelTareas8 = new JPanel();
+		panelTareas8.setLayout(null);
+		panelTareas8.setBackground(new Color(254, 254, 232));
+		panelTareas8.setBounds(642, 409, 356, 38);
+		panel.add(panelTareas8);
+		
+		JButton btnEliminar8 = new JButton("");
+		btnEliminar8.setBounds(306, 2, 32, 34);
+		btnEliminar8.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 49@0.75x.png")));
+		btnEliminar8.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 41@0.75x.png")));
+		btnEliminar8.setOpaque(false);
+		btnEliminar8.setContentAreaFilled(false);
+		btnEliminar8.setBorderPainted(false);
+		panelTareas8.add(btnEliminar8);
+		
+		JButton btnModificar8 = new JButton("");
+		btnModificar8.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
+		btnModificar8.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
+		btnModificar8.setOpaque(false);
+		btnModificar8.setContentAreaFilled(false);
+		btnModificar8.setBorderPainted(false);
+		btnModificar8.setBounds(274, 2, 32, 34);
+		panelTareas8.add(btnModificar8);
+		
+		JLabel llblTextoTarea8 = new JLabel("Texto tarea");
+		llblTextoTarea8.setBounds(10, 10, 268, 20);
+		panelTareas8.add(llblTextoTarea8);
+		llblTextoTarea8.setFont(new Font("Agency FB", Font.PLAIN, 21));
+		
+		JLabel lblFondo_8 = new JLabel("");
+		lblFondo_8.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 42@0.75x.png")));
+		lblFondo_8.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFondo_8.setBounds(-4, 3, 282, 34);
+		panelTareas8.add(lblFondo_8);
+		
+		JPanel panelTareas9 = new JPanel();
+		panelTareas9.setLayout(null);
+		panelTareas9.setBackground(new Color(254, 254, 232));
+		panelTareas9.setBounds(642, 448, 356, 38);
+		panel.add(panelTareas9);
+		
+		JButton btnEliminar9 = new JButton("");
+		btnEliminar9.setBounds(306, 2, 32, 34);
+		btnEliminar9.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 49@0.75x.png")));
+		btnEliminar9.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 41@0.75x.png")));
+		btnEliminar9.setOpaque(false);
+		btnEliminar9.setContentAreaFilled(false);
+		btnEliminar9.setBorderPainted(false);
+		panelTareas9.add(btnEliminar9);
+		
+		JButton btnModificar9 = new JButton("");
+		btnModificar9.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
+		btnModificar9.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
+		btnModificar9.setOpaque(false);
+		btnModificar9.setContentAreaFilled(false);
+		btnModificar9.setBorderPainted(false);
+		btnModificar9.setBounds(274, 2, 32, 34);
+		panelTareas9.add(btnModificar9);
+		
+		JLabel llblTextoTarea9 = new JLabel("Texto tarea");
+		llblTextoTarea9.setBounds(10, 10, 268, 20);
+		panelTareas9.add(llblTextoTarea9);
+		llblTextoTarea9.setFont(new Font("Agency FB", Font.PLAIN, 21));
+		
+		JLabel lblFondo_9 = new JLabel("");
+		lblFondo_9.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 42@0.75x.png")));
+		lblFondo_9.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFondo_9.setBounds(-4, 3, 282, 34);
+		panelTareas9.add(lblFondo_9);
+		
+		JPanel panelTareas10 = new JPanel();
+		panelTareas10.setLayout(null);
+		panelTareas10.setBackground(new Color(254, 254, 232));
+		panelTareas10.setBounds(642, 487, 356, 38);
+		panel.add(panelTareas10);
+		
+		JButton btnEliminar10 = new JButton("");
+		btnEliminar10.setBounds(306, 2, 32, 34);
+		btnEliminar10.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 49@0.75x.png")));
+		btnEliminar10.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 41@0.75x.png")));
+		btnEliminar10.setOpaque(false);
+		btnEliminar10.setContentAreaFilled(false);
+		btnEliminar10.setBorderPainted(false);
+		panelTareas10.add(btnEliminar10);
+		
+		JButton btnModificar10 = new JButton("");
+		btnModificar10.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
+		btnModificar10.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
+		btnModificar10.setOpaque(false);
+		btnModificar10.setContentAreaFilled(false);
+		btnModificar10.setBorderPainted(false);
+		btnModificar10.setBounds(274, 2, 32, 34);
+		panelTareas10.add(btnModificar10);
+		
+		JLabel llblTextoTarea10 = new JLabel("Texto tarea");
+		llblTextoTarea10.setBounds(10, 10, 268, 20);
+		panelTareas10.add(llblTextoTarea10);
+		llblTextoTarea10.setFont(new Font("Agency FB", Font.PLAIN, 21));
+		
+		JLabel lblFondo_10 = new JLabel("");
+		lblFondo_10.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 42@0.75x.png")));
+		lblFondo_10.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFondo_10.setBounds(-4, 3, 282, 34);
+		panelTareas10.add(lblFondo_10);
 		
 		JLabel lblFondoagenda = new JLabel("");
 		lblFondoagenda.setHorizontalAlignment(SwingConstants.CENTER);
