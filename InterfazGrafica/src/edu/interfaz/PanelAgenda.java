@@ -38,12 +38,22 @@ public class PanelAgenda extends JPanelAbstracto {
 		add(panel);
 		panel.setLayout(null);
 		
-		JButton btnFiltrar = new JButton("Filtrar");
+		JButton btnFiltrar = new JButton("");
+		btnFiltrar.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 47@0.75x.png")));
+		btnFiltrar.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 46@0.75x.png")));
 		btnFiltrar.setBounds(230, 335, 147, 38);
+		btnFiltrar.setOpaque(false);
+		btnFiltrar.setBorderPainted(false);
+		btnFiltrar.setContentAreaFilled(false);
 		panel.add(btnFiltrar);
 		
-		JButton btnVerTareas = new JButton("Ver tareas");
+		JButton btnVerTareas = new JButton("");
+		btnVerTareas.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 44@0.75x.png")));
+		btnVerTareas.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 45@0.75x.png")));
 		btnVerTareas.setBounds(230, 256, 147, 38);
+		btnVerTareas.setOpaque(false);
+		btnVerTareas.setBorderPainted(false);
+		btnVerTareas.setContentAreaFilled(false);
 		panel.add(btnVerTareas);
 		
 		
