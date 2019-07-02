@@ -20,10 +20,10 @@ public class GestorH extends Gestor implements consultarHorario {
 	/**
 	 * Método encargado de consultar todas las tareas pendientes, sin importar ningún otro atributo
 	 */
-	public ArrayList<String[]> CtotalFranjas() {
+	public ArrayList<Object[]> CtotalFranjas() {
 		Conectar();				
 		script = "select * from tarea;";
-		ArrayList<String[]> array1 = new ArrayList<String[]>();
+		ArrayList<Object[]> array1 = new ArrayList<Object[]>();
 		try {
 			codigoSQL = conexion.createStatement();
 			resultados = codigoSQL.executeQuery(script);
@@ -35,7 +35,7 @@ public class GestorH extends Gestor implements consultarHorario {
 			String res ="";
 			while (resultados.next())
 		      {
-				String[] f = new String[numeroColumnas];
+				Object[] f = new Object[numeroColumnas];
 				for (int i = 0; i < numeroColumnas; i++) {
 					f[i] = resultados.getString(i+1);
 				}				
