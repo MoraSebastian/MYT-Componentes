@@ -163,13 +163,13 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 				if(rdbtnSiSubtarea.isSelected()){
 					String pertenencia=""; //Revisar lo del id
 					subTarea = true;
-					informacion.anadirSubTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), cbxDificultad.getSelectedIndex(),
-							cbxTipo.getToolTipText(), pertenencia,spinField.getValue(), dateChooser.getDate(),
-							cbxPerteneceAmateria.getToolTipText(), subTarea);
+					informacion.anadirSubTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), Integer.parseInt(cbxDificultad.getSelectedItem().toString()),
+							cbxTipo.getSelectedItem().toString(), pertenencia,spinField.getValue(), dateChooser.getDate(),
+							cbxPerteneceAmateria.getSelectedItem().toString(), subTarea);
 				} else{
 					subTarea = false;
-					informacion.anadirTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), cbxDificultad.getSelectedIndex(), 
-							cbxTipo.getToolTipText(), spinField.getValue(), dateChooser.getDate(), cbxPerteneceAmateria.getToolTipText(),
+					informacion.anadirTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), Integer.parseInt(cbxDificultad.getSelectedItem().toString()), 
+							cbxTipo.getToolTipText(), spinField.getValue(), dateChooser.getDate(), cbxPerteneceAmateria.getSelectedItem().toString(),
 							subTarea);
 				}
 				dispose();

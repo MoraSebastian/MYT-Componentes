@@ -56,15 +56,36 @@ public class GestorSolicitudes {
 		}
 	}
 
-	ArrayList<String[]> solicitarListaTareas(){
+	public ArrayList<String[]> solicitarListaTareasFecha(Date fecha){
 		try {
-			
+			// return interfaceSolicitudes.solicitarListaTareas(Date fecha);
+			return null;
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					"No se pudo obtener la lista de tareas porque el componente no está disponible");
+			return null;
 		}
-		return null;
+	}
 	
+	public ArrayList<String[]> solicitarListaTareasFechaDificultad(Date fecha, int dificultad){
+		try {
+			// return interfaceSolicitudes.solicitarListaTareasFechaDificultad(fecha, dificultad);
+			return null;
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null,
+					"No se pudo obtener la lista de tareas porque el componente no está disponible");
+			return null;
+		}
+	}
 	
+	public ArrayList<String[]> solicitarListaTareasFechaTipo(Date fecha, String tipo){
+		try {
+			// return interfaceSolicitudes.solicitarListaTareasFechaTipo(Date fecha, tipo);
+			return null;
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null,
+					"No se pudo obtener la lista de tareas porque el componente no está disponible");
+			return null;
+		}
 	}
 }
