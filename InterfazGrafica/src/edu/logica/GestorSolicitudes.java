@@ -49,6 +49,7 @@ public class GestorSolicitudes {
 				interfaceSolicitudes.anadirFranja(nombreF, dias, tipoF, horaInicio, horaFinal);
 			} catch (Exception e) {
 				System.out.println("Error: " + e.getMessage());
+				JOptionPane.showMessageDialog(null, e.getMessage(), "¡Ups! Ocurrió un error", JOptionPane.INFORMATION_MESSAGE);
 			}
 		} else {
 			JOptionPane.showMessageDialog(null,"No se pudo añadir una franja nueva ya que el componente de Horario no está disponible");

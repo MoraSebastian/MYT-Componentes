@@ -42,9 +42,9 @@ public class GestorT extends Gestor implements consultarTarea {
 	/**
 	 * Método encargado de consultar todas las tareas pendientes, sin importar ningún otro atributo
 	 */
-	public ArrayList<String[]> CtareasPendientes() {
+	public ArrayList<String[]> CtareasPendientes(String fecha) {
 		Conectar();				
-		script = "select * from tarea;";
+		script = "select * from tarea where fecha = " + fecha + ";";
 		ArrayList<String[]> array1 = new ArrayList<String[]>();
 		try {
 			codigoSQL = conexion.createStatement();
@@ -76,11 +76,11 @@ public class GestorT extends Gestor implements consultarTarea {
 	/**
 	 * Método encargado de consultar todas las tareas pendientes por materia
 	 */
-	public ArrayList<String[]> CtareasPMateria(String nombre) {
+	public ArrayList<String[]> CtareasPMateria(String nombre, String fecha) {
 		Conectar();			
 		String id = consultas(nombre, "materia").get(0);
 		script = "select * from tarea" + 
-				"where id_materia = " + id + ";";
+				"where id_materia = " + id + " and fecha = " + fecha + ";";
 		ArrayList<String[]> array1 = new ArrayList<String[]>();
 		try {
 			codigoSQL = conexion.createStatement();
@@ -112,11 +112,11 @@ public class GestorT extends Gestor implements consultarTarea {
 	/**
 	 * Método encargado de consultar todas las tareas pendientes por tipo
 	 */
-	public ArrayList<String[]> CtareasPTipo(String nombre) {
+	public ArrayList<String[]> CtareasPTipo(String nombre, String fecha) {
 		Conectar();			
 		String id = consultas(nombre, "tipotarea").get(0);
 		script = "select * from tarea" + 
-				"where id_tipot = " + id + ";";
+				"where id_tipot = " + id + " and fecha = " + fecha + ";";
 		ArrayList<String[]> array1 = new ArrayList<String[]>();
 		try {
 			codigoSQL = conexion.createStatement();
@@ -145,50 +145,15 @@ public class GestorT extends Gestor implements consultarTarea {
 		Desconectar();
 		return null;
 	}
-	/**
-	 * Método encargado de consultar todas las tareas pendientes para una fecha
-	 */
-	public ArrayList<String[]> CtareasPFecha(String nombre) {
-		Conectar();			
-		
-		script = "select * from tarea" + 
-				"where fecha = " + nombre + ";";
-		ArrayList<String[]> array1 = new ArrayList<String[]>();
-		try {
-			codigoSQL = conexion.createStatement();
-			resultados = codigoSQL.executeQuery(script);
-			ResultSetMetaData datos = resultados.getMetaData();
-			
-			int numeroColumnas = datos.getColumnCount();
-			
-			
-			String res ="";
-			while (resultados.next())
-		      {
-				String[] f = new String[numeroColumnas];
-				for (int i = 0; i < numeroColumnas; i++) {
-					f[i] = resultados.getString(i+1);
-				}				
-		        res=resultados.getString(1);
-		        array1.add(f);
-		        return array1;
-		      }
-			JOptionPane.showMessageDialog(null, "EL ULTIMO ID ES: "+res);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}						
-		Desconectar();
-		return null;
-	}
+	
 	/**
 	 * Método encargado de consultar todas las tareas pendientes por dificultad
 	 */
-	public ArrayList<String[]> CtareasPDificultad(String nombre) {
+	public ArrayList<String[]> CtareasPDificultad(String nombre, String fecha) {
 		Conectar();			
 		
 		script = "select * from tarea" + 
-				"where dificultad = " + nombre + ";";
+				"where dificultad = " + nombre + " and fecha = " + fecha + ";";
 		ArrayList<String[]> array1 = new ArrayList<String[]>();
 		try {
 			codigoSQL = conexion.createStatement();
@@ -318,6 +283,12 @@ public class GestorT extends Gestor implements consultarTarea {
 	}
 	public void Borrar() {
 		
+	}
+
+	@Override
+	public ArrayList<String[]> CtareasPendientes() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
