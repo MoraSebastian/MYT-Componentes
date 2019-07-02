@@ -1,4 +1,4 @@
-package edu.test.logica;
+package test.edu.logica;
 
 import static org.junit.Assert.*;
 
