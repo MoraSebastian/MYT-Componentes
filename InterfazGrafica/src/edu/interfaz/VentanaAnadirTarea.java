@@ -87,7 +87,7 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 		JComboBox cbxQueTarea = new JComboBox();
 		cbxQueTarea.setEnabled(false);
 		cbxQueTarea.setFont(new Font("Lucida Console", Font.PLAIN, 11));
-		cbxQueTarea.setBounds(281, 469, 159, 20);
+		cbxQueTarea.setBounds(281, 511, 159, 20);
 		contentPane.add(cbxQueTarea);
 		
 		JComboBox cbxDificultad = new JComboBox();
@@ -101,15 +101,19 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 				cbxQueTarea.setEnabled(true);
 			}
 		});
+		
+		JComboBox cbxPerteneceAmateria = new JComboBox();
+		cbxPerteneceAmateria.setBounds(281, 428, 159, 20);
+		contentPane.add(cbxPerteneceAmateria);
 		buttonGroup.add(rdbtnSiSubtarea);
-		rdbtnSiSubtarea.setBounds(281, 417, 47, 23);
+		rdbtnSiSubtarea.setBounds(281, 459, 47, 23);
 		contentPane.add(rdbtnSiSubtarea);
 			
 		
 		JRadioButton rdbtnNo = new JRadioButton("No");
 		buttonGroup.add(rdbtnNo);
 		rdbtnNo.setSelected(true);
-		rdbtnNo.setBounds(393, 419, 47, 23);
+		rdbtnNo.setBounds(393, 461, 47, 23);
 		rdbtnNo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cbxQueTarea.setEnabled(false);
@@ -119,7 +123,7 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 		
 		JLabel lblSubtarea = new JLabel("Subtarea:");
 		lblSubtarea.setFont(new Font("Rockwell", Font.PLAIN, 17));
-		lblSubtarea.setBounds(114, 417, 110, 25);
+		lblSubtarea.setBounds(114, 459, 110, 25);
 		contentPane.add(lblSubtarea);
 		
 		JLabel lblHoraDeEntrega = new JLabel("Hora de entrega:");
@@ -157,18 +161,25 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean subTarea;
 				if(rdbtnSiSubtarea.isSelected()){
-					int pertenencia=0; //Revisar lo del id
+					String pertenencia=""; //Revisar lo del id
 					subTarea = true;
-					informacion.anadirSubTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), cbxDificultad.getSelectedIndex(), 
-							cbxTipo.getSelectedIndex(), pertenencia, spinField.getValue(), dateChooser.getDate(), subTarea);
+					informacion.anadirSubTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), cbxDificultad.getSelectedIndex(),
+							cbxTipo.getToolTipText(), pertenencia,spinField.getValue(), dateChooser.getDate(),
+							cbxPerteneceAmateria.getToolTipText(), subTarea);
 				} else{
 					subTarea = false;
 					informacion.anadirTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), cbxDificultad.getSelectedIndex(), 
-							cbxTipo.getSelectedIndex(), spinField.getValue(), dateChooser.getDate(), subTarea);
+							cbxTipo.getToolTipText(), spinField.getValue(), dateChooser.getDate(), cbxPerteneceAmateria.getToolTipText(),
+							subTarea);
 				}
 				dispose();
 			}
 		});
+		
+		JLabel lblPerteneceAMateria = new JLabel("Pertenece a materia:");
+		lblPerteneceAMateria.setFont(new Font("Rockwell", Font.PLAIN, 17));
+		lblPerteneceAMateria.setBounds(114, 421, 183, 30);
+		contentPane.add(lblPerteneceAMateria);
 		btnAnadirTarea.setRolloverIcon(new ImageIcon(VentanaAnadirTarea.class.getResource("/edu/recursos/Recurso 26@0.75x.png")));
 		btnAnadirTarea.setIcon(new ImageIcon(VentanaAnadirTarea.class.getResource("/edu/recursos/Recurso 20@0.75x.png")));
 		btnAnadirTarea.setBounds(232, 612, 147, 38);

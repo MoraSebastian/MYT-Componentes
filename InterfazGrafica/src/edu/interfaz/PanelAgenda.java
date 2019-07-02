@@ -24,10 +24,14 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Font;
+import com.toedter.calendar.JCalendar;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 
 public class PanelAgenda extends JPanelAbstracto {
 
 	private int posicionY, posicionMaxY=555;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	public PanelAgenda(JFrame frameActual, GestorSolicitudes info) {
 		super.frameActual = frameActual;
@@ -41,7 +45,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		JButton btnFiltrar = new JButton("");
 		btnFiltrar.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 47@0.75x.png")));
 		btnFiltrar.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 46@0.75x.png")));
-		btnFiltrar.setBounds(230, 335, 147, 38);
+		btnFiltrar.setBounds(282, 530, 147, 38);
 		btnFiltrar.setOpaque(false);
 		btnFiltrar.setBorderPainted(false);
 		btnFiltrar.setContentAreaFilled(false);
@@ -50,11 +54,15 @@ public class PanelAgenda extends JPanelAbstracto {
 		JButton btnVerTareas = new JButton("");
 		btnVerTareas.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 44@0.75x.png")));
 		btnVerTareas.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 45@0.75x.png")));
-		btnVerTareas.setBounds(230, 256, 147, 38);
+		btnVerTareas.setBounds(282, 313, 147, 38);
 		btnVerTareas.setOpaque(false);
 		btnVerTareas.setBorderPainted(false);
 		btnVerTareas.setContentAreaFilled(false);
 		panel.add(btnVerTareas);
+		
+		JCalendar calendar = new JCalendar();
+		calendar.setBounds(259, 149, 184, 153);
+		panel.add(calendar);
 		
 		
 		JPanel panelTareas = new JPanel();
@@ -409,6 +417,30 @@ public class PanelAgenda extends JPanelAbstracto {
 		lblFondo_10.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFondo_10.setBounds(-4, 3, 282, 34);
 		panelTareas10.add(lblFondo_10);
+		
+		JRadioButton rdbtnTodas = new JRadioButton("Todas");
+		buttonGroup.add(rdbtnTodas);
+		rdbtnTodas.setBackground(Color.PINK);
+		rdbtnTodas.setBounds(203, 424, 109, 23);
+		panel.add(rdbtnTodas);
+		
+		JRadioButton rdbtnPorCategoria = new JRadioButton("Por franja");
+		buttonGroup.add(rdbtnPorCategoria);
+		rdbtnPorCategoria.setBackground(Color.PINK);
+		rdbtnPorCategoria.setBounds(393, 424, 109, 23);
+		panel.add(rdbtnPorCategoria);
+		
+		JRadioButton rdbtnPorDificultad = new JRadioButton("Por dificultad");
+		buttonGroup.add(rdbtnPorDificultad);
+		rdbtnPorDificultad.setBackground(Color.PINK);
+		rdbtnPorDificultad.setBounds(393, 476, 109, 23);
+		panel.add(rdbtnPorDificultad);
+		
+		JRadioButton rdbtnPorTipo = new JRadioButton("Por tipo");
+		buttonGroup.add(rdbtnPorTipo);
+		rdbtnPorTipo.setBackground(Color.PINK);
+		rdbtnPorTipo.setBounds(203, 476, 109, 23);
+		panel.add(rdbtnPorTipo);
 		
 		JLabel lblFondoagenda = new JLabel("");
 		lblFondoagenda.setHorizontalAlignment(SwingConstants.CENTER);
