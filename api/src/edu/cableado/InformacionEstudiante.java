@@ -11,4 +11,6 @@ public interface InformacionEstudiante {
 	void anadirFranja(String nombreF, boolean dias[], String tipoF, int horaInicio, int horaFinal) throws Exception;
 	void modificarFranja();
 	void eliminarFranja();
+	@SuppressWarnings("rawtypes")
+	Enum[] obtenerTiposDeFranjas();
 }
