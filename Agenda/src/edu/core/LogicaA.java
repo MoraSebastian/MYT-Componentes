@@ -1,5 +1,6 @@
 package edu.core;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
@@ -109,5 +110,29 @@ public class LogicaA implements InformacionEstudiante{
 
 	public static void setHorarioEstudiante(HorarioEstudiante horarioEstudiante) {
 		LogicaA.horarioEstudiante = horarioEstudiante;
+	}
+
+	@Override
+	public Enum[] obtenerTiposDeFranjas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<String[]> solicitarListaTareasFecha(Date fecha) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<String[]> solicitarListaTareasFechaDificultad(Date fecha, int dificultad) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<String[]> solicitarListaTareasFechaTipo(Date fecha, String tipo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
