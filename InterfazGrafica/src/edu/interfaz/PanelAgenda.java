@@ -1,5 +1,7 @@
 package edu.interfaz;
 
+import com.toedter.calendar.JDateChooser;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,14 +22,19 @@ import java.awt.Font;
 
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
-import com.toedter.calendar.JDateChooser;
+
 import javax.swing.JComboBox;
-import javax.swing.JTextField;
+
 import javax.swing.DefaultComboBoxModel;
+import com.toedter.components.JSpinField;
+import javax.swing.JTextField;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 public class PanelAgenda extends JPanelAbstracto {
-
-	private int posicionY, posicionMaxY=555;
+	
+	Comando comando;
+	private JPanelAbstracto panelHorario;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private ArrayList<String[]> filtroFecha, filtroFechaTipo, filtroFechaDificultad, filtroFechaFranja;
 	private JLabel lblFondo;
@@ -58,17 +65,14 @@ public class PanelAgenda extends JPanelAbstracto {
 	public PanelAgenda(JFrame frameActual, GestorSolicitudes info) {
 		super.frameActual = frameActual;
 		super.informacion = info;
+		
 		setLayout(null);	
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 1160, 700);
 		add(panel);
 		panel.setLayout(null);
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(267, 164, 172, 20);
-		panel.add(dateChooser);
 		
-		panel.repaint();
 		cbxFranja = new JComboBox();
 		cbxFranja.setEnabled(false);
 		cbxFranja.setBounds(368, 360, 134, 20);
@@ -145,22 +149,22 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnTodas.isSelected()){
-					cargarTareasFecha(dateChooser.getDate());
+					//cargarTareasFecha(dateChooser.getDate());
 					mostrarListaTareas(filtroFecha);
 				}
 				if(rdbtnPorDificultad.isSelected()){
-					cargarTareasFechaDificultad(dateChooser.getDate(), Integer.parseInt(cbxDificultad.getSelectedItem().toString()));
+					//cargarTareasFechaDificultad(dateChooser.getDate(), Integer.parseInt(cbxDificultad.getSelectedItem().toString()));
 					mostrarListaTareas(filtroFechaDificultad);
 				}
 				if(rdbtnPorTipo.isSelected()){
-					cargarTareasFechaTipo(dateChooser.getDate(), cbxTipo.getSelectedItem().toString());
+					//cargarTareasFechaTipo(dateChooser.getDate(), cbxTipo.getSelectedItem().toString());
 					mostrarListaTareas(filtroFechaTipo);
 				}
 			}
 		});
 		btnFiltrar.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 47@0.75x.png")));
 		btnFiltrar.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 46@0.75x.png")));
-		btnFiltrar.setBounds(282, 530, 147, 38);
+		btnFiltrar.setBounds(277, 479, 147, 38);
 		btnFiltrar.setOpaque(false);
 		btnFiltrar.setBorderPainted(false);
 		btnFiltrar.setContentAreaFilled(false);
@@ -169,7 +173,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		JButton btnVerTareas = new JButton("");
 		btnVerTareas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				cargarTareasFecha(dateChooser.getDate());
+				//cargarTareasFecha(dateChooser.getDate());
 				mostrarListaTareas(filtroFecha);
 			}
 		});
@@ -180,6 +184,29 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnVerTareas.setBorderPainted(false);
 		btnVerTareas.setContentAreaFilled(false);
 		panel.add(btnVerTareas);
+		
+		JButton btnVolver = new JButton("");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				panelHorario = new PanelHorario(frameActual, informacion);
+				comando = new QuitarPanel(frameActual);
+				comando.ejecutar();
+				comando = new AnadirPanel(panelHorario);
+				comando.ejecutar();
+				
+			}
+		});
+		btnVolver.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 50@0.75x.png")));
+		btnVolver.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 51@0.75x.png")));
+		btnVolver.setBounds(277, 555, 157, 38);
+		btnVolver.setOpaque(false);
+		btnVolver.setBorderPainted(false);
+		btnVolver.setContentAreaFilled(false);
+		panel.add(btnVolver);
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(287, 154, 119, 20);
+		panel.add(dateChooser);
 		
 		
 		panelTareas1 = new JPanel();
@@ -544,6 +571,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		lblFondo_10.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFondo_10.setBounds(-4, 3, 282, 34);
 		panelTareas10.add(lblFondo_10);
+
 		
 		lblFondoagenda = new JLabel("");
 		lblFondoagenda.setHorizontalAlignment(SwingConstants.CENTER);
