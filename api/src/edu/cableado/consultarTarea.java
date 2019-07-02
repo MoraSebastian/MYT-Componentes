@@ -7,4 +7,6 @@ public interface consultarTarea {
 	void consultaT();
 	void ModificarT();
 	public ArrayList<String[]> CtareasPendientes();
+	ArrayList<String> consultarNombreM();
+	ArrayList<String> consultarNombreT();
 }

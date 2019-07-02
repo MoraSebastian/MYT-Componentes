@@ -141,10 +141,10 @@ public class LogicaH implements HorarioEstudiante {
 
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Enum[] obtenerTiposDeFranjas() {
-		// TODO Auto-generated method stub
-		return null;
+		return TipoFranjaEnum.values();
 	}
 
 	public Horario getHorarioDia() {

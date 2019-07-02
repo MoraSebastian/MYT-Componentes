@@ -38,9 +38,48 @@ public class LogicaT implements tareaEstudiante {
 			e.printStackTrace();
 			return false;
 		}		
-	}	
-	public void crearTarea() {
-		
+	}
+	//PRUEBA DE CONSULTA DE NOMBRES DE TAREAS
+	public static void main(String[] args) {
+		LogicaT ges = new LogicaT();
+		ArrayList<String> array = ges.consultarMaterias();
+		if(array != null) {
+			for (int i = 0; i < array.size(); i++) {
+				System.out.println(array.get(i));
+			}
+		}else {
+			System.out.println("algo paso con la consulta de nombres");
+		}		
+	}
+	public ArrayList<String> consultarMaterias() {
+		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
+		try {
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(consultarTarea.class.getName());
+			if(cls != null) {
+				consultarTarea ct = (consultarTarea) cls.newInstance();	
+				System.out.println("CARGA EL COMPONENTE DE BASE DE DATOS");
+			    return ct.consultarNombreM();			    
+			}else {
+				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO CONSULTAR TAREA xD");
+				return null;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}				
+	}
+	public ArrayList<String> consultarTareasP() {
+		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
+		try {
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(consultarTarea.class.getName());
+			if(cls != null) {
+				consultarTarea ct = (consultarTarea) cls.newInstance();			    
+			    return ct.consultarNombreT();			    
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;		
 	}
 	@Override
 	public void anadirSubTarea(String arg0, String arg1, int arg2, String arg3, String arg4, int arg5, Date arg6,

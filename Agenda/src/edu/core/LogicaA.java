@@ -22,13 +22,42 @@ public class LogicaA implements InformacionEstudiante{
 
 	@Override
 	public void I() {
-		if(Inf()) {
+		if(true) {
 			JOptionPane.showMessageDialog(null, "Agenda + Tarea(BD) + Horario(BD) + Recomendacion ");
 		}else {
 			JOptionPane.showMessageDialog(null, "Tarea");
 		}		
 	}
-	public boolean Inf() {
+	public ArrayList<String> Resivir() {
+		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
+		try {
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(HorarioEstudiante.class.getName());
+			/*if(cls != null) {
+				HorarioEstudiante he = (HorarioEstudiante) cls.newInstance();
+				he.H();
+			}*/
+			cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
+			if(cls != null) {
+				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
+				return te.consultarMaterias();
+			}else {
+				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO TAREA ESTUDIANTE");
+				return null;
+			}
+			/*
+			cls = cc.cargarUnaClaseDesdeSuDirectorio(Sugerencia.class.getName());
+			if(cls != null) {
+				Sugerencia s = (Sugerencia) cls.newInstance();
+				s.S();
+			}*/
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}						
+	}
+	public void Enviar(String arg0, String arg1, int arg2, String arg3, int arg4, Date arg5, String arg6,
+			boolean arg7) {
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
 			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(HorarioEstudiante.class.getName());
@@ -39,20 +68,18 @@ public class LogicaA implements InformacionEstudiante{
 			cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
 			if(cls != null) {
 				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
-				te.T();
+				te.anadirTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 			}
 			cls = cc.cargarUnaClaseDesdeSuDirectorio(Sugerencia.class.getName());
 			if(cls != null) {
 				Sugerencia s = (Sugerencia) cls.newInstance();
 				s.S();
-			}
-			return true;
+			}			
 		}catch (Exception e) {
-			e.printStackTrace();
-			return false;
+			e.printStackTrace();			
 		}		
 	}
-
+	
 	@Override
 	public void anadirFranja(String nombreFranja, boolean[] dias, String tipoFranja, int horaInicial, int horaFinal) throws Exception{
 		if(horarioEstudiante!=null) {
