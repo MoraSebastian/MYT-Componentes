@@ -106,8 +106,25 @@ public class GestorSolicitudes {
 			return null;
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
-					"No se pudo obtener la lista de tareas porque el componente no está disponible");
+					"No se pudo obtener la lista de materias porque el componente no está disponible");
 			return null;
 		}
+	}
+	
+	public String[] obtenerTiposDeFranjas(){
+		String[] franjas= {"Holis"};
+		Enum[] franjaEnum;
+		try{
+			/*
+			franjaEnum = interfaceSolicitudes.obtenerTiposDeFranjas();
+			franjas =  new String[franjaEnum.length];
+			for(int i=0; i<franjaEnum.length; i++){
+				franjas[i] = franjaEnum[i].name();
+			
+			}*/
+		} catch(Exception e){
+			
+		}
+		return franjas;
 	}
 }
