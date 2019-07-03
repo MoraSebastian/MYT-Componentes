@@ -88,7 +88,7 @@ public class LogicaA implements InformacionEstudiante {
 		GestorFranjas gestorFranjas = new GestorFranjas();
 		List<Object[]> franjasDia = horarioEstudiante.obtenerFranjasPorDia(numeroDia);
 		
-		return null;
+		return gestorFranjas.gestionarFranjas(franjasDia);
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -285,5 +285,6 @@ public class LogicaA implements InformacionEstudiante {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 }

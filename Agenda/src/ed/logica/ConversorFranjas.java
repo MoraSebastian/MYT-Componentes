@@ -22,9 +22,17 @@ public class ConversorFranjas {
 			SubFranja subFranja = new SubFranja(franja);
 			subFranja.setHora(hora);
 			subFranja.setTiempoInicio(hora);
-			subFranja.setTiempoFinal(hora++);
+			subFranja.setTiempoFinal(hora + 1);
 			subFranjas.add(subFranja);
 		}
 		return subFranjas;
+	}
+
+	public String[] convertirSubFranjaEnString(SubFranja subFranja) {
+		String[] datosStr = new String[3];
+		datosStr[0] = String.valueOf(subFranja.getId());
+		datosStr[1] = subFranja.getNombreFranja();
+		datosStr[2] = subFranja.getTipoFranja().name();
+		return datosStr;
 	}
 }
