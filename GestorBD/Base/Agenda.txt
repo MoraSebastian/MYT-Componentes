@@ -1,0 +1,218 @@
+--Crear tabla Tarea
+create table tarea(
+    id_tarea int primary key,
+	descripcion text, 
+	id_tareaS int,
+	dificultad int,
+	id_tipot int,
+	fecha date,
+	hora time,
+	id_materia int,
+	nombre text
+);
+
+--Crear tabla Tipotarea
+create table TipoTarea(
+	id_tipot int primary key,
+	nombre text
+);
+insert into tipotarea (id_tipot, nombre)
+values (1, 'Trabajo'), (2, 'Lectura'), (3, 'Investigacion');
+
+--Crear tabla Materia
+create table Materia(
+	id_materia int primary key,
+	nombre text,
+	profesor text,
+	creditos int,
+	dificultad int,
+	id_tipom int not null,
+	
+);
+
+--Crear tabla tipomateria
+create table tipoMateria(
+	id_tipom int primary key,
+	nombre text
+);
+
+--Crear tabla dia
+create table dia(
+	id_dia int primary key,
+	dia text not null,
+	id_tipod int
+);
+
+--Crear tabla tipodia
+create table tipodia(
+	id_tipod int primary key,
+	nombre text
+);
+
+--Crear tabla diamateria
+create table diamateria(
+	id_dm int primary key,
+	id_materia int,
+	id_dia int
+);
+--Crear tabla Bloque
+create table Bloque(
+	id_bloque int primary key,
+	hora_inicio time,
+	hora_fin time,
+	aprovechabilidad int,
+	id_tipob int,
+	id_materia int
+);
+
+--Crear tabla tipoBloque
+create table TipoBloque(
+	id_tipob int primary key,
+	nombre text
+);
+
+insert into tipobloque (id_tipob, nombre) values
+(1, 'Materia'),(2, 'Descanso'),(3, 'Transporte'),(4, 'Tiempo Libre');
+
+--Crear tabla DiaMateria
+create table DiaMateria(
+	id_dm int primary key,
+	id_materia int,
+	id_dia int
+);
+
+--Crear tabla espacio
+create table espacio(
+	id_espacio int primary key,
+	hora_inicio time,
+	hora_final time,
+	fecha date,
+	aprovechabilidad int,
+	id_tarea int,
+	id_tipoe int
+);
+--Crear tabla tipo espacio
+create table tipoespacio(
+	id_tipoe int primary key,
+	nombre text
+);
+
+alter table diamateria
+add constraint id_dia
+foreign key (id_dia)
+references dia(id_dia)
+on update cascade
+on delete cascade;
+
+
+--Agregar relaciones
+--relacion de tarea con tipotarea
+alter table tarea
+	add constraint id_tipot
+	foreign key (id_tipot)
+	references TipoTarea(id_tipot)
+	on delete no action
+	on update no action;
+
+--relacion de tarea con tarea
+alter table tarea
+	add constraint id_tareas
+	foreign key (id_tareas)
+	references tarea(id_tarea)
+	on delete  cascade
+	on update  cascade;
+
+--relacion de tarea con materia
+alter table tarea
+	add constraint id_materia
+	foreign key (id_materia)
+	references materia(id_materia)
+	on delete cascade
+	on update cascade;
+
+--relacion de bloque con materia
+alter table bloque
+	add constraint id_materia
+	foreign key (id_materia)
+	references materia(id_materia)
+	on delete cascade
+	on update cascade;
+	
+--relacion de bloque con tipobloque
+alter table bloque
+	add constraint id_tipob
+	foreign key (id_tipob)
+	references tipobloque(id_tipob)
+	on delete no action
+	on update no action;
+	
+--relacion de dia con tipodia
+alter table dia
+	add constraint id_tipod
+	foreign key (id_tipod)
+	references tipodia(id_tipod)
+	on delete no action
+	on update no action;
+	
+--relacion de materia con tipo materia
+alter table materia
+	add constraint id_tipom
+	foreign key (id_tipom)
+	references tipomateria(id_tipom)
+	on delete no action
+	on update no action;
+	
+--relacion de diamateria con materia
+alter table diamateria
+	add constraint id_materia
+	foreign key (id_materia)
+	references materia(id_materia)
+	on delete cascade
+	on update cascade;
+	
+--relacion de diamateria con dia
+alter table diamateria
+	add constraint id_dia
+	foreign key (id_dia)
+	references dia(id_dia)
+	on delete cascade
+	on update cascade;
+
+--relacion de espacio con tarea
+alter table espacio
+	add constraint id_tarea
+	foreign key (id_tarea)
+	references tarea(id_tarea)
+	on delete cascade
+	on update cascade;
+	
+--relacion de espacio con tipoespacio
+alter table espacio
+	add constraint id_tipoe
+	foreign key (id_tipoe)
+	references tipoespacio(id_tipoe)
+	on delete no action
+	on update no action;
+
+--Crear tabla diafranja
+create table diafranja(
+	id_df int primary key,
+	id_dia int,
+	id_bloque int
+);
+
+--relacion diafranja con dia
+alter table diafranja
+add constraint id_dia
+foreign key (id_dia)
+references dia(id_dia)
+on delete cascade
+on update cascade;
+
+--relacion diafranja con bloque
+alter table diafranja
+add constraint id_bloque
+foreign key (id_bloque)
+references bloque(id_bloque)
+on delete cascade
+on update cascade;
