@@ -11,13 +11,20 @@ import edu.cableado.Sugerencia;
 import edu.cableado.consultarTarea;
 import edu.cableado.HorarioEstudiante;
 import edu.cableado.tareaEstudiante;
-
 import edu.utilidades.Cargador;
 
 public class LogicaA implements InformacionEstudiante{
 	private static HorarioEstudiante horarioEstudiante = null;
 	public static void main(String[] args) {
-		
+		LogicaA ges = new LogicaA();
+		ArrayList<String> array = ges.Resivir();
+		if(array != null) {
+			for (int i = 0; i < array.size(); i++) {
+				System.out.println(array.get(i));
+			}
+		}else {
+			//System.out.println("algo paso con la consulta de nombres");
+		}		
 	}
 
 	@Override
@@ -28,17 +35,18 @@ public class LogicaA implements InformacionEstudiante{
 			JOptionPane.showMessageDialog(null, "Tarea");
 		}		
 	}
+
 	public ArrayList<String> Resivir() {
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(HorarioEstudiante.class.getName());
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
 			/*if(cls != null) {
 				HorarioEstudiante he = (HorarioEstudiante) cls.newInstance();
 				he.H();
 			}*/
-			cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
+			
 			if(cls != null) {
-				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
+				tareaEstudiante te = (tareaEstudiante) cls.newInstance();				
 				return te.consultarMaterias();
 			}else {
 				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO TAREA ESTUDIANTE");

@@ -40,6 +40,7 @@ public class LogicaT implements tareaEstudiante {
 		}		
 	}
 	//PRUEBA DE CONSULTA DE NOMBRES DE TAREAS
+	
 	public static void main(String[] args) {
 		LogicaT ges = new LogicaT();
 		ArrayList<String> array = ges.consultarMaterias();
@@ -54,10 +55,10 @@ public class LogicaT implements tareaEstudiante {
 	public ArrayList<String> consultarMaterias() {
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
+			System.out.println("CARGA EL COMPONENTE DE BASE DE DATOS");
 			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(consultarTarea.class.getName());
-			if(cls != null) {
-				consultarTarea ct = (consultarTarea) cls.newInstance();	
-				System.out.println("CARGA EL COMPONENTE DE BASE DE DATOS");
+			if(cls != null) {				
+				consultarTarea ct = (consultarTarea) cls.newInstance();					
 			    return ct.consultarNombreM();			    
 			}else {
 				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO CONSULTAR TAREA xD");
