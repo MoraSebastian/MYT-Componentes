@@ -1,10 +1,7 @@
 package edu.logica;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import edu.utilidades.Clonable;
 
 public abstract class Horario {
 

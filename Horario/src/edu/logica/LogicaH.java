@@ -6,7 +6,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import edu.cableado.consultarHorario;
-import edu.cableado.consultarTarea;
 import edu.cableado.HorarioEstudiante;
 import edu.utilidades.Cargador;
 
@@ -125,6 +124,7 @@ public class LogicaH implements HorarioEstudiante {
 	public void Crud() {
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
+			@SuppressWarnings("rawtypes")
 			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(consultarHorario.class.getName());
 			if (cls != null) {
 				consultarHorario ch = (consultarHorario) cls.newInstance();
