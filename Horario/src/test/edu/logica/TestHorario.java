@@ -1,12 +1,8 @@
-package edu.test.logica;
+package test.edu.logica;
 
-import static org.junit.Assert.*;
-
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -175,15 +171,19 @@ public class TestHorario {
 	}
 
 	@Test
-	@Ignore
+//	@Ignore
 	public void testEnum() {
 		System.out.println("-------------------Test Enumn----------------------");
-		Enum[] tipos = TipoFranjaEnum.values();
-		for (Enum e : tipos) {
+		LogicaH logicaH = new LogicaH();
+		@SuppressWarnings("rawtypes")
+		Enum[] tipos = logicaH.obtenerTiposDeFranjas();
+		System.out.println(tipos);
+		for (@SuppressWarnings("rawtypes") Enum e : tipos) {
 			System.out.println(e.name());
 		}
 	}
 
+	@Ignore
 	@Test
 	public void testLogicaH() {
 		// --Inicialización
