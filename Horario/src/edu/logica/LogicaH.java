@@ -152,4 +152,12 @@ public class LogicaH implements HorarioEstudiante {
 		return horarioDia;
 	}
 
+	@Override
+	public List<Object[]> obtenerFranjas() {
+		for(Horario dia: horarioDia.horarios) {
+			
+		}
+		return null;
+	}
+
 }
