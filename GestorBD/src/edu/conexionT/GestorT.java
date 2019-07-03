@@ -74,6 +74,40 @@ public class GestorT implements consultarTarea {
 		return null;
 	}
 	/**
+	 * Método encargado de consultar todas las tareas que no tengan padre, sin importar ningún otro atributo
+	 */
+	public ArrayList<String[]> consultarNombreT(String fecha) {
+		Conectar();				
+		script = "select * from tarea where fecha = " + fecha + " and id_tareas is null;";
+		ArrayList<String[]> array1 = new ArrayList<String[]>();
+		try {
+			codigoSQL = conexion.createStatement();
+			resultados = codigoSQL.executeQuery(script);
+			ResultSetMetaData datos = resultados.getMetaData();
+			
+			int numeroColumnas = datos.getColumnCount();
+			
+			
+			String res ="";
+			while (resultados.next())
+		      {
+				String[] f = new String[numeroColumnas];
+				for (int i = 0; i < numeroColumnas; i++) {
+					f[i] = resultados.getString(i+1);
+				}				
+		        res=resultados.getString(1);
+		        array1.add(f);
+		        return array1;
+		      }
+			JOptionPane.showMessageDialog(null, "EL ULTIMO ID ES: "+res);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}						
+		Desconectar();
+		return null;
+	}
+	/**
 	 * Método encargado de consultar todas las tareas pendientes por materia
 	 */
 	public ArrayList<String[]> CtareasPMateria(String nombre, String fecha) {
@@ -183,11 +217,7 @@ public class GestorT implements consultarTarea {
 		return null;
 	}
 	//PRUEBA DE CONSULTA DE NOMBRES DE TAREAS
-	public static void main(String[] args) {
-		GestorT ges = new GestorT();
-		ges.Conectar();
-				
-	}
+	
 	public ArrayList<String> consultarNombreM(){
 		Conectar();					
 		script = "select nombre from materia;";
@@ -211,32 +241,7 @@ public class GestorT implements consultarTarea {
 			return null;
 		}										
 	}
-	public ArrayList<String> consultarNombreT(){
-		Conectar();					
-		script = "select nombre from tarea where id_tareas is null;";
-		ArrayList<String> array1 = new ArrayList<String>();
-		try {
-			codigoSQL = conexion.createStatement();
-			resultados = codigoSQL.executeQuery(script);
-			ResultSetMetaData datos = resultados.getMetaData();
-			
-			int numeroColumnas = datos.getColumnCount();
-			
-			
-			String res ="";
-			while (resultados.next())
-		      {						
-		        res=resultados.getString(1);
-		        array1.add(res);		        
-		      }
-			return array1;			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}						
-		Desconectar();
-		return null;
-	}
+	
 	public ArrayList<String> consultas(String caso, String tabla){
 		Conectar();
 		//CONSULTA SOLO PARA OBTENER EL MAXIMO ID POR AHORA		
