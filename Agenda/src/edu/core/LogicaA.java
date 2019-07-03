@@ -15,7 +15,7 @@ import edu.utilidades.Cargador;
 
 public class LogicaA implements InformacionEstudiante {
 	private static HorarioEstudiante horarioEstudiante = null;
-<<<<<<< HEAD
+
 	
 	/*
 =======
@@ -46,9 +46,9 @@ public class LogicaA implements InformacionEstudiante {
 			JOptionPane.showMessageDialog(null, "Tarea");
 		}
 		}		
-	}
+	
 
-<<<<<<< HEAD
+
 	
 	public void Enviar(String arg0, String arg1, int arg2, String arg3, int arg4, Date arg5, String arg6,
 			boolean arg7) {
@@ -83,7 +83,7 @@ public class LogicaA implements InformacionEstudiante {
 	}
 
 	public boolean Inf() {
->>>>>>> cfc405c50e22555bea4c90cfdea40ad0367602d5
+
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
 			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(HorarioEstudiante.class.getName());
