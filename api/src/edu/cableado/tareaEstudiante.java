@@ -10,6 +10,8 @@ public interface tareaEstudiante {
 	void anadirTarea(String nombreT, String descripcionT, int dificultadT, String tipoT, int horaFinalizacionT, Date fechaFinT, String materia, boolean esSubtarea);
 	void anadirSubTarea(String nombreT, String descripcionT, int dificultadT, String tipoT, String idTareaPertenencia, int horaFinalizacionT, Date fechaFinT, String materia, boolean esSubtarea);
 	
+	void modificarTarea(String arg0, String arg1, int arg2, String arg3, String arg4, int arg5, Date arg6,
+			String arg7, boolean arg8);
 	//CONSULTAS
 	
 	//ESTAS CONSULTAS SON PARA UNA FECHA 

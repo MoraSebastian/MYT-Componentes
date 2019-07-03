@@ -25,6 +25,9 @@ public class LogicaT implements tareaEstudiante {
 		}					
 	}	
 	@Override
+	/**
+	 * Metodo que obtiene las tareas padre sin importar fecha
+	 */
 	public ArrayList<String[]> cTareasPadre() {
 		ArrayList<String[]> array = new ArrayList<String[]>();
 		for (int i = 0; i < tareas.size(); i++) {
@@ -64,6 +67,9 @@ public class LogicaT implements tareaEstudiante {
 		}
 		return array;
 	}	
+	/**
+	 * metodo que obtiene las tareas padre para una fecha 
+	 */
 	@Override
 	public ArrayList<String[]> cTareasPadre(String fecha) {
 		ArrayList<String[]> array = new ArrayList<String[]>();
@@ -83,7 +89,9 @@ public class LogicaT implements tareaEstudiante {
 		}
 		return array;
 	}
-	
+	/**
+	 * metodo que obtiene las tareas por materia
+	 */
 	public ArrayList<String[]> cTareasPorMateria(String fecha, String materia){
 		ArrayList<String[]> array = new ArrayList<String[]>();
 		for (int i = 0; i < tareas.size(); i++) {
@@ -102,6 +110,9 @@ public class LogicaT implements tareaEstudiante {
 		}
 		return array;
 	}
+	/**
+	 * metodo que obtiene las tareas por tipo para una fecha
+	 */
 	public ArrayList<String[]> cTareasPorTipo(String fecha, String tipo){
 		ArrayList<String[]> array = new ArrayList<String[]>();
 		for (int i = 0; i < tareas.size(); i++) {
@@ -120,6 +131,9 @@ public class LogicaT implements tareaEstudiante {
 		}
 		return array;
 	}
+	/**
+	 * metodo que obtiene las tareas por dificultad para una fecha
+	 */
 	public ArrayList<String[]> cTareasPorDificultad(String fecha, String dificultad){
 		ArrayList<String[]> array = new ArrayList<String[]>();
 		for (int i = 0; i < tareas.size(); i++) {
