@@ -68,12 +68,13 @@ public class PanelAgenda extends JPanelAbstracto {
 	private JLabel llblTextoTarea9;
 	private JLabel llblTextoTarea10;
 	private JDateChooser dateChooser;
+	JPanel panel;
 	public PanelAgenda(JFrame frameActual2, GestorSolicitudes info) {
 		super.frameActual = frameActual2;
 		super.informacion = info;
 		
 		setLayout(null);	
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBounds(0, 0, 1160, 700);
 		add(panel);
 		panel.setLayout(null);
@@ -665,7 +666,7 @@ public class PanelAgenda extends JPanelAbstracto {
 					}		
 				}
 			}
-				
+			panel.updateUI();
 		} catch (Exception e){
 			JOptionPane.showMessageDialog(null, "No se pudo cargar porque el componente no se encuentra disponible");
 		}
