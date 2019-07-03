@@ -605,6 +605,7 @@ public class PanelAgenda extends JPanelAbstracto {
 	private void mostrarListaTareas(ArrayList<String[]> listaTareas){
 		try{
 			int numeroTareas = listaTareas.size();//7
+			JOptionPane.showMessageDialog(null, "Prueba " + listaTareas.size() );
 			int contador = 0;
 			panelTareas1.setVisible(false);
 			panelTareas2.setVisible(false);
@@ -617,8 +618,12 @@ public class PanelAgenda extends JPanelAbstracto {
 			panelTareas9.setVisible(false);
 			panelTareas10.setVisible(false);
 			if(contador<numeroTareas){
+				String prueba;
 				panelTareas1.setVisible(true);
 				lblTextoTarea1.setText(listaTareas.get(contador)[7]);
+				prueba = listaTareas.get(contador)[7];
+				panelTareas1.updateUI();
+				JOptionPane.showMessageDialog(null, "Prueba " + prueba );
 				contador++;
 				if(contador<numeroTareas){
 					panelTareas2.setVisible(true);
