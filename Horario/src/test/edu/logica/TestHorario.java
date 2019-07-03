@@ -171,16 +171,19 @@ public class TestHorario {
 	}
 
 	@Test
-	@Ignore
+//	@Ignore
 	public void testEnum() {
 		System.out.println("-------------------Test Enumn----------------------");
+		LogicaH logicaH = new LogicaH();
 		@SuppressWarnings("rawtypes")
-		Enum[] tipos = TipoFranjaEnum.values();
+		Enum[] tipos = logicaH.obtenerTiposDeFranjas();
+		System.out.println(tipos);
 		for (@SuppressWarnings("rawtypes") Enum e : tipos) {
 			System.out.println(e.name());
 		}
 	}
 
+	@Ignore
 	@Test
 	public void testLogicaH() {
 		// --Inicialización

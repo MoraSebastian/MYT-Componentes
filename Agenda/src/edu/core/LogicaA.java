@@ -46,12 +46,12 @@ public class LogicaA implements InformacionEstudiante {
 			cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
 			if (cls != null) {
 				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
-				//te.anadirTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+				// te.anadirTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 			}
 			cls = cc.cargarUnaClaseDesdeSuDirectorio(Sugerencia.class.getName());
 			if (cls != null) {
 				Sugerencia s = (Sugerencia) cls.newInstance();
-				//s.S();
+				// s.S();
 			}
 			return true;
 		} catch (Exception e) {
@@ -59,7 +59,7 @@ public class LogicaA implements InformacionEstudiante {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public void anadirFranja(String nombreFranja, boolean[] dias, String tipoFranja, int horaInicial, int horaFinal)
 			throws Exception {
@@ -122,8 +122,7 @@ public class LogicaA implements InformacionEstudiante {
 
 	@Override
 	public Enum[] obtenerTiposDeFranjas() {
-		// TODO Auto-generated method stub
-		return null;
+		return horarioEstudiante.obtenerTiposDeFranjas();
 	}
 
 	@Override
