@@ -26,5 +26,6 @@ public interface InformacionEstudiante {
 	ArrayList<String> solicitarListaNombresTareaPadre();
 	
 	ArrayList<String[]> solicitarListaTareas();
+	ArrayList<String> solicitarMaterias(); 
 	
 }

@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -25,12 +26,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import com.toedter.calendar.JDateChooser;
 import com.toedter.components.JSpinField;
 import javax.swing.DefaultComboBoxModel;
 
 public class VentanaAnadirTarea extends JFrameGeneral {
-	private String[] modeloTareas, modeloMaterias;
+	private String[] modeloTareas = {""}, modeloMaterias = {""};
+	private ArrayList<String[]> todasLasTareas;
+	private ArrayList<String> materias;
 	private JPanel contentPane;
 	private JTextField txtNombretarea;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -50,6 +55,8 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 
 	public VentanaAnadirTarea(GestorSolicitudes info) {
 		super.informacion = info;
+		cargarMaterias();
+		cargarTareas();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(0, 0, 580, 700);
 		contentPane = new JPanel();
@@ -166,19 +173,30 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 		btnAnadirTarea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean subTarea;
-				if(rdbtnSiSubtarea.isSelected()){
-					String pertenencia=""; //Revisar lo del id
-					subTarea = true;
-					informacion.anadirSubTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), Integer.parseInt(cbxDificultad.getSelectedItem().toString()),
-							cbxTipo.getSelectedItem().toString(), pertenencia,spinField.getValue(), dateChooser.getDate(),
-							cbxPerteneceAmateria.getSelectedItem().toString(), subTarea);
-				} else{
-					subTarea = false;
-					informacion.anadirTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), Integer.parseInt(cbxDificultad.getSelectedItem().toString()), 
-							cbxTipo.getToolTipText(), spinField.getValue(), dateChooser.getDate(), cbxPerteneceAmateria.getSelectedItem().toString(),
-							subTarea);
+				try{
+					if(rdbtnSiSubtarea.isSelected()){
+						String pertenencia=""; //Revisar lo del id
+						for (int i=0; i<todasLasTareas.size(); i++){
+							if(cbxQueTarea.getSelectedItem().toString().equals(todasLasTareas.get(i))){
+								pertenencia = todasLasTareas.get(i)[0];
+							}
+						}
+						subTarea = true;
+						informacion.anadirSubTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), Integer.parseInt(cbxDificultad.getSelectedItem().toString()),
+								cbxTipo.getSelectedItem().toString(), pertenencia,spinField.getValue(), dateChooser.getDate(),
+								cbxPerteneceAmateria.getSelectedItem().toString(), subTarea);
+					} else{
+						subTarea = false;
+						informacion.anadirTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), Integer.parseInt(cbxDificultad.getSelectedItem().toString()), 
+								cbxTipo.getToolTipText(), spinField.getValue(), dateChooser.getDate(), cbxPerteneceAmateria.getSelectedItem().toString(),
+								subTarea);
+					}
+					dispose();
+				} catch(Exception e){
+					JOptionPane.showMessageDialog(null,
+							"No se pudo agregar la tarea porque el componente no está cargado ");
 				}
-				dispose();
+				
 			}
 		});
 		
@@ -208,6 +226,30 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 	}
 	
 	private void cargarTareas(){
+		try{
+			todasLasTareas = informacion.solicitarListaTareas();
+			modeloMaterias = new String[todasLasTareas.size()];
+			for(int i=0; i<todasLasTareas.size(); i++){
+				modeloTareas[i]= todasLasTareas.get(i)[7];
+			}
+		} catch(Exception e){
+			JOptionPane.showMessageDialog(null,
+					"No se pudo obtener la lista de tareas porque el componente no está disponible ");
+		}
+		
+		
+	}
+	
+	private void cargarMaterias(){
+		try{
+			materias = informacion.solicitarMaterias();
+			for(int i=0; i<materias.size(); i++){
+				modeloMaterias[i]= materias.get(i);
+			}
+		} catch(Exception e){
+			JOptionPane.showMessageDialog(null,
+					"No se pudo obtener la lista de materias porque el componente no está disponible ");
+		}
 		
 	}
 }

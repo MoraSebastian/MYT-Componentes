@@ -11,11 +11,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JSpinner;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class PanelHorario extends JPanelAbstracto{
 	Comando comando;
 	private JFrameGeneral ventana;
 	private JPanelAbstracto panelAgenda;
+	private JTable table;
 	public PanelHorario(JFrame frameActual2, GestorSolicitudes info) {
 		super.frameActual = frameActual2;
 		super.frameActual.setBounds(100, 100, 1160, 700);
@@ -65,6 +69,7 @@ public class PanelHorario extends JPanelAbstracto{
 				comando.ejecutar();
 				comando = new AnadirPanel(panelAgenda);
 				comando.ejecutar();
+				panelAgenda.updateUI();
 			}
 		});
 		
@@ -116,6 +121,52 @@ public class PanelHorario extends JPanelAbstracto{
 		btnModificarFranja.setBorderPainted(false);
 		btnModificarFranja.setContentAreaFilled(false);
 		panel.add(btnModificarFranja);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(184, 134, 650, 465);
+		panel.add(scrollPane);
+		
+		table = new JTable();
+		table.setRowHeight(30);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"0:00 - 1:00", null, null, null, null, null, null, null},
+				{"1:00 - 2:00", null, null, null, null, null, null, null},
+				{"2:00 - 3:00", null, null, null, null, null, null, null},
+				{"3:00 - 4:00", null, null, null, null, null, null, null},
+				{"4:00 - 5:00", null, null, null, "", null, null, null},
+				{"5:00 - 6:00", null, null, null, null, null, null, null},
+				{"6:00 - 7:00", null, null, null, null, null, null, null},
+				{"7:00 - 8:00", null, null, null, null, null, null, null},
+				{"8:00 - 9:00", null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"HORA", "LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO", "DOMINGO"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		scrollPane.setViewportView(table);
 		
 		JLabel lblFondohorario = new JLabel("");
 		lblFondohorario.setHorizontalAlignment(SwingConstants.CENTER);

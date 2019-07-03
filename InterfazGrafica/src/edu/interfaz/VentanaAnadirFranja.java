@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import edu.logica.GestorSolicitudes;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -19,10 +20,11 @@ import javax.swing.JComboBox;
 import com.toedter.components.JSpinField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
 
 public class VentanaAnadirFranja extends JFrameGeneral {
 	private JPanel contentPane;
-
+	private String[] modeloTipo = {""};
 	public void iniciarVentana() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -38,6 +40,7 @@ public class VentanaAnadirFranja extends JFrameGeneral {
 
 	public VentanaAnadirFranja(GestorSolicitudes info){
 		super.informacion = info;
+		cargarTipos();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(0, 0, 580, 700);
 		contentPane = new JPanel();
@@ -46,6 +49,7 @@ public class VentanaAnadirFranja extends JFrameGeneral {
 		contentPane.setLayout(null);
 		
 		JComboBox cBoxTipoFranja = new JComboBox();
+		cBoxTipoFranja.setModel(new DefaultComboBoxModel(modeloTipo));
 		cBoxTipoFranja.setBounds(294, 281, 159, 20);
 		contentPane.add(cBoxTipoFranja);
 		
@@ -161,7 +165,7 @@ public class VentanaAnadirFranja extends JFrameGeneral {
 				} else{
 					dias[6] = false;
 				}
-				informacion.anadirFranja(txtNombreFranja.getText(), dias, "Prueba" , spinFieldInicio.getValue(), spinFieldFinal.getValue());
+				informacion.anadirFranja(txtNombreFranja.getText(), dias, cBoxTipoFranja.getSelectedItem().toString() , spinFieldInicio.getValue(), spinFieldFinal.getValue());
 			}
 		});
 		btnAnadirFranja2.setRolloverIcon(new ImageIcon(VentanaAnadirFranja.class.getResource("/edu/recursos/Recurso 25@0.75x.png")));
@@ -182,5 +186,15 @@ public class VentanaAnadirFranja extends JFrameGeneral {
 		lblFondo.setIcon(new ImageIcon(VentanaAnadirFranja.class.getResource("/edu/recursos/Recurso 4.png")));
 		lblFondo.setBounds(-494, 0, 1073, 735);
 		contentPane.add(lblFondo);
+	}
+	
+	private void cargarTipos(){
+		try{
+			modeloTipo = informacion.obtenerTiposDeFranjas();
+		} catch(Exception e){
+			JOptionPane.showMessageDialog(null,
+					"No se pudo obtener la lista de tipos de franja porque el componente no está disponible ");
+		}
+		
 	}
 }
