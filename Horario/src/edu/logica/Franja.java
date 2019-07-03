@@ -2,16 +2,12 @@ package edu.logica;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import javax.swing.JOptionPane;
 
 import edu.utilidades.Clonable;
 
 public class Franja{
 	protected static Franja localizador;
-	private static final int HORAS_POR_DIA = 24;
 	protected List<Franja> franjasDia = new ArrayList<>();
 	private String nombreFranja;
 	private String id;
@@ -64,7 +60,9 @@ public class Franja{
 	private boolean comprobarCamposHoras() {
 		for (Franja franjaDia : franjasDia) {
 			try {
+				@SuppressWarnings("unchecked")
 				List<Integer> horasAingresarCopia = (List<Integer>) Clonable.clonarConProfundidad(horas);
+				@SuppressWarnings("unchecked")
 				List<Integer> horasIngresadasCopia = (List<Integer>) Clonable.clonarConProfundidad(franjaDia.horas);
 				horasAingresarCopia.removeAll(horasIngresadasCopia);
 				if(horasAingresarCopia.size() != horas.size()) {
