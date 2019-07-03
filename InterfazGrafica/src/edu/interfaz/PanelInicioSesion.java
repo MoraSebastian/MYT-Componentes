@@ -40,6 +40,7 @@ public class PanelInicioSesion extends JPanelAbstracto {
 				comando.ejecutar();
 				comando = new AnadirPanel(panelHorario);
 				comando.ejecutar();
+				panelHorario.updateUI();
 				
 			}
 		});

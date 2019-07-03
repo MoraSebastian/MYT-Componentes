@@ -67,8 +67,7 @@ public class PanelAgenda extends JPanelAbstracto {
 	private JLabel llblTextoTarea8;
 	private JLabel llblTextoTarea9;
 	private JLabel llblTextoTarea10;
-	private JTextField txtFecha;
-	Date date1 = null;
+	private JDateChooser dateChooser;
 	public PanelAgenda(JFrame frameActual2, GestorSolicitudes info) {
 		super.frameActual = frameActual2;
 		super.informacion = info;
@@ -78,11 +77,6 @@ public class PanelAgenda extends JPanelAbstracto {
 		panel.setBounds(0, 0, 1160, 700);
 		add(panel);
 		panel.setLayout(null);
-		
-		txtFecha = new JTextField();
-		txtFecha.setBounds(277, 166, 147, 20);
-		panel.add(txtFecha);
-		txtFecha.setColumns(10); 
 	    
 		cbxFranja = new JComboBox();
 		cbxFranja.setEnabled(false);
@@ -163,15 +157,15 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnTodas.isSelected()){
-					cargarTareasFecha(date1);
+					cargarTareasFecha(dateChooser.getDate());
 					mostrarListaTareas(filtroFecha);
 				}
 				if(rdbtnPorDificultad.isSelected()){
-					cargarTareasFechaDificultad(date1, Integer.parseInt(cbxDificultad.getSelectedItem().toString()));
+					cargarTareasFechaDificultad(dateChooser.getDate(), Integer.parseInt(cbxDificultad.getSelectedItem().toString()));
 					mostrarListaTareas(filtroFechaDificultad);
 				}
 				if(rdbtnPorTipo.isSelected()){
-					cargarTareasFechaTipo(date1, cbxTipo.getSelectedItem().toString());
+					cargarTareasFechaTipo(dateChooser.getDate(), cbxTipo.getSelectedItem().toString());
 					mostrarListaTareas(filtroFechaTipo);
 				}
 			}
@@ -191,13 +185,7 @@ public class PanelAgenda extends JPanelAbstracto {
 				rdbtnTodas.setEnabled(true);
 				rdbtnPorDificultad.setEnabled(true);
 				rdbtnPorTipo.setEnabled(true);
-					try {
-						date1 = new SimpleDateFormat("yyyy/MM/dd").parse(txtFecha.getText());
-					} catch (ParseException e1) {
-						e1.printStackTrace();
-					}  
-				    System.out.println(txtFecha.getText()+"\t"+date1); 
-				cargarTareasFecha(date1);
+				cargarTareasFecha(dateChooser.getDate());
 				mostrarListaTareas(filtroFecha);
 			}
 		});
@@ -227,6 +215,11 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnVolver.setBorderPainted(false);
 		btnVolver.setContentAreaFilled(false);
 		panel.add(btnVolver);
+		
+		dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("yyyy/MM/dd");
+		dateChooser.setBounds(277, 166, 147, 20);
+		panel.add(dateChooser);
 		
 		
 		

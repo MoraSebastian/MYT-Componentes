@@ -65,6 +65,7 @@ public class PanelHorario extends JPanelAbstracto{
 				comando.ejecutar();
 				comando = new AnadirPanel(panelAgenda);
 				comando.ejecutar();
+				panelAgenda.updateUI();
 			}
 		});
 		

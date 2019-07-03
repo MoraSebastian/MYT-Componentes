@@ -99,4 +99,15 @@ public class GestorSolicitudes {
 			return null;
 		}
 	}
+	
+	public ArrayList<String> solicitarMaterias(){
+		try {
+			// return interfaceSolicitudes.solicitarMaterias();
+			return null;
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null,
+					"No se pudo obtener la lista de tareas porque el componente no está disponible");
+			return null;
+		}
+	}
 }
