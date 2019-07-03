@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import com.toedter.calendar.JDateChooser;
 
 public class PanelInicioSesion extends JPanelAbstracto {
 	private JTextField txtUsuario;
