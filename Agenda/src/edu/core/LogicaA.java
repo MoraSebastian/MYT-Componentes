@@ -22,9 +22,28 @@ import edu.utilidades.Cargador;
 
 public class LogicaA implements InformacionEstudiante {
 	private static HorarioEstudiante horarioEstudiante = null;
-
+	Cargador cc;
+	Class cls;
+	tareaEstudiante te;
+	HorarioEstudiante he;
 	public LogicaA() {
-		I();
+		//I();
+		cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
+		try {
+			cls = cc.cargarUnaClaseDesdeSuDirectorio(HorarioEstudiante.class.getName());
+			if (cls != null) {
+				he = (HorarioEstudiante) cls.newInstance();
+				horarioEstudiante = he;
+//				he.H();
+			}
+			cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
+			if (cls != null) {
+				te = (tareaEstudiante) cls.newInstance();				
+			}			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override
@@ -44,9 +63,8 @@ public class LogicaA implements InformacionEstudiante {
 	
 	public boolean Inf() {
 
-		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
+		
 		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(HorarioEstudiante.class.getName());
 			if (cls != null) {
 				HorarioEstudiante he = (HorarioEstudiante) cls.newInstance();
 				horarioEstudiante = he;
@@ -139,23 +157,15 @@ public class LogicaA implements InformacionEstudiante {
 
 	}
 
-	// ESTE MÉTODO ES PARA ANADIR UNA SUBTAREA
+	// ESTE Mï¿½TODO ES PARA ANADIR UNA SUBTAREA
 	@Override
 	public void anadirSubTarea(String arg0, String arg1, int arg2, String arg3, String arg4, int arg5, Date arg6,
 			String arg7, boolean arg8) {
-		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
-		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
-			if (cls != null) {
-				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
-				te.anadirSubTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			
+		te.anadirSubTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 	}
 
-	// ESTE MÉTODO ES PARA ANADIR UNA TAREA
+	// ESTE Mï¿½TODO ES PARA ANADIR UNA TAREA
 	@Override
 	public void anadirTarea(String arg0, String arg1, int arg2, String arg3, int arg4, Date arg5, String arg6,
 			boolean arg7) {
@@ -196,11 +206,9 @@ public class LogicaA implements InformacionEstudiante {
 	}
 
 	public ArrayList<String[]> consultarTareasPendientes(String fecha, String caso) {
-		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
+		
 		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
-			if (cls != null) {
-				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
+			if (cls != null) {				
 				switch (caso) {
 				case "tpendientes":
 					return te.cTareasPendientes(fecha);
@@ -219,12 +227,9 @@ public class LogicaA implements InformacionEstudiante {
 		}
 	}
 
-	public ArrayList<String[]> solicitarListaTareasPadre() {
-		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
+	public ArrayList<String[]> solicitarListaTareasPadre() {		
 		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
 			if (cls != null) {
-				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
 				return te.cTareasPadre();
 			} else {
 				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO TAREA ESTUDIANTE");
@@ -256,12 +261,9 @@ public class LogicaA implements InformacionEstudiante {
 		return consultarTareasSegun(fechaComoCadena, materia, "materia");
 	}
 
-	public ArrayList<String[]> consultarTareasSegun(String fecha, String nombre, String caso) {
-		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
-		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
+	public ArrayList<String[]> consultarTareasSegun(String fecha, String nombre, String caso) {		
+		try {			
 			if (cls != null) {
-				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
 				switch (caso) {
 				case "tipo":
 					return te.cTareasPorTipo(fecha, nombre);
@@ -291,11 +293,8 @@ public class LogicaA implements InformacionEstudiante {
 	}
 
 	public ArrayList<String> consultarNombre(String caso) {
-		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
 			if (cls != null) {
-				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
 				switch (caso) {
 				case "tareap":
 					return te.cNombreTareasPadre();
@@ -319,6 +318,4 @@ public class LogicaA implements InformacionEstudiante {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-
 }

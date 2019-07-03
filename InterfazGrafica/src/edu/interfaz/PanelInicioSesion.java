@@ -63,7 +63,6 @@ public class PanelInicioSesion extends JPanelAbstracto {
 		
 		txtUsuario = new JTextField();
 		txtUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		txtUsuario.setText("usuario");
 		txtUsuario.setBounds(521, 317, 86, 20);
 		panel.add(txtUsuario);
 		txtUsuario.setColumns(10);
@@ -71,7 +70,6 @@ public class PanelInicioSesion extends JPanelAbstracto {
 		
 		pwdContrasena = new JPasswordField();
 		pwdContrasena.setHorizontalAlignment(SwingConstants.CENTER);
-		pwdContrasena.setText("contrase\u00F1a");
 		pwdContrasena.setBounds(521, 376, 86, 20);
 		panel.add(pwdContrasena);
 		

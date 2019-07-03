@@ -54,7 +54,7 @@ public class LogicaT implements tareaEstudiante {
 	public ArrayList<String[]> cTareasPendientes(String fecha){
 		ArrayList<String[]> array = new ArrayList<String[]>();
 		for (int i = 0; i < tareas.size(); i++) {
-			if (tareas.get(i).getFecha() == fecha) {
+			if (tareas.get(i).getFecha().equals(fecha)) {
 				String[] t = new String[8];
 				t[0] = tareas.get(i).getDescripcion();
 				t[1] = tareas.get(i).getNombre();
@@ -76,7 +76,7 @@ public class LogicaT implements tareaEstudiante {
 	public ArrayList<String[]> cTareasPadre(String fecha) {
 		ArrayList<String[]> array = new ArrayList<String[]>();
 		for (int i = 0; i < tareas.size(); i++) {
-			if (tareas.get(i).getFecha() == fecha && tareas.get(i).getTareas().equals("null")) {
+			if (tareas.get(i).getFecha().equals(fecha) && tareas.get(i).getTareas().equals("null")) {
 				String[] t = new String[8];
 				t[0] = tareas.get(i).getDescripcion();
 				t[1] = tareas.get(i).getNombre();
@@ -97,7 +97,7 @@ public class LogicaT implements tareaEstudiante {
 	public ArrayList<String[]> cTareasPorMateria(String fecha, String materia){
 		ArrayList<String[]> array = new ArrayList<String[]>();
 		for (int i = 0; i < tareas.size(); i++) {
-			if (tareas.get(i).getMateria() == materia && tareas.get(i).getFecha() == fecha) {
+			if (tareas.get(i).getMateria().equals(materia) && tareas.get(i).getFecha().equals(fecha)) {
 				String[] t = new String[8];
 				t[0] = tareas.get(i).getDescripcion();
 				t[1] = tareas.get(i).getNombre();
@@ -118,7 +118,7 @@ public class LogicaT implements tareaEstudiante {
 	public ArrayList<String[]> cTareasPorTipo(String fecha, String tipo){
 		ArrayList<String[]> array = new ArrayList<String[]>();
 		for (int i = 0; i < tareas.size(); i++) {
-			if (tareas.get(i).getTipo() == tipo && tareas.get(i).getTipo() == tipo) {
+			if (tareas.get(i).getFecha().equals(fecha) && tareas.get(i).getTipo().equals(tipo)) {
 				String[] t = new String[8];
 				t[0] = tareas.get(i).getDescripcion();
 				t[1] = tareas.get(i).getNombre();
@@ -138,8 +138,10 @@ public class LogicaT implements tareaEstudiante {
 	 */
 	public ArrayList<String[]> cTareasPorDificultad(String fecha, String dificultad){
 		ArrayList<String[]> array = new ArrayList<String[]>();
+		System.out.println("hola fecha: "+fecha);
 		for (int i = 0; i < tareas.size(); i++) {
-			if (tareas.get(i).getDificultad() == dificultad && tareas.get(i).getFecha() == fecha) {
+			System.out.println("fecha tarea: ");
+			if (tareas.get(i).getDificultad().equals(dificultad) && tareas.get(i).getFecha().equals(fecha)) {
 				String[] t = new String[8];
 				t[0] = tareas.get(i).getDescripcion();
 				t[1] = tareas.get(i).getNombre();
@@ -148,6 +150,7 @@ public class LogicaT implements tareaEstudiante {
 				t[4] = tareas.get(i).getTipo();
 				t[5] = tareas.get(i).getMateria();
 				t[6] = tareas.get(i).getFecha();
+				
 				t[7] = tareas.get(i).getHora();
 				array.add(t);
 			}
@@ -188,7 +191,14 @@ public class LogicaT implements tareaEstudiante {
 	
 	public static void main(String[] args) {
 		LogicaT ges = new LogicaT();
-		ges.anadirTarea("nombretare1", "esta es la tarea 1", 2, "Trabajo", 18, (new Date("2016/06/25")), "", false);
+		ges.anadirTarea("nombretare1", "esta es la tarea 1", 2, "Trabajo", 18, (new Date("2019/07/07")), "", false);
+		ArrayList<String[]> array = ges.cTareasPorDificultad("2019/07/07", "2");		
+		for (int i = 0; i < array.size(); i++) {
+			System.out.println("hola");
+			for (int j=0; j< array.get(i).length; j++) {
+				System.out.println("hola: "+array.get(i)[j]);
+			}
+		}
 	}			
 	@Override
 	public void anadirSubTarea(String arg0, String arg1, int arg2, String arg3, String arg4, int arg5, Date arg6,
