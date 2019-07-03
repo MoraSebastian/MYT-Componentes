@@ -92,6 +92,7 @@ public class LogicaH implements HorarioEstudiante {
 				}
 				diaSemana.setLocalizadorFranja(franja);
 				Franja.setLocalizador(null);
+				System.out.println("----------Se agregó correctamente la franja-----------");
 				// --
 			} else {
 				// -- En ese dia no va la franja
