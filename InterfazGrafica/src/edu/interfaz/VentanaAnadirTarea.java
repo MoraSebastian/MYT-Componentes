@@ -27,9 +27,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.components.JSpinField;
+import javax.swing.DefaultComboBoxModel;
 
 public class VentanaAnadirTarea extends JFrameGeneral {
-
+	private String[] modeloTareas, modeloMaterias;
 	private JPanel contentPane;
 	private JTextField txtNombretarea;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -57,6 +58,7 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 		contentPane.setLayout(null);
 		
 		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("yyyy/MM/dd");
 		dateChooser.setBounds(281, 345, 159, 20);
 		contentPane.add(dateChooser);
 		
@@ -80,17 +82,20 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 		contentPane.add(txtrDescripciontarea);
 		
 		JComboBox cbxTipo = new JComboBox();
+		cbxTipo.setModel(new DefaultComboBoxModel(new String[] {"Trabajo", "Lectura", "Investigacion"}));
 		cbxTipo.setFont(new Font("Lucida Console", Font.PLAIN, 11));
 		cbxTipo.setBounds(281, 307, 159, 20);
 		contentPane.add(cbxTipo);
 		
 		JComboBox cbxQueTarea = new JComboBox();
+		cbxQueTarea.setModel(new DefaultComboBoxModel(modeloTareas));
 		cbxQueTarea.setEnabled(false);
 		cbxQueTarea.setFont(new Font("Lucida Console", Font.PLAIN, 11));
 		cbxQueTarea.setBounds(281, 511, 159, 20);
 		contentPane.add(cbxQueTarea);
 		
 		JComboBox cbxDificultad = new JComboBox();
+		cbxDificultad.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
 		cbxDificultad.setFont(new Font("Lucida Console", Font.PLAIN, 11));
 		cbxDificultad.setBounds(281, 268, 159, 20);
 		contentPane.add(cbxDificultad);
@@ -103,6 +108,7 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 		});
 		
 		JComboBox cbxPerteneceAmateria = new JComboBox();
+		cbxPerteneceAmateria.setModel(new DefaultComboBoxModel(modeloTareas));
 		cbxPerteneceAmateria.setBounds(281, 428, 159, 20);
 		contentPane.add(cbxPerteneceAmateria);
 		buttonGroup.add(rdbtnSiSubtarea);
@@ -199,5 +205,9 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 		lblFondo.setIcon(new ImageIcon(VentanaAnadirTarea.class.getResource("/edu/recursos/Recurso 4.png")));
 		lblFondo.setBounds(-494, 0, 1073, 735);
 		contentPane.add(lblFondo);
+	}
+	
+	private void cargarTareas(){
+		
 	}
 }

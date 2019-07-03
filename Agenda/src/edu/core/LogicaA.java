@@ -11,7 +11,6 @@ import edu.cableado.Sugerencia;
 import edu.cableado.consultarTarea;
 import edu.cableado.HorarioEstudiante;
 import edu.cableado.tareaEstudiante;
-
 import edu.utilidades.Cargador;
 
 public class LogicaA implements InformacionEstudiante {
@@ -23,6 +22,15 @@ public class LogicaA implements InformacionEstudiante {
 
 	public LogicaA() {
 		I();
+		LogicaA ges = new LogicaA();
+		ArrayList<String> array = ges.Resivir();
+		if(array != null) {
+			for (int i = 0; i < array.size(); i++) {
+				System.out.println(array.get(i));
+			}
+		}else {
+			//System.out.println("algo paso con la consulta de nombres");
+		}		
 	}
 
 	@Override
@@ -32,6 +40,36 @@ public class LogicaA implements InformacionEstudiante {
 		} else {
 			JOptionPane.showMessageDialog(null, "Tarea");
 		}
+		}		
+	}
+
+	public ArrayList<String> Resivir() {
+		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
+		try {
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
+			/*if(cls != null) {
+				HorarioEstudiante he = (HorarioEstudiante) cls.newInstance();
+				he.H();
+			}*/
+			
+			if(cls != null) {
+				tareaEstudiante te = (tareaEstudiante) cls.newInstance();				
+				return te.consultarMaterias();
+			}else {
+				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO TAREA ESTUDIANTE");
+				return null;
+			}
+			/*
+			cls = cc.cargarUnaClaseDesdeSuDirectorio(Sugerencia.class.getName());
+			if(cls != null) {
+				Sugerencia s = (Sugerencia) cls.newInstance();
+				s.S();
+			}*/
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}						
 	}
 
 	public boolean Inf() {

@@ -88,4 +88,15 @@ public class GestorSolicitudes {
 			return null;
 		}
 	}
+	
+	public ArrayList<String[]> solicitarListaTareas(){
+		try {
+			// return interfaceSolicitudes.solicitarListaTareas(Date fecha, tipo);
+			return null;
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null,
+					"No se pudo obtener la lista de tareas porque el componente no está disponible");
+			return null;
+		}
+	}
 }

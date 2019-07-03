@@ -9,4 +9,5 @@ public interface consultarTarea {
 	public ArrayList<String[]> CtareasPendientes();
 	ArrayList<String> consultarNombreM();
 	ArrayList<String> consultarNombreT();
+	void Conectar();
 }
