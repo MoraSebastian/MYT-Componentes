@@ -18,7 +18,7 @@ public class GestorSolicitudes {
 	public void anadirTarea(String nombreT, String descripcionT, int dificultadT, String tipoT, 
 			int horaFinalizacionT, Date fechaFinT, String materia, boolean esSubtarea) {
 		try {
-			// interfaceSolicitudes.anadirTarea(String nombreT, String descripcionT, int dificultadT, String tipoT, int horaFinalizacionT, Date fechaFinT, String materia, boolean esSubtarea);
+			interfaceSolicitudes.anadirTarea(nombreT,descripcionT, dificultadT, tipoT, horaFinalizacionT,  fechaFinT,  materia, esSubtarea);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					"No se pudo añadir una tarea nueva ya que el componente de tarea no está disponible");
@@ -28,7 +28,7 @@ public class GestorSolicitudes {
 	public void anadirSubTarea(String nombreT, String descripcionT, int dificultadT, String tipoT,
 			String idTareaPertenencia, int horaFinalizacionT, Date fechaFinT, String materia, boolean esSubtarea) {
 		try {
-			// interfaceSolicitudes.anadirSubTarea(String nombreT, String descripcionT, int dificultadT, String tipoT,String idTareaPertenencia, int horaFinalizacionT, Date fechaFinT, String materia, boolean esSubtarea);
+			interfaceSolicitudes.anadirSubTarea(nombreT, descripcionT, dificultadT, tipoT, idTareaPertenencia,  horaFinalizacionT,  fechaFinT,  materia,  esSubtarea);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					"No se pudo añadir una subtarea nueva ya que el componente de tarea no está disponible");
@@ -58,8 +58,7 @@ public class GestorSolicitudes {
 
 	public ArrayList<String[]> solicitarListaTareasFecha(Date fecha){
 		try {
-			// return interfaceSolicitudes.solicitarListaTareas(Date fecha);
-			return null;
+			 return interfaceSolicitudes.solicitarListaTareasFecha(fecha);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					"No se pudo obtener la lista de tareas porque el componente no está disponible");
@@ -69,8 +68,7 @@ public class GestorSolicitudes {
 	
 	public ArrayList<String[]> solicitarListaTareasFechaDificultad(Date fecha, int dificultad){
 		try {
-			// return interfaceSolicitudes.solicitarListaTareasFechaDificultad(fecha, dificultad);
-			return null;
+			return interfaceSolicitudes.solicitarListaTareasFechaDificultad(fecha, dificultad);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					"No se pudo obtener la lista de tareas porque el componente no está disponible");
@@ -80,8 +78,8 @@ public class GestorSolicitudes {
 	
 	public ArrayList<String[]> solicitarListaTareasFechaTipo(Date fecha, String tipo){
 		try {
-			// return interfaceSolicitudes.solicitarListaTareasFechaTipo(Date fecha, tipo);
-			return null;
+			return interfaceSolicitudes.solicitarListaTareasFechaTipo(fecha, tipo);
+
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					"No se pudo obtener la lista de tareas porque el componente no está disponible");
@@ -91,8 +89,7 @@ public class GestorSolicitudes {
 	
 	public ArrayList<String[]> solicitarListaTareas(){
 		try {
-			// return interfaceSolicitudes.solicitarListaTareas(Date fecha, tipo);
-			return null;
+			return interfaceSolicitudes.solicitarListaTareas();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					"No se pudo obtener la lista de tareas porque el componente no está disponible");
@@ -102,8 +99,7 @@ public class GestorSolicitudes {
 	
 	public ArrayList<String> solicitarMaterias(){
 		try {
-			// return interfaceSolicitudes.solicitarMaterias();
-			return null;
+			return interfaceSolicitudes.solicitarMaterias();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					"No se pudo obtener la lista de materias porque el componente no está disponible");
@@ -115,13 +111,13 @@ public class GestorSolicitudes {
 		String[] franjas= {"Holis"};
 		Enum[] franjaEnum;
 		try{
-			/*
+			
 			franjaEnum = interfaceSolicitudes.obtenerTiposDeFranjas();
 			franjas =  new String[franjaEnum.length];
 			for(int i=0; i<franjaEnum.length; i++){
 				franjas[i] = franjaEnum[i].name();
 			
-			}*/
+			}
 		} catch(Exception e){
 			
 		}
