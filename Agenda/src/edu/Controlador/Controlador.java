@@ -27,6 +27,6 @@ public class Controlador {
 		return null;//gestort.consultas(caso, tabla);
 	}
 	public ArrayList<String> ConsultarMaterias(){
-		return logic.Resivir();
+		return logic.solicitarListaNombresMateria();
 	}
 }
