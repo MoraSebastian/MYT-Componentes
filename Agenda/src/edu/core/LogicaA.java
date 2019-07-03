@@ -166,7 +166,22 @@ public class LogicaA implements InformacionEstudiante {
 			return null;
 		}
 	}
-
+	public ArrayList<String[]> solicitarListaTareasPadre() {
+		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
+		try {
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
+			if(cls != null) {
+				tareaEstudiante te = (tareaEstudiante) cls.newInstance();								
+				return te.cTareasPadre();											
+			}else {
+				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO TAREA ESTUDIANTE");
+				return null;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	@Override
 	public ArrayList<String[]> solicitarListaTareasFechaDificultad(Date fecha, int dificultad) {
@@ -237,10 +252,7 @@ public class LogicaA implements InformacionEstudiante {
 		}
 	}
 
-	@Override
-	public ArrayList<String[]> solicitarListaTareas() {
-		return null;
-	}
+	
 
 
 

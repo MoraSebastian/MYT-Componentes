@@ -87,9 +87,9 @@ public class GestorSolicitudes {
 		}
 	}
 	
-	public ArrayList<String> solicitarListaTareas(){
+	public ArrayList<String[]> solicitarListaTareas(){
 		try {
-			return interfaceSolicitudes.solicitarListaNombresTareaPadre();
+			return interfaceSolicitudes.solicitarListaTareasPadre();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					"No se pudo obtener la lista de tareas porque el componente no está disponible");
