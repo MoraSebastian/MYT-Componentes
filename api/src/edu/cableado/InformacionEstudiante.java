@@ -14,9 +14,17 @@ public interface InformacionEstudiante {
 	void eliminarFranja();
 	@SuppressWarnings("rawtypes")
 	Enum[] obtenerTiposDeFranjas();
+	
+	
 	ArrayList<String[]> solicitarListaTareasFecha(Date fecha);
+	ArrayList<String[]> solicitarListaTareasPadreFecha(Date fecha);
 	ArrayList<String[]> solicitarListaTareasFechaDificultad(Date fecha, int dificultad);
+	ArrayList<String[]> solicitarListaTareasFechaMateria(Date fecha, String materia);
 	ArrayList<String[]> solicitarListaTareasFechaTipo(Date fecha, String tipo);
+	
+	ArrayList<String> solicitarListaNombresMateria();
+	ArrayList<String> solicitarListaNombresTareaPadre();
+	
 	ArrayList<String[]> solicitarListaTareas();
 	ArrayList<String> solicitarMaterias(); 
 	
