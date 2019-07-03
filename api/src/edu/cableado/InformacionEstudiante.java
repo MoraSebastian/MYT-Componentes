@@ -34,7 +34,7 @@ public interface InformacionEstudiante {
 	 * @return
 	 */
 	List<String> obtenerFranjasPorDia(int dia);
-
+	List<>
 	@SuppressWarnings("rawtypes")
 	Enum[] obtenerTiposDeFranjas();
 

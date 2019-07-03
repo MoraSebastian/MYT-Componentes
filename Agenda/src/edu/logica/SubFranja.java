@@ -1,4 +1,4 @@
-package ed.logica;
+package edu.logica;
 
 import java.util.ArrayList;
 

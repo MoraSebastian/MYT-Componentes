@@ -1,11 +1,11 @@
-package ed.logica;
+package edu.logica;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConversorFranjas {
+public class Conversor {
 
-	public Franja convertirDatosAFranja(Object[] datos) {
+	public static Franja convertirDatosAFranja(Object[] datos) {
 		int id = Integer.valueOf(datos[0].toString());
 		String nombreFranja = String.valueOf(datos[1]);
 		int tiempoInicio = Integer.valueOf(datos[2].toString());
@@ -16,7 +16,7 @@ public class ConversorFranjas {
 		return franja;
 	}
 
-	public List<SubFranja> convertirFranjaEnSubFranja(FranjaA franja) {
+	public static List<SubFranja> convertirFranjaEnSubFranja(FranjaA franja) {
 		List<SubFranja> subFranjas = new ArrayList<SubFranja>();
 		for (int hora : franja.getHoras()) {
 			SubFranja subFranja = new SubFranja(franja);
@@ -28,7 +28,7 @@ public class ConversorFranjas {
 		return subFranjas;
 	}
 
-	public String[] convertirSubFranjaEnString(SubFranja subFranja) {
+	public static String[] convertirSubFranjaEnString(SubFranja subFranja) {
 		String[] datosStr = new String[3];
 		datosStr[0] = String.valueOf(subFranja.getId());
 		datosStr[1] = subFranja.getNombreFranja();
@@ -38,5 +38,14 @@ public class ConversorFranjas {
 			datosStr[2] = GestorFranjas.NO_ASIGNADA;
 		}
 		return datosStr;
+	}
+
+	public static List<Tarea> convertirSubTareasTarea(Tarea tarea) {
+		List<Tarea> subTareas = new ArrayList<Tarea>();
+		for (int hora = 0; hora < tarea.getDificultadT(); hora++) {
+			Tarea tarea2 = new Tarea(tarea.getNombreT(), 1, tarea.getId());
+			subTareas.add(tarea2);
+		}
+		return subTareas;
 	}
 }

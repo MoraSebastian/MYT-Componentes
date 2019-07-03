@@ -1,4 +1,4 @@
-package ed.logica;
+package edu.logica;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,10 +12,10 @@ import java.util.TreeMap;
 import edu.core.LogicaA;
 
 public class GestorFranjas {
-	private static final ConversorFranjas conversorFranjas = new ConversorFranjas();
+	private static final Conversor conversorFranjas = new Conversor();
 	private static final int CANTIDAD_HORAS = 24;
-	public static final String NO_ASIGNADA = "NO ASIGNADA";
-	private static Map<Integer, SubFranja> mapaFranjas = new TreeMap<Integer, SubFranja>();
+	public static final String NO_ASIGNADA = "-";
+	private static Map<Integer, SubFranja> mapaFranjas;
 
 	public List<String[]> gestionarFranjas(List<Object[]> franjas) {
 		mapaFranjas = new TreeMap<Integer, SubFranja>();
@@ -61,7 +61,7 @@ public class GestorFranjas {
 		});
 	}
 
-	public static ConversorFranjas getConversorfranjas() {
+	public static Conversor getConversorfranjas() {
 		return conversorFranjas;
 	}
 

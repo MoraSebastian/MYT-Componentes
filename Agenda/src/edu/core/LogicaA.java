@@ -7,13 +7,17 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import ed.logica.GestorFranjas;
 import edu.cableado.HorarioEstudiante;
 import edu.cableado.InformacionEstudiante;
 import edu.cableado.Sugerencia;
 import edu.cableado.consultarTarea;
 import edu.cableado.HorarioEstudiante;
 import edu.cableado.tareaEstudiante;
+import edu.logica.Asignacion;
+import edu.logica.GestorAsignaciones;
+import edu.logica.GestorFranjas;
+import edu.logica.GestorTareas;
+import edu.logica.Tarea;
 import edu.utilidades.Cargador;
 
 public class LogicaA implements InformacionEstudiante {
@@ -94,10 +98,17 @@ public class LogicaA implements InformacionEstudiante {
 		GestorFranjas gestorFranjas = new GestorFranjas();
 		List<Object[]> franjasDia = horarioEstudiante.obtenerFranjasPorDia(numeroDia);
 		List<String[]> listadoArregloString = gestorFranjas.gestionarFranjas(franjasDia);
+		GestorAsignaciones gestorAsignaciones = new GestorAsignaciones();
 		List<String> listadoRetorno = new ArrayList<String>();
+		int i = 0;
 		for(String[] arrString: listadoArregloString) {
-			listadoRetorno.add(arrString[1]);
+			gestorAsignaciones.put(numeroDia, i, arrString);
+			i++;
 		}
+		for(Asignacion asignacion: gestorAsignaciones.obtenerFranjasDeDia(numeroDia).values()) {
+			listadoRetorno.add(asignacion.getNombre());
+		}
+		
 		return listadoRetorno;
 	}
 
@@ -153,6 +164,9 @@ public class LogicaA implements InformacionEstudiante {
 			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
 			if (cls != null) {
 				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
+				int id = GestorTareas.getListaTareas().size()+1;
+				Tarea tarea = new Tarea(arg0, arg2, id);
+				
 				te.anadirTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 			}
 		} catch (Exception e) {

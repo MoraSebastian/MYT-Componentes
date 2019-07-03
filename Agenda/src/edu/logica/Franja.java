@@ -1,4 +1,4 @@
-package ed.logica;
+package edu.logica;
 
 public class Franja extends FranjaA {
 
