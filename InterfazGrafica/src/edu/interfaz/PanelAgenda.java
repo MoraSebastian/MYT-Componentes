@@ -620,14 +620,8 @@ public class PanelAgenda extends JPanelAbstracto {
 			if(contador<numeroTareas){
 				String prueba;
 				panelTareas1.setVisible(true);
-<<<<<<< HEAD
 				lblTextoTarea1.setText(listaTareas.get(contador)[1]);
-=======
-				lblTextoTarea1.setText(listaTareas.get(contador)[7]);
-				prueba = listaTareas.get(contador)[7];
 				panelTareas1.updateUI();
-				JOptionPane.showMessageDialog(null, "Prueba " + prueba );
->>>>>>> cd3bdc620eea278cfd7d973cf40c1a8f36f08912
 				contador++;
 				if(contador<numeroTareas){
 					panelTareas2.setVisible(true);

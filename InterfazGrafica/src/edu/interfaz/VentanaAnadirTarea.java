@@ -55,7 +55,6 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 
 	public VentanaAnadirTarea(GestorSolicitudes info) {
 		super.informacion = info;
-		cargarMaterias();
 		cargarTareas();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(0, 0, 580, 700);
@@ -98,7 +97,7 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 		cbxQueTarea.setModel(new DefaultComboBoxModel(modeloTareas));
 		cbxQueTarea.setEnabled(false);
 		cbxQueTarea.setFont(new Font("Lucida Console", Font.PLAIN, 11));
-		cbxQueTarea.setBounds(281, 511, 159, 20);
+		cbxQueTarea.setBounds(281, 487, 159, 20);
 		contentPane.add(cbxQueTarea);
 		
 		JComboBox cbxDificultad = new JComboBox();
@@ -113,20 +112,15 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 				cbxQueTarea.setEnabled(true);
 			}
 		});
-		
-		JComboBox cbxPerteneceAmateria = new JComboBox();
-		cbxPerteneceAmateria.setModel(new DefaultComboBoxModel(modeloTareas));
-		cbxPerteneceAmateria.setBounds(281, 428, 159, 20);
-		contentPane.add(cbxPerteneceAmateria);
 		buttonGroup.add(rdbtnSiSubtarea);
-		rdbtnSiSubtarea.setBounds(281, 459, 47, 23);
+		rdbtnSiSubtarea.setBounds(281, 435, 47, 23);
 		contentPane.add(rdbtnSiSubtarea);
 			
 		
 		JRadioButton rdbtnNo = new JRadioButton("No");
 		buttonGroup.add(rdbtnNo);
 		rdbtnNo.setSelected(true);
-		rdbtnNo.setBounds(393, 461, 47, 23);
+		rdbtnNo.setBounds(393, 437, 47, 23);
 		rdbtnNo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cbxQueTarea.setEnabled(false);
@@ -136,7 +130,7 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 		
 		JLabel lblSubtarea = new JLabel("Subtarea:");
 		lblSubtarea.setFont(new Font("Rockwell", Font.PLAIN, 17));
-		lblSubtarea.setBounds(114, 459, 110, 25);
+		lblSubtarea.setBounds(114, 435, 110, 25);
 		contentPane.add(lblSubtarea);
 		
 		JLabel lblHoraDeEntrega = new JLabel("Hora de entrega:");
@@ -199,11 +193,6 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 				}				
 			}
 		});
-		
-		JLabel lblPerteneceAMateria = new JLabel("Pertenece a materia:");
-		lblPerteneceAMateria.setFont(new Font("Rockwell", Font.PLAIN, 17));
-		lblPerteneceAMateria.setBounds(114, 421, 183, 30);
-		contentPane.add(lblPerteneceAMateria);
 		btnAnadirTarea.setRolloverIcon(new ImageIcon(VentanaAnadirTarea.class.getResource("/edu/recursos/Recurso 26@0.75x.png")));
 		btnAnadirTarea.setIcon(new ImageIcon(VentanaAnadirTarea.class.getResource("/edu/recursos/Recurso 20@0.75x.png")));
 		btnAnadirTarea.setBounds(232, 612, 147, 38);
@@ -223,6 +212,11 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 		lblFondo.setIcon(new ImageIcon(VentanaAnadirTarea.class.getResource("/edu/recursos/Recurso 4.png")));
 		lblFondo.setBounds(-494, 0, 1073, 735);
 		contentPane.add(lblFondo);
+		
+		JComboBox cbxPerteneceAmateria = new JComboBox();
+		cbxPerteneceAmateria.setModel(new DefaultComboBoxModel(modeloTareas));
+		cbxPerteneceAmateria.setBounds(281, 428, 159, 20);
+		contentPane.add(cbxPerteneceAmateria);
 	}
 	
 	private void cargarTareas(){
@@ -231,25 +225,11 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 			modeloMaterias = new String[todasLasTareas.size()];
 			
 			for(int i=0; i<todasLasTareas.size(); i++){
-				modeloTareas[i]= todasLasTareas.get(i)[7];
+				modeloTareas[i]= todasLasTareas.get(i)[1];
 			
 			}
 		} catch(Exception e){
-			JOptionPane.showMessageDialog(null,
-					"No se pudo obtener la lista de tareas porque el componente no está disponible ");
 		}				
 	}
 	
-	private void cargarMaterias(){
-		try{
-			materias = informacion.solicitarMaterias();
-			for(int i=0; i<materias.size(); i++){
-				modeloMaterias[i]= materias.get(i);
-			}
-		} catch(Exception e){
-			JOptionPane.showMessageDialog(null,
-					"No se pudo obtener la lista de materias porque el componente no está disponible ");
-		}
-		
-	}
 }
