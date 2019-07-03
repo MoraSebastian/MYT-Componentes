@@ -50,6 +50,35 @@ public class GestorT implements consultarTarea {
 	public ArrayList<String[]> cTareasPadre(String fecha) {
 		return consultarTareasPendientes(fecha, "tpendienteSinpadre");			
 	}
+	public ArrayList<String[]> cTareasPadre() {
+		Conectar();	
+		
+		script = "select * from tarea where id_tareas is null;";
+		ArrayList<String[]> array1 = new ArrayList<String[]>();
+		try {
+			codigoSQL = conexion.createStatement();
+			resultados = codigoSQL.executeQuery(script);
+			ResultSetMetaData datos = resultados.getMetaData();			
+			int numeroColumnas = datos.getColumnCount();						
+			String res ="";
+			while (resultados.next())
+		      {
+				String[] f = new String[numeroColumnas];
+				for (int i = 0; i < numeroColumnas; i++) {
+					f[i] = resultados.getString(i+1);
+				}				
+		        res=resultados.getString(1);
+		        array1.add(f);		       
+		      }
+			Desconectar();
+			 return array1;
+			//JOptionPane.showMessageDialog(null, "EL ULTIMO ID ES: "+res);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block			
+			e.printStackTrace();
+			return null;
+		}									
+	}
 	/**
 	 * Método encargado de consultar tareas pendientes GENERAL, sin importar más que la fecha
 	 */
@@ -61,7 +90,7 @@ public class GestorT implements consultarTarea {
 			break;			
 		case "tpendienteSinpadre":
 			script = "select * from tarea where fecha = " + fecha + " and id_tareas is null;";
-			break;
+		
 		}		
 		ArrayList<String[]> array1 = new ArrayList<String[]>();
 		try {

@@ -228,12 +228,12 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 	
 	private void cargarTareas(){
 		try{
-			//todasLasTareas = informacion.solicitarListaTareas();
-			//modeloMaterias = new String[todasLasTareas.size()];
-			ArrayList<String> array = informacion.solicitarListaTareas();
-			for(int i=0; i<array.size(); i++){
-				//modeloTareas[i]= todasLasTareas.get(i)[7];
-				modeloTareas[i]= array.get(i);
+			todasLasTareas = informacion.solicitarListaTareas();
+			modeloMaterias = new String[todasLasTareas.size()];
+			
+			for(int i=0; i<todasLasTareas.size(); i++){
+				modeloTareas[i]= todasLasTareas.get(i)[7];
+			
 			}
 		} catch(Exception e){
 			JOptionPane.showMessageDialog(null,

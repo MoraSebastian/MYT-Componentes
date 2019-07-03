@@ -38,7 +38,21 @@ public class LogicaT implements tareaEstudiante {
 			return false;
 		}		
 	}
-	
+	public ArrayList<String[]> cTareasPadre() {
+		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
+		try {
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(consultarTarea.class.getName());
+			if(cls != null) {
+				consultarTarea ct = (consultarTarea) cls.newInstance();	
+				return ct.cTareasPadre();	    		   
+			}else {
+				return null;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}		
+	}
 	public ArrayList<String[]> cTareasPendientes(String fecha){
 		return consultarTareasPendientes(fecha, "tpendientes");
 	}
