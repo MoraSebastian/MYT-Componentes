@@ -10,13 +10,18 @@ import javax.swing.JFrame;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.JSpinner;
 
 public class PanelHorario extends JPanelAbstracto{
 	Comando comando;
 	private JFrameGeneral ventana;
 	private JPanelAbstracto panelAgenda;
-	public PanelHorario(JFrame frameActual, GestorSolicitudes info) {
-		super.frameActual = frameActual;
+	public PanelHorario(JFrame frameActual2, GestorSolicitudes info) {
+		super.frameActual = frameActual2;
+		super.frameActual.setBounds(100, 100, 1160, 700);
+		super.frameActual.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super.frameActual.getContentPane().setLayout(null);
+		
 		super.informacion = info;
 		panelAgenda = new PanelAgenda(super.frameActual, super.informacion);
 		setLayout(null);	
