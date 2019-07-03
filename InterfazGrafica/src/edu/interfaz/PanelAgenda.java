@@ -69,6 +69,16 @@ public class PanelAgenda extends JPanelAbstracto {
 	private JLabel llblTextoTarea10;
 	private JDateChooser dateChooser;
 	JPanel panel;
+	private JButton btnModificar1;
+	private JButton btnModificar2;
+	private JButton btnModificar3;
+	private JButton btnModificar4;
+	private JButton btnModificar5;
+	private JButton btnModificar6;
+	private JButton btnModificar7;
+	private JButton btnModificar8;
+	private JButton btnModificar9;
+	private JButton btnModificar10;
 	public PanelAgenda(JFrame frameActual2, GestorSolicitudes info) {
 		super.frameActual = frameActual2;
 		super.informacion = info;
@@ -233,23 +243,27 @@ public class PanelAgenda extends JPanelAbstracto {
 		panelTareas1.setLayout(null);
 		panelTareas1.setVisible(false);
 		
-		JButton btnEliminar = new JButton("");
-		btnEliminar.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 49@0.75x.png")));
-		btnEliminar.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 41@0.75x.png")));
-		btnEliminar.setBounds(306, 2, 32, 34);
-		btnEliminar.setOpaque(false);
-		btnEliminar.setBorderPainted(false);
-		btnEliminar.setContentAreaFilled(false);
-		panelTareas1.add(btnEliminar);
+		JButton btnEliminar1 = new JButton("");
+		btnEliminar1.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 49@0.75x.png")));
+		btnEliminar1.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 41@0.75x.png")));
+		btnEliminar1.setBounds(306, 2, 32, 34);
+		btnEliminar1.setOpaque(false);
+		btnEliminar1.setBorderPainted(false);
+		btnEliminar1.setContentAreaFilled(false);
+		panelTareas1.add(btnEliminar1);
 		
-		JButton btnModificar = new JButton("");
-		btnModificar.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
-		btnModificar.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
-		btnModificar.setBounds(274, 2, 32, 34);
-		btnModificar.setOpaque(false);
-		btnModificar.setBorderPainted(false);
-		btnModificar.setContentAreaFilled(false);
-		panelTareas1.add(btnModificar);
+		btnModificar1 = new JButton("");
+		btnModificar1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnModificar1.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
+		btnModificar1.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
+		btnModificar1.setBounds(274, 2, 32, 34);
+		btnModificar1.setOpaque(false);
+		btnModificar1.setBorderPainted(false);
+		btnModificar1.setContentAreaFilled(false);
+		panelTareas1.add(btnModificar1);
 		
 		lblTextoTarea1 = new JLabel("Texto tarea");
 		lblTextoTarea1.setFont(new Font("Agency FB", Font.PLAIN, 21));
@@ -279,7 +293,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnEliminar2.setBounds(306, 2, 32, 34);
 		panelTareas2.add(btnEliminar2);
 		
-		JButton btnModificar2 = new JButton("");
+		btnModificar2 = new JButton("");
 		btnModificar2.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
 		btnModificar2.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
 		btnModificar2.setOpaque(false);
@@ -316,7 +330,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnEliminar2.setBounds(306, 2, 32, 34);
 		panelTareas3.add(btnEliminar3);
 		
-		JButton btnModificar3 = new JButton("");
+		btnModificar3 = new JButton("");
 		btnModificar3.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
 		btnModificar3.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
 		btnModificar3.setOpaque(false);
@@ -352,7 +366,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnEliminar4.setBorderPainted(false);
 		panelTareas4.add(btnEliminar4);
 		
-		JButton btnModificar4 = new JButton("");
+		btnModificar4 = new JButton("");
 		btnModificar4.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
 		btnModificar4.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
 		btnModificar4.setOpaque(false);
@@ -388,7 +402,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnEliminar5.setBorderPainted(false);
 		panelTareas5.add(btnEliminar5);
 		
-		JButton btnModificar5 = new JButton("");
+		btnModificar5 = new JButton("");
 		btnModificar5.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
 		btnModificar5.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
 		btnModificar5.setOpaque(false);
@@ -424,7 +438,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnEliminar6.setBorderPainted(false);
 		panelTareas6.add(btnEliminar6);
 		
-		JButton btnModificar6 = new JButton("");
+		btnModificar6 = new JButton("");
 		btnModificar6.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
 		btnModificar6.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
 		btnModificar6.setOpaque(false);
@@ -460,7 +474,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnEliminar7.setBorderPainted(false);
 		panelTareas7.add(btnEliminar7);
 		
-		JButton btnModificar7 = new JButton("");
+		btnModificar7 = new JButton("");
 		btnModificar7.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
 		btnModificar7.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
 		btnModificar7.setOpaque(false);
@@ -496,7 +510,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnEliminar8.setBorderPainted(false);
 		panelTareas8.add(btnEliminar8);
 		
-		JButton btnModificar8 = new JButton("");
+		btnModificar8 = new JButton("");
 		btnModificar8.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
 		btnModificar8.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
 		btnModificar8.setOpaque(false);
@@ -532,7 +546,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnEliminar9.setBorderPainted(false);
 		panelTareas9.add(btnEliminar9);
 		
-		JButton btnModificar9 = new JButton("");
+		btnModificar9 = new JButton("");
 		btnModificar9.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
 		btnModificar9.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
 		btnModificar9.setOpaque(false);
@@ -568,7 +582,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnEliminar10.setBorderPainted(false);
 		panelTareas10.add(btnEliminar10);
 		
-		JButton btnModificar10 = new JButton("");
+		btnModificar10 = new JButton("");
 		btnModificar10.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 48@0.75x.png")));
 		btnModificar10.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 40@0.75x.png")));
 		btnModificar10.setOpaque(false);
@@ -605,7 +619,6 @@ public class PanelAgenda extends JPanelAbstracto {
 	private void mostrarListaTareas(ArrayList<String[]> listaTareas){
 		try{
 			int numeroTareas = listaTareas.size();//7
-			JOptionPane.showMessageDialog(null, "Prueba " + listaTareas.size() );
 			int contador = 0;
 			panelTareas1.setVisible(false);
 			panelTareas2.setVisible(false);
@@ -621,43 +634,111 @@ public class PanelAgenda extends JPanelAbstracto {
 				String prueba;
 				panelTareas1.setVisible(true);
 				lblTextoTarea1.setText(listaTareas.get(contador)[1]);
+				btnModificar1.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						
+						JOptionPane.showMessageDialog(null, "La informacion de la tareas es: \n Descripcion:" + listaTareas.get(0)[0]
+								+ "\n Nombre: " + listaTareas.get(0)[1] + "\n Dificultad: " + listaTareas.get(0)[2] + "\n Tipo " +listaTareas.get(0)[4] );
+					}
+				});
 				panelTareas1.updateUI();
 				contador++;
 				if(contador<numeroTareas){
 					panelTareas2.setVisible(true);
 					lblTextoTarea2.setText(listaTareas.get(contador)[1]);
+					btnModificar2.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
+							
+							JOptionPane.showMessageDialog(null, "La informacion de la tareas es: \n Descripcion:" + listaTareas.get(1)[0]
+									+ "\n Nombre: " + listaTareas.get(1)[1] + "\n Dificultad: " + listaTareas.get(1)[2] + "\n Tipo " +listaTareas.get(1)[4] );
+						}
+					});
 					contador++;
 					if(contador<=numeroTareas){
 						panelTareas3.setVisible(true);
 						llblTextoTarea3.setText(listaTareas.get(contador)[1]);
+						btnModificar3.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent arg0) {
+								
+								JOptionPane.showMessageDialog(null, "La informacion de la tareas es: \n Descripcion:" + listaTareas.get(2)[0]
+										+ "\n Nombre: " + listaTareas.get(2)[1] + "\n Dificultad: " + listaTareas.get(2)[2] + "\n Tipo " +listaTareas.get(2)[4] );
+							}
+						});
 						contador++;
 						if(contador<=numeroTareas){
 							panelTareas4.setVisible(true);
 							llblTextoTarea4.setText(listaTareas.get(contador)[1]);
+							btnModificar4.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent arg0) {								
+									JOptionPane.showMessageDialog(null, "La informacion de la tareas es: \n Descripcion:" + listaTareas.get(3)[0]
+											+ "\n Nombre: " + listaTareas.get(3)[1] + "\n Dificultad: " + listaTareas.get(3)[2] + "\n Tipo " +listaTareas.get(3)[4] );
+								}
+							});
 							contador++;
 							if(contador<=numeroTareas){
 								panelTareas5.setVisible(true);
 								llblTextoTarea5.setText(listaTareas.get(contador)[1]);
+								btnModificar5.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent arg0) {
+										
+										JOptionPane.showMessageDialog(null, "La informacion de la tareas es: \n Descripcion:" + listaTareas.get(4)[0]
+												+ "\n Nombre: " + listaTareas.get(4)[1] + "\n Dificultad: " + listaTareas.get(4)[2] + "\n Tipo " +listaTareas.get(4)[4] );
+									}
+								});
 								contador++;
 								if(contador<=numeroTareas){
 									panelTareas6.setVisible(true);
 									llblTextoTarea6.setText(listaTareas.get(contador)[1]);
+									btnModificar6.addActionListener(new ActionListener() {
+										public void actionPerformed(ActionEvent arg0) {
+											
+											JOptionPane.showMessageDialog(null, "La informacion de la tareas es: \n Descripcion:" + listaTareas.get(5)[0]
+													+ "\n Nombre: " + listaTareas.get(5)[1] + "\n Dificultad: " + listaTareas.get(5)[2] + "\n Tipo: " +listaTareas.get(5)[4] );
+										}
+									});
 									contador++;
 									if(contador<=numeroTareas){
 										panelTareas7.setVisible(true);
 										llblTextoTarea7.setText(listaTareas.get(contador)[1]);
+										btnModificar7.addActionListener(new ActionListener() {
+											public void actionPerformed(ActionEvent arg0) {
+												
+												JOptionPane.showMessageDialog(null, "La informacion de la tareas es: \n Descripcion:" + listaTareas.get(6)[0]
+														+ "\n Nombre: " + listaTareas.get(6)[1] + "\n Dificultad: " + listaTareas.get(6)[2] + "\n Tipo: " +listaTareas.get(6)[4] );
+											}
+										});
 										contador++;
 										if(contador<=numeroTareas){
 											panelTareas8.setVisible(true);
 											llblTextoTarea8.setText(listaTareas.get(contador)[1]);
+											btnModificar8.addActionListener(new ActionListener() {
+												public void actionPerformed(ActionEvent arg0) {
+													JOptionPane.showMessageDialog(null, "La informacion de la tareas es: \n Descripcion:" + listaTareas.get(7)[0]
+															+ "\n Nombre: " + listaTareas.get(7)[1] + "\n Dificultad: " + listaTareas.get(7)[2] + "\n Tipo: " +listaTareas.get(7)[4] );
+												}
+											});
 											contador++;
 											if(contador<=numeroTareas){
 												panelTareas9.setVisible(true);
 												llblTextoTarea9.setText(listaTareas.get(contador)[1]);
+												btnModificar1.addActionListener(new ActionListener() {
+													public void actionPerformed(ActionEvent arg0) {
+														
+														JOptionPane.showMessageDialog(null, "La informacion de la tareas es: \n Descripcion:" + listaTareas.get(8)[0]
+																+ "\n Nombre: " + listaTareas.get(8)[1] + "\n Dificultad: " + listaTareas.get(8)[2] + "\n Tipo " +listaTareas.get(8)[4] );
+													}
+												});
 												contador++;
 												if(contador<=numeroTareas){
 													panelTareas10.setVisible(true);
 													llblTextoTarea10.setText(listaTareas.get(contador)[1]);
+													btnModificar1.addActionListener(new ActionListener() {
+														public void actionPerformed(ActionEvent arg0) {
+															
+															JOptionPane.showMessageDialog(null, "La informacion de la tareas es: \n Descripcion:" + listaTareas.get(9)[0]
+																	+ "\n Nombre: " + listaTareas.get(9)[1] + "\n Dificultad: " + listaTareas.get(9)[2] + "\n Tipo " +listaTareas.get(9)[4] );
+														}
+													});
 													contador++;
 												}
 											}

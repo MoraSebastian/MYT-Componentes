@@ -14,7 +14,7 @@ import edu.core.LogicaA;
 public class GestorFranjas {
 	private static final ConversorFranjas conversorFranjas = new ConversorFranjas();
 	private static final int CANTIDAD_HORAS = 24;
-	public static final String NO_ASIGNADA = "NO ASIGNADA";
+	public static final String NO_ASIGNADA = " ";
 	private static Map<Integer, SubFranja> mapaFranjas = new TreeMap<Integer, SubFranja>();
 
 	public List<String[]> gestionarFranjas(List<Object[]> franjas) {
