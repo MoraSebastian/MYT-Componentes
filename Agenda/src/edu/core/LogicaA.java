@@ -18,9 +18,6 @@ public class LogicaA implements InformacionEstudiante {
 
 	
 	/*
-=======
-
->>>>>>> cfc405c50e22555bea4c90cfdea40ad0367602d5
 	public static void main(String[] args) {
 
 	}
