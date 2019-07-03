@@ -17,24 +17,6 @@ public class LogicaA implements InformacionEstudiante {
 	private static HorarioEstudiante horarioEstudiante = null;
 
 
-	/*
-	public static void main(String[] args) {
-
-	}
-
-	public LogicaA() {
-		I();
-		LogicaA ges = new LogicaA();
-		//ArrayList<String> array = ges.Resivir();
-		if(array != null) {
-			for (int i = 0; i < array.size(); i++) {
-				System.out.println(array.get(i));
-			}
-		}else {
-			//System.out.println("algo paso con la consulta de nombres");
-		}
-	}*/
-
 	@Override
 	public void I() {
 		if (Inf()) {
@@ -42,13 +24,6 @@ public class LogicaA implements InformacionEstudiante {
 		} else {
 			JOptionPane.showMessageDialog(null, "Tarea");
 		}
-
-	}
-
-
-
-	public void Enviar(String arg0, String arg1, int arg2, String arg3, int arg4, Date arg5, String arg6,
-			boolean arg7) {
 
 	}
 
@@ -116,19 +91,35 @@ public class LogicaA implements InformacionEstudiante {
 		// TODO Auto-generated method stub
 
 	}
-
+	//ESTE MÉTODO ES PARA ANADIR UNA SUBTAREA
 	@Override
 	public void anadirSubTarea(String arg0, String arg1, int arg2, String arg3, String arg4, int arg5, Date arg6,
 			String arg7, boolean arg8) {
-		// TODO Auto-generated method stub
-
+		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
+		try {
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
+			if (cls != null) {
+				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
+				te.anadirSubTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);					
+			}													
+		} catch (Exception e) {
+			e.printStackTrace();			
+		}
 	}
-
+	//ESTE MÉTODO ES PARA ANADIR UNA TAREA
 	@Override
 	public void anadirTarea(String arg0, String arg1, int arg2, String arg3, int arg4, Date arg5, String arg6,
 			boolean arg7) {
-		// TODO Auto-generated method stub
-
+		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
+		try {
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
+			if (cls != null) {
+				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
+				te.anadirTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);						
+			}															
+		} catch (Exception e) {
+			e.printStackTrace();			
+		}
 	}
 
 	public static HorarioEstudiante getHorarioEstudiante() {
