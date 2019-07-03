@@ -176,7 +176,10 @@ public class LogicaA implements InformacionEstudiante {
 				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
 				int id = GestorTareas.getListaTareas().size()+1;
 				Tarea tarea = new Tarea(arg0, arg2, id);
-				
+				GestorAsignaciones gestorAsignaciones = new GestorAsignaciones();
+				if(gestorAsignaciones.asignarTarea(tarea)) {
+					System.out.println("Se asignó en el horario");
+				}
 				te.anadirTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 			}
 		} catch (Exception e) {
