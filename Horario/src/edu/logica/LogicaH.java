@@ -156,8 +156,24 @@ public class LogicaH implements HorarioEstudiante {
 
 	@Override
 	public List<Object[]> obtenerFranjas() {
+		inicializarDiasSemana();
 		List<Object[]> franjas = new ArrayList<Object[]>();
 		for (Horario dia : horarioDia.horarios) {
+			franjas.addAll(obtenerFranjasPorDia(dia.getNumeroDia()));
+		}
+		return franjas;
+	}
+
+	@Override
+	public List<Object[]> obtenerFranjasPorDia(int numeroDia) {
+		inicializarDiasSemana();
+		List<Object[]> franjas = new ArrayList<Object[]>();
+		try {
+		Horario dia = horarioDia.obtenerDiaPorNumero(numeroDia);
+		if (dia.localizadorFranja == null) {
+			JOptionPane.showMessageDialog(null, "No se puede mostrar el horario en el día: " + dia.getNombreDia()
+					+ " porque no se han agregado franjas");
+		} else {
 			for (Franja franja : dia.localizadorFranja.franjasDia) {
 				Object[] datos = new Object[6];
 				datos[0] = franja.getId();
@@ -168,23 +184,9 @@ public class LogicaH implements HorarioEstudiante {
 				datos[5] = franja.getDias();
 				franjas.add(datos);
 			}
-		}
-		return franjas;
-	}
-
-	@Override
-	public List<Object[]> obtenerFranjasPorDia(int numeroDia) {
-		List<Object[]> franjas = new ArrayList<Object[]>();
-		Horario dia = horarioDia.obtenerDiaPorNumero(numeroDia);
-		for (Franja franja : dia.localizadorFranja.franjasDia) {
-			Object[] datos = new Object[6];
-			datos[0] = franja.getId();
-			datos[1] = franja.getNombreFranja();
-			datos[2] = franja.getTiempoInicio();
-			datos[3] = franja.getTiempoFinal();
-			datos[4] = franja.getTipoFranja();
-			datos[5] = franja.getDias();
-			franjas.add(datos);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 		return franjas;
 	}

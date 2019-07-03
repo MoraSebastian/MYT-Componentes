@@ -18,6 +18,7 @@ public class GestorFranjas {
 	private static Map<Integer, SubFranja> mapaFranjas = new TreeMap<Integer, SubFranja>();
 
 	public List<String[]> gestionarFranjas(List<Object[]> franjas) {
+		mapaFranjas = new TreeMap<Integer, SubFranja>();
 		List<String[]> franjasString = new ArrayList<String[]>();
 		List<SubFranja> subFranjasTotales = new ArrayList<SubFranja>();
 		for (Object[] datos : franjas) {
