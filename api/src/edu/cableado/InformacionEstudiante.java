@@ -2,6 +2,7 @@ package edu.cableado;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public interface InformacionEstudiante {
 	void I();
@@ -12,6 +13,7 @@ public interface InformacionEstudiante {
 	void anadirFranja(String nombreF, boolean dias[], String tipoF, int horaInicio, int horaFinal) throws Exception;
 	void modificarFranja();
 	void eliminarFranja();
+	List<String[]> obtenerFranjasPorDia(int dia);
 	@SuppressWarnings("rawtypes")
 	Enum[] obtenerTiposDeFranjas();
 	

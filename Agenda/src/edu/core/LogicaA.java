@@ -2,9 +2,11 @@ package edu.core;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import ed.logica.GestorFranjas;
 import edu.cableado.HorarioEstudiante;
 import edu.cableado.InformacionEstudiante;
 import edu.cableado.Sugerencia;
@@ -78,6 +80,15 @@ public class LogicaA implements InformacionEstudiante {
 	public void eliminarFranja() {
 		// TODO Auto-generated method stub
 
+	}
+
+
+	@Override
+	public List<String[]> obtenerFranjasPorDia(int numeroDia) {
+		GestorFranjas gestorFranjas = new GestorFranjas();
+		List<Object[]> franjasDia = horarioEstudiante.obtenerFranjasPorDia(numeroDia);
+		
+		return null;
 	}
 
 	@SuppressWarnings("rawtypes")
