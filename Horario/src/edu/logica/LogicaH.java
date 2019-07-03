@@ -51,9 +51,11 @@ public class LogicaH implements HorarioEstudiante {
 	 * Método para realizar la validación y agregación de franjas según los días en
 	 * los que se vaya a crear. Teniendo en cuenta que no se puede permitir el cruce
 	 * de horas.
-	 * @param nombreF: nombre de la franja
-	 * @param dias: arreglo de booleanos, en donde se expresa en que días estará habilitada la franja.
-	 * @param tipoF: tipo de franja.
+	 * 
+	 * @param nombreF:      nombre de la franja
+	 * @param dias:         arreglo de booleanos, en donde se expresa en que días
+	 *                      estará habilitada la franja.
+	 * @param tipoF:        tipo de franja.
 	 * @param horarioInicio
 	 * @param horarioFinal
 	 * @throws Exception
@@ -154,10 +156,37 @@ public class LogicaH implements HorarioEstudiante {
 
 	@Override
 	public List<Object[]> obtenerFranjas() {
-		for(Horario dia: horarioDia.horarios) {
-			
+		List<Object[]> franjas = new ArrayList<Object[]>();
+		for (Horario dia : horarioDia.horarios) {
+			for (Franja franja : dia.localizadorFranja.franjasDia) {
+				Object[] datos = new Object[6];
+				datos[0] = franja.getId();
+				datos[1] = franja.getNombreFranja();
+				datos[2] = franja.getTiempoInicio();
+				datos[3] = franja.getTiempoFinal();
+				datos[4] = franja.getTipoFranja();
+				datos[5] = franja.getDias();
+				franjas.add(datos);
+			}
 		}
-		return null;
+		return franjas;
+	}
+
+	@Override
+	public List<Object[]> obtenerFranjasPorDia(int numeroDia) {
+		List<Object[]> franjas = new ArrayList<Object[]>();
+		Horario dia = horarioDia.obtenerDiaPorNumero(numeroDia);
+		for (Franja franja : dia.localizadorFranja.franjasDia) {
+			Object[] datos = new Object[6];
+			datos[0] = franja.getId();
+			datos[1] = franja.getNombreFranja();
+			datos[2] = franja.getTiempoInicio();
+			datos[3] = franja.getTiempoFinal();
+			datos[4] = franja.getTipoFranja();
+			datos[5] = franja.getDias();
+			franjas.add(datos);
+		}
+		return franjas;
 	}
 
 }

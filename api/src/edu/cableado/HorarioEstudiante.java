@@ -13,7 +13,7 @@ public interface HorarioEstudiante {
 	void eliminarFranja(String nombreF);
 	/**
 	 * La estructura del arreglo de objetos es:
-	 * [0] = String id
+	 * [0] = int id
 	 * [1] = String nombreFranja
 	 * [2] = int tiempoInicial
 	 * [3] = int tiempoFinal
@@ -22,4 +22,5 @@ public interface HorarioEstudiante {
 	 * [6] = boolean ocupada
 	 */
 	List<Object[]> obtenerFranjas();
+	List<Object[]> obtenerFranjasPorDia(int dia);
 }
