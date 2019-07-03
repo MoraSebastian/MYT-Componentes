@@ -676,6 +676,7 @@ public class PanelAgenda extends JPanelAbstracto {
 	private void cargarTareasFecha(Date fecha){
 		try{
 			filtroFecha = informacion.solicitarListaTareasFecha(fecha);
+			
 		} catch(Exception e){
 			JOptionPane.showMessageDialog(null, "No se pudo cargar la lista de tareas, el componente no está disponible");
 		}

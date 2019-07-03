@@ -23,7 +23,9 @@ public class LogicaT implements tareaEstudiante {
 		}else {
 			JOptionPane.showMessageDialog(null, "Tarea");
 		}					
-	}	
+	}
+	
+	
 	@Override
 	/**
 	 * Metodo que obtiene las tareas padre sin importar fecha
@@ -186,14 +188,7 @@ public class LogicaT implements tareaEstudiante {
 	
 	public static void main(String[] args) {
 		LogicaT ges = new LogicaT();
-		ArrayList<String> array = ges.cNombreMaterias();
-		if(array != null) {
-			for (int i = 0; i < array.size(); i++) {
-				System.out.println(array.get(i));
-			}
-		}else {
-			System.out.println("algo paso con la consulta de nombres");
-		}		
+		ges.anadirTarea("nombretare1", "esta es la tarea 1", 2, "Trabajo", 18, (new Date("2016/06/25")), "", false);
 	}			
 	@Override
 	public void anadirSubTarea(String arg0, String arg1, int arg2, String arg3, String arg4, int arg5, Date arg6,
@@ -230,13 +225,14 @@ public class LogicaT implements tareaEstudiante {
 		case "Lectura":
 			fabrica = new FabricaLectura();
 			break;
-		case "Investigación":
+		case "Investigacion":
 			fabrica = new FabricaInvestigacion();
 		}
 		tarea = fabrica.crearTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6,
-				arg7);
-		
+				arg7);		
 		tareas.add(tarea);
+		System.out.println("LLEGA AL COMPONENTE TAREA DESDE AGENDA");
+		System.out.println(tarea.getFecha());
 	}
 	public void modificarTarea(String arg0, String arg1, int arg2, String arg3, String arg4, int arg5, Date arg6,
 			String arg7, boolean arg8) {

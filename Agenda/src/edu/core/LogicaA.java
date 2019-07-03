@@ -1,5 +1,6 @@
 package edu.core;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,7 +32,12 @@ public class LogicaA implements InformacionEstudiante {
 		}
 
 	}
-
+	
+	public static void main(String[] args) {
+		LogicaA logic = new LogicaA();
+		logic.anadirTarea("nombretare1", "esta es la tarea 1", 2, "Trabajo", 18, (new Date("2016/06/25")), "", false);
+	}
+	
 	public boolean Inf() {
 
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
@@ -164,11 +170,15 @@ public class LogicaA implements InformacionEstudiante {
 
 	@Override
 	public ArrayList<String[]> solicitarListaTareasFecha(Date fecha) {
-		return consultarTareasPendientes(fecha.toString(), "tpendientes");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String fechaComoCadena = sdf.format(fecha);
+		return consultarTareasPendientes(fechaComoCadena, "tpendientes");
 	}
 
 	public ArrayList<String[]> solicitarListaTareasPadreFecha(Date fecha) {
-		return consultarTareasPendientes(fecha.toString(), "tpendienteSinpadre");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String fechaComoCadena = sdf.format(fecha);
+		return consultarTareasPendientes(fechaComoCadena.toString(), "tpendienteSinpadre");
 	}
 
 	public ArrayList<String[]> consultarTareasPendientes(String fecha, String caso) {
@@ -214,16 +224,22 @@ public class LogicaA implements InformacionEstudiante {
 
 	@Override
 	public ArrayList<String[]> solicitarListaTareasFechaDificultad(Date fecha, int dificultad) {
-		return consultarTareasSegun(fecha.toString(), Integer.toString(dificultad), "dificultad");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String fechaComoCadena = sdf.format(fecha);
+		return consultarTareasSegun(fechaComoCadena, Integer.toString(dificultad), "dificultad");
 	}
 
 	@Override
 	public ArrayList<String[]> solicitarListaTareasFechaTipo(Date fecha, String tipo) {
-		return consultarTareasSegun(fecha.toString(), tipo, "tipo");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String fechaComoCadena = sdf.format(fecha);
+		return consultarTareasSegun(fechaComoCadena, tipo, "tipo");
 	}
 
 	public ArrayList<String[]> solicitarListaTareasFechaMateria(Date fecha, String materia) {
-		return consultarTareasSegun(fecha.toString(), materia, "materia");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String fechaComoCadena = sdf.format(fecha);
+		return consultarTareasSegun(fechaComoCadena, materia, "materia");
 	}
 
 	public ArrayList<String[]> consultarTareasSegun(String fecha, String nombre, String caso) {

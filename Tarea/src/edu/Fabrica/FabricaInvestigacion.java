@@ -17,13 +17,21 @@ public class FabricaInvestigacion implements FabricaAbstracta {
 		
 		Tarea tarea = new TareaInvestigacion();
 		tarea.setDescripcion(descripcionT);
+		System.out.println(tarea.getDescripcion());		
 		tarea.setDificultad(Integer.toString(dificultadT));
+		System.out.println(tarea.getDificultad());
 		tarea.setFecha(fechaComoCadena);
+		System.out.println(tarea.getFecha());
 		tarea.setHora(Integer.toString(horaFinalizacionT));
+		System.out.println(tarea.getHora());
 		tarea.setMateria(materia);
+		System.out.println(tarea.getMateria());
 		tarea.setNombre(nombreT);
+		System.out.println(tarea.getNombre());
 		tarea.setTareas("null");
+		System.out.println(tarea.getTareas());
 		tarea.setTipo(tipoT);
+		System.out.println(tarea.getTipo());
 		return tarea;
 								
 	}

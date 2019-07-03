@@ -185,19 +185,18 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 						subTarea = true;
 						informacion.anadirSubTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), Integer.parseInt(cbxDificultad.getSelectedItem().toString()),
 								cbxTipo.getSelectedItem().toString(), pertenencia,spinField.getValue(), dateChooser.getDate(),
-								cbxPerteneceAmateria.getSelectedItem().toString(), subTarea);
+								"", subTarea);
 					} else{
 						subTarea = false;
 						informacion.anadirTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), Integer.parseInt(cbxDificultad.getSelectedItem().toString()), 
-								cbxTipo.getToolTipText(), spinField.getValue(), dateChooser.getDate(), cbxPerteneceAmateria.getSelectedItem().toString(),
+								cbxTipo.getSelectedItem().toString(), spinField.getValue(), dateChooser.getDate(), "",
 								subTarea);
 					}
 					dispose();
 				} catch(Exception e){
 					JOptionPane.showMessageDialog(null,
 							"No se pudo agregar la tarea porque el componente no está cargado ");
-				}
-				
+				}				
 			}
 		});
 		
