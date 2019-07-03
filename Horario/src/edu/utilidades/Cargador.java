@@ -10,11 +10,13 @@ import java.util.jar.Manifest;
 
 public class Cargador {
 	URLClassLoader cargador;
+	@SuppressWarnings("rawtypes")
 	HashMap registro=new HashMap();
 	URL urls[];
 	public Cargador(String dir,ClassLoader padre) {
 		cargarURL(dir,padre);
 	}
+	@SuppressWarnings("unchecked")
 	private void cargarURL(String dir,ClassLoader padre) {
 		File archivos[] = new File(dir).listFiles();
 		urls = new URL[archivos.length];
@@ -35,6 +37,7 @@ public class Cargador {
 		}
 		cargador = new URLClassLoader(urls,padre);
 	}
+	@SuppressWarnings("rawtypes")
 	public Class cargarUnaClaseDesdeSuDirectorio(String nombre) {		
 		try {
 			String comp = (String)registro.get(nombre);

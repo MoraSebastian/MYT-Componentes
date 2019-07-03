@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 
 Name: COMPONENTE
-nombre: edu.cableado.horarioEstudiante
+nombre: edu.cableado.HorarioEstudiante
 clase: edu.logica.LogicaH
