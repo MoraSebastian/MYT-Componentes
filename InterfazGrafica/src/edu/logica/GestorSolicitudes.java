@@ -87,9 +87,9 @@ public class GestorSolicitudes {
 		}
 	}
 	
-	public ArrayList<String[]> solicitarListaTareas(){
+	public ArrayList<String> solicitarListaTareas(){
 		try {
-			return interfaceSolicitudes.solicitarListaTareas();
+			return interfaceSolicitudes.solicitarListaNombresTareaPadre();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					"No se pudo obtener la lista de tareas porque el componente no está disponible");
@@ -99,7 +99,7 @@ public class GestorSolicitudes {
 	
 	public ArrayList<String> solicitarMaterias(){
 		try {
-			return interfaceSolicitudes.solicitarMaterias();
+			return interfaceSolicitudes.solicitarListaNombresMateria();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					"No se pudo obtener la lista de materias porque el componente no está disponible");

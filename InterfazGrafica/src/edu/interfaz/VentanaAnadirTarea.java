@@ -181,6 +181,7 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 								pertenencia = todasLasTareas.get(i)[0];
 							}
 						}
+						
 						subTarea = true;
 						informacion.anadirSubTarea(txtNombretarea.getText(), txtrDescripciontarea.getText(), Integer.parseInt(cbxDificultad.getSelectedItem().toString()),
 								cbxTipo.getSelectedItem().toString(), pertenencia,spinField.getValue(), dateChooser.getDate(),
@@ -227,17 +228,17 @@ public class VentanaAnadirTarea extends JFrameGeneral {
 	
 	private void cargarTareas(){
 		try{
-			todasLasTareas = informacion.solicitarListaTareas();
-			modeloMaterias = new String[todasLasTareas.size()];
-			for(int i=0; i<todasLasTareas.size(); i++){
-				modeloTareas[i]= todasLasTareas.get(i)[7];
+			//todasLasTareas = informacion.solicitarListaTareas();
+			//modeloMaterias = new String[todasLasTareas.size()];
+			ArrayList<String> array = informacion.solicitarListaTareas();
+			for(int i=0; i<array.size(); i++){
+				//modeloTareas[i]= todasLasTareas.get(i)[7];
+				modeloTareas[i]= array.get(i);
 			}
 		} catch(Exception e){
 			JOptionPane.showMessageDialog(null,
 					"No se pudo obtener la lista de tareas porque el componente no está disponible ");
-		}
-		
-		
+		}				
 	}
 	
 	private void cargarMaterias(){

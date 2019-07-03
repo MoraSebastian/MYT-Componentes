@@ -2,6 +2,8 @@ package edu.interfaz;
 
 import java.awt.EventQueue;
 
+import javax.swing.JOptionPane;
+
 import edu.cableado.InformacionEstudiante;
 import edu.cableado.consultarTarea;
 import edu.logica.GestorSolicitudes;
@@ -23,7 +25,7 @@ public class Interfaz {
 			}			
 		}catch (Exception e) {
 			e.printStackTrace();
-			
+			JOptionPane.showMessageDialog(null, "AGENDA NO CARGA");
 		}		
 		
 		informacion = new GestorSolicitudes(ct);
