@@ -24,98 +24,121 @@ public class LogicaT implements tareaEstudiante {
 			JOptionPane.showMessageDialog(null, "Tarea");
 		}					
 	}	
-	public boolean Registrar(String datos[]) {
-		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
-		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(consultarTarea.class.getName());
-			if(cls != null) {
-				consultarTarea ct = (consultarTarea) cls.newInstance();				
-			    ct.RegistrarT(datos);			    
-			}
-			return true;
-		}catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}		
-	}
+	@Override
 	public ArrayList<String[]> cTareasPadre() {
-		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
-		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(consultarTarea.class.getName());
-			if(cls != null) {
-				consultarTarea ct = (consultarTarea) cls.newInstance();	
-				return ct.cTareasPadre();	    		   
-			}else {
-				return null;
+		ArrayList<String[]> array = new ArrayList<String[]>();
+		for (int i = 0; i < tareas.size(); i++) {
+			if (tareas.get(i).getTareas().equals("null")) {
+				String[] t = new String[8];
+				t[0] = tareas.get(i).getDescripcion();
+				t[1] = tareas.get(i).getNombre();
+				t[2] = tareas.get(i).getDificultad();
+				t[3] = tareas.get(i).getTareas();
+				t[4] = tareas.get(i).getTipo();
+				t[5] = tareas.get(i).getMateria();
+				t[6] = tareas.get(i).getFecha();
+				t[7] = tareas.get(i).getHora();
+				array.add(t);
 			}
-		}catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}		
+		}
+		return array;
 	}
+	/**
+	 * Metodo que retorna tareas pendientes para una fecha 
+	 */
 	public ArrayList<String[]> cTareasPendientes(String fecha){
-		return consultarTareasPendientes(fecha, "tpendientes");
-	}
-	public ArrayList<String[]> cTareasP(String fecha){
-		return consultarTareasPendientes(fecha, "tpendienteSinpadre");
-	}
-	public ArrayList<String[]> consultarTareasPendientes(String fecha, String caso) {
-		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
-		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(consultarTarea.class.getName());
-			if(cls != null) {
-				consultarTarea ct = (consultarTarea) cls.newInstance();	
-				switch (caso) {
-				case "tpendientes":
-					return ct.cTareasPendientes(fecha);					
-				case "tpendienteSinpadre":
-					return ct.cTareasPadre(fecha);
-				default:
-					return null;
-				}			    		   
-			}else {
-				return null;
+		ArrayList<String[]> array = new ArrayList<String[]>();
+		for (int i = 0; i < tareas.size(); i++) {
+			if (tareas.get(i).getFecha() == fecha) {
+				String[] t = new String[8];
+				t[0] = tareas.get(i).getDescripcion();
+				t[1] = tareas.get(i).getNombre();
+				t[2] = tareas.get(i).getDificultad();
+				t[3] = tareas.get(i).getTareas();
+				t[4] = tareas.get(i).getTipo();
+				t[5] = tareas.get(i).getMateria();
+				t[6] = tareas.get(i).getFecha();
+				t[7] = tareas.get(i).getHora();
+				array.add(t);
 			}
-		}catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}		
-	}
-	//PRUEBA DE CONSULTA DE NOMBRES DE TAREAS
-	public ArrayList<String[]> cTareasPorMateria(String fecha, String nombre){
-		return consultarTareasSegun(fecha, nombre, "materia");
-	}
-	public ArrayList<String[]> cTareasPorTipo(String fecha, String nombre){
-		return consultarTareasSegun(fecha, nombre, "tipo");
-	}
-	public ArrayList<String[]> cTareasPorDificultad(String fecha, String nombre){
-		return consultarTareasSegun(fecha, nombre, "dificultad");
+		}
+		return array;
+	}	
+	@Override
+	public ArrayList<String[]> cTareasPadre(String fecha) {
+		ArrayList<String[]> array = new ArrayList<String[]>();
+		for (int i = 0; i < tareas.size(); i++) {
+			if (tareas.get(i).getFecha() == fecha && tareas.get(i).getTareas().equals("null")) {
+				String[] t = new String[8];
+				t[0] = tareas.get(i).getDescripcion();
+				t[1] = tareas.get(i).getNombre();
+				t[2] = tareas.get(i).getDificultad();
+				t[3] = tareas.get(i).getTareas();
+				t[4] = tareas.get(i).getTipo();
+				t[5] = tareas.get(i).getMateria();
+				t[6] = tareas.get(i).getFecha();
+				t[7] = tareas.get(i).getHora();
+				array.add(t);
+			}
+		}
+		return array;
 	}
 	
-	public ArrayList<String[]> consultarTareasSegun(String fecha, String nombre, String caso){
-		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
-		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(consultarTarea.class.getName());
-			if(cls != null) {
-				consultarTarea ct = (consultarTarea) cls.newInstance();	
-				switch (caso) {
-				case "tipo":
-					return ct.cTareasPorTipo(fecha, nombre);					
-				case "dificultad":
-					return ct.cTareasPorDificultad(fecha, nombre);
-				case "materia":
-					return ct.cTareasPorMateria(fecha, nombre);
-				default:
-					return null;
-				}			    		   
-			}else {
-				return null;
+	public ArrayList<String[]> cTareasPorMateria(String fecha, String materia){
+		ArrayList<String[]> array = new ArrayList<String[]>();
+		for (int i = 0; i < tareas.size(); i++) {
+			if (tareas.get(i).getMateria() == materia && tareas.get(i).getFecha() == fecha) {
+				String[] t = new String[8];
+				t[0] = tareas.get(i).getDescripcion();
+				t[1] = tareas.get(i).getNombre();
+				t[2] = tareas.get(i).getDificultad();
+				t[3] = tareas.get(i).getTareas();
+				t[4] = tareas.get(i).getTipo();
+				t[5] = tareas.get(i).getMateria();
+				t[6] = tareas.get(i).getFecha();
+				t[7] = tareas.get(i).getHora();
+				array.add(t);
 			}
-		}catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}		
+		}
+		return array;
 	}
+	public ArrayList<String[]> cTareasPorTipo(String fecha, String tipo){
+		ArrayList<String[]> array = new ArrayList<String[]>();
+		for (int i = 0; i < tareas.size(); i++) {
+			if (tareas.get(i).getTipo() == tipo && tareas.get(i).getTipo() == tipo) {
+				String[] t = new String[8];
+				t[0] = tareas.get(i).getDescripcion();
+				t[1] = tareas.get(i).getNombre();
+				t[2] = tareas.get(i).getDificultad();
+				t[3] = tareas.get(i).getTareas();
+				t[4] = tareas.get(i).getTipo();
+				t[5] = tareas.get(i).getMateria();
+				t[6] = tareas.get(i).getFecha();
+				t[7] = tareas.get(i).getHora();
+				array.add(t);
+			}
+		}
+		return array;
+	}
+	public ArrayList<String[]> cTareasPorDificultad(String fecha, String dificultad){
+		ArrayList<String[]> array = new ArrayList<String[]>();
+		for (int i = 0; i < tareas.size(); i++) {
+			if (tareas.get(i).getDificultad() == dificultad && tareas.get(i).getFecha() == fecha) {
+				String[] t = new String[8];
+				t[0] = tareas.get(i).getDescripcion();
+				t[1] = tareas.get(i).getNombre();
+				t[2] = tareas.get(i).getDificultad();
+				t[3] = tareas.get(i).getTareas();
+				t[4] = tareas.get(i).getTipo();
+				t[5] = tareas.get(i).getMateria();
+				t[6] = tareas.get(i).getFecha();
+				t[7] = tareas.get(i).getHora();
+				array.add(t);
+			}
+		}
+		return array;
+	}
+	
 	
 	public ArrayList<String> cNombreMaterias(){
 		return consultarNombre("materia");
@@ -179,10 +202,7 @@ public class LogicaT implements tareaEstudiante {
 		while(arg4 != tareas.get(i).getTareas()) {
 			i++;
 		}
-		tareas.get(i).anadirHijo(tarea);		
-		String [] datos = {"", tarea.getDescripcion(), tarea.getTareas(), tarea.getDificultad(), tarea.getTipo(),
-				tarea.getFecha(), tarea.getMateria(), tarea.getNombre(), tarea.getHora()};
-		Registrar(datos);
+		tareas.get(i).anadirHijo(tarea);				
 	}
 	@Override
 	public void anadirTarea(String arg0, String arg1, int arg2, String arg3, int arg4, Date arg5, String arg6,
@@ -203,9 +223,6 @@ public class LogicaT implements tareaEstudiante {
 				arg7);
 		
 		tareas.add(tarea);
-		String [] datos = {"", tarea.getDescripcion(), tarea.getTareas(), tarea.getDificultad(), tarea.getTipo(),
-				tarea.getFecha(), tarea.getMateria(), tarea.getNombre(), tarea.getHora()};
-		Registrar(datos);
 	}
 	public void modificarTarea(String arg0, String arg1, int arg2, String arg3, String arg4, int arg5, Date arg6,
 			String arg7, boolean arg8) {
@@ -215,9 +232,8 @@ public class LogicaT implements tareaEstudiante {
 		}
 		tareas.get(i).ModificarT(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 	}
-	@Override
-	public ArrayList<String[]> cTareasPadre(String arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}	
+
+	
+							
+	
 }
