@@ -15,7 +15,7 @@ import edu.utilidades.Cargador;
 
 public class LogicaA implements InformacionEstudiante {
 	private static HorarioEstudiante horarioEstudiante = null;
-<<<<<<< HEAD
+
 	
 	/*
 =======
@@ -45,45 +45,18 @@ public class LogicaA implements InformacionEstudiante {
 		} else {
 			JOptionPane.showMessageDialog(null, "Tarea");
 		}
-		}		
+				
 	}
 
-<<<<<<< HEAD
+
 	
 	public void Enviar(String arg0, String arg1, int arg2, String arg3, int arg4, Date arg5, String arg6,
 			boolean arg7) {
-=======
-	public ArrayList<String> Resivir() {
-		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
-		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
-			/*if(cls != null) {
-				HorarioEstudiante he = (HorarioEstudiante) cls.newInstance();
-				he.H();
-			}*/
-			
-			if(cls != null) {
-				tareaEstudiante te = (tareaEstudiante) cls.newInstance();				
-				return te.consultarMaterias();
-			}else {
-				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO TAREA ESTUDIANTE");
-				return null;
-			}
-			/*
-			cls = cc.cargarUnaClaseDesdeSuDirectorio(Sugerencia.class.getName());
-			if(cls != null) {
-				Sugerencia s = (Sugerencia) cls.newInstance();
-				s.S();
-			}*/
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}						
+		
 	}
 
 	public boolean Inf() {
->>>>>>> cfc405c50e22555bea4c90cfdea40ad0367602d5
+
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
 			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(HorarioEstudiante.class.getName());
@@ -277,6 +250,14 @@ public class LogicaA implements InformacionEstudiante {
 	
 	@Override
 	public ArrayList<String[]> solicitarListaTareas() {
+		return null;
+	}
+
+
+
+	@Override
+	public ArrayList<String> solicitarMaterias() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	
