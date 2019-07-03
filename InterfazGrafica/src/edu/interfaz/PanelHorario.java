@@ -97,6 +97,11 @@ public class PanelHorario extends JPanelAbstracto{
 		panel.add(btnAnadirTarea);
 		
 		JButton btnGuardarHorario = new JButton("");
+		btnGuardarHorario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				llenarModelo();
+			}
+		});
 		btnGuardarHorario.setRolloverIcon(new ImageIcon(PanelHorario.class.getResource("/edu/recursos/Recurso 29@0.75x.png")));
 		btnGuardarHorario.setIcon(new ImageIcon(PanelHorario.class.getResource("/edu/recursos/Recurso 28@0.75x.png")));
 		btnGuardarHorario.setBounds(869, 127, 147, 38);
