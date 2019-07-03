@@ -27,24 +27,24 @@ class TestGestorFranjas {
 		int horaInicial = 0, horaFinal = 0;
 		String nombreFranja = "";
 		// --Creación de franjas
-				dias[0] = true;
-				dias[1] = true;
-				dias[2] = true;
-				dias[3] = true;
-				dias[4] = true;
-				dias[5] = false;
-				dias[6] = false;
-				tipoFranja = tiposFranja[3].name();
-				horaInicial = 18;
-				horaFinal = 20;
-				nombreFranja = "Franja Libre";
-				try {
-					logicaAgenda.anadirFranja(nombreFranja, dias, tipoFranja, horaInicial, horaFinal);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				// --
+		dias[0] = true;
+		dias[1] = true;
+		dias[2] = true;
+		dias[3] = true;
+		dias[4] = true;
+		dias[5] = false;
+		dias[6] = false;
+		tipoFranja = tiposFranja[3].name();
+		horaInicial = 18;
+		horaFinal = 20;
+		nombreFranja = "Franja Libre";
+		try {
+			logicaAgenda.anadirFranja(nombreFranja, dias, tipoFranja, horaInicial, horaFinal);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// --
 		// --Creación de franjas
 		dias[0] = true;
 		dias[1] = true;
@@ -159,7 +159,7 @@ class TestGestorFranjas {
 			e.printStackTrace();
 		}
 		// --
-		List<String[]> listadoDia = logicaAgenda.obtenerFranjasPorDia(0);
+		List<String> listadoDia = logicaAgenda.obtenerFranjasPorDia(0);
 		List<Object[]> listadoFranjas = logicaAgenda.getHorarioEstudiante().obtenerFranjas();
 		System.out.println(listadoDia);
 	}

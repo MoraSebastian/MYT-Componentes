@@ -84,11 +84,15 @@ public class LogicaA implements InformacionEstudiante {
 
 
 	@Override
-	public List<String[]> obtenerFranjasPorDia(int numeroDia) {
+	public List<String> obtenerFranjasPorDia(int numeroDia) {
 		GestorFranjas gestorFranjas = new GestorFranjas();
 		List<Object[]> franjasDia = horarioEstudiante.obtenerFranjasPorDia(numeroDia);
-		
-		return gestorFranjas.gestionarFranjas(franjasDia);
+		List<String[]> listadoArregloString = gestorFranjas.gestionarFranjas(franjasDia);
+		List<String> listadoRetorno = new ArrayList<String>();
+		for(String[] arrString: listadoArregloString) {
+			listadoRetorno.add(arrString[1]);
+		}
+		return listadoRetorno;
 	}
 
 	@SuppressWarnings("rawtypes")

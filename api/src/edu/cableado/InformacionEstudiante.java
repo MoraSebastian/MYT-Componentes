@@ -33,7 +33,7 @@ public interface InformacionEstudiante {
 	 * @param dia: número del día del que se requieren las franjas.
 	 * @return
 	 */
-	List<String[]> obtenerFranjasPorDia(int dia);
+	List<String> obtenerFranjasPorDia(int dia);
 
 	@SuppressWarnings("rawtypes")
 	Enum[] obtenerTiposDeFranjas();

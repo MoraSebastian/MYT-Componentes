@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import edu.core.LogicaA;
 
 public class GestorFranjas {
 	private static final ConversorFranjas conversorFranjas = new ConversorFranjas();
 	private static final int CANTIDAD_HORAS = 24;
-	private static final String NO_ASIGNADA = "NO ASIGNADA";
+	public static final String NO_ASIGNADA = "NO ASIGNADA";
+	private static Map<Integer, SubFranja> mapaFranjas = new TreeMap<Integer, SubFranja>();
 
 	public List<String[]> gestionarFranjas(List<Object[]> franjas) {
 		List<String[]> franjasString = new ArrayList<String[]>();
@@ -21,11 +25,28 @@ public class GestorFranjas {
 			List<SubFranja> subfranjas = conversorFranjas.convertirFranjaEnSubFranja(franja);
 			subFranjasTotales.addAll(subfranjas);
 		}
-		ordenarListadoFranjas(subFranjasTotales);
-		for(SubFranja sub: subFranjasTotales) {
+		for (SubFranja sf : subFranjasTotales) {
+			mapaFranjas.put(sf.getHora(), sf);
+		}
+		llenarEspaciosVacios();
+		List<SubFranja> sft = new ArrayList<>(mapaFranjas.values());
+		for (SubFranja sub : sft) {
 			franjasString.add(conversorFranjas.convertirSubFranjaEnString(sub));
 		}
 		return franjasString;
+	}
+
+	public void llenarEspaciosVacios() {
+		for (int i = 0; i < CANTIDAD_HORAS; i++) {
+			if (!mapaFranjas.containsKey(i)) {
+				SubFranja subFranja = new SubFranja();
+				subFranja.setHora(i);
+				subFranja.setId(0);
+				subFranja.setNombreFranja(NO_ASIGNADA);
+				subFranja.setTipoFranja(null);
+				mapaFranjas.put(i, subFranja);
+			}
+		}
 	}
 
 	public void ordenarListadoFranjas(List<SubFranja> franjas) {

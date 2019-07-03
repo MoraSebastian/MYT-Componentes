@@ -32,7 +32,11 @@ public class ConversorFranjas {
 		String[] datosStr = new String[3];
 		datosStr[0] = String.valueOf(subFranja.getId());
 		datosStr[1] = subFranja.getNombreFranja();
-		datosStr[2] = subFranja.getTipoFranja().name();
+		if (subFranja.getTipoFranja() != null) {
+			datosStr[2] = subFranja.getTipoFranja().name();
+		} else {
+			datosStr[2] = GestorFranjas.NO_ASIGNADA;
+		}
 		return datosStr;
 	}
 }
