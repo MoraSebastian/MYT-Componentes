@@ -57,6 +57,7 @@ public class LogicaA implements InformacionEstudiante {
 	@Override
 	public void anadirFranja(String nombreFranja, boolean[] dias, String tipoFranja, int horaInicial, int horaFinal)
 			throws Exception {
+		I();
 		if (horarioEstudiante != null) {
 			try {
 				horarioEstudiante.agregarFranja(nombreFranja, dias, tipoFranja, horaInicial, horaFinal);
