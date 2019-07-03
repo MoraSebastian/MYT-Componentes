@@ -16,13 +16,16 @@ import edu.utilidades.Cargador;
 public class LogicaA implements InformacionEstudiante {
 	private static HorarioEstudiante horarioEstudiante = null;
 
+	public LogicaA() {
+		I();
+	}
 
 	@Override
 	public void I() {
 		if (Inf()) {
-			JOptionPane.showMessageDialog(null, "Agenda + Tarea(BD) + Horario(BD) + Recomendacion ");
+			System.out.println("Se cargaron los componentes");
 		} else {
-			JOptionPane.showMessageDialog(null, "Tarea");
+			System.out.println("No se cargaron los componentes");
 		}
 
 	}
@@ -57,7 +60,9 @@ public class LogicaA implements InformacionEstudiante {
 	@Override
 	public void anadirFranja(String nombreFranja, boolean[] dias, String tipoFranja, int horaInicial, int horaFinal)
 			throws Exception {
-		I();
+		if (horarioEstudiante == null) {
+			I();
+		}
 		if (horarioEstudiante != null) {
 			try {
 				horarioEstudiante.agregarFranja(nombreFranja, dias, tipoFranja, horaInicial, horaFinal);
@@ -73,6 +78,15 @@ public class LogicaA implements InformacionEstudiante {
 	public void eliminarFranja() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public Enum[] obtenerTiposDeFranjas() {
+		if (horarioEstudiante == null) {
+			I();
+		}
+		return horarioEstudiante.obtenerTiposDeFranjas();
 	}
 
 	@Override
@@ -92,7 +106,8 @@ public class LogicaA implements InformacionEstudiante {
 		// TODO Auto-generated method stub
 
 	}
-	//ESTE MÉTODO ES PARA ANADIR UNA SUBTAREA
+
+	// ESTE MÉTODO ES PARA ANADIR UNA SUBTAREA
 	@Override
 	public void anadirSubTarea(String arg0, String arg1, int arg2, String arg3, String arg4, int arg5, Date arg6,
 			String arg7, boolean arg8) {
@@ -101,13 +116,14 @@ public class LogicaA implements InformacionEstudiante {
 			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
 			if (cls != null) {
 				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
-				te.anadirSubTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);					
-			}													
+				te.anadirSubTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+			}
 		} catch (Exception e) {
-			e.printStackTrace();			
+			e.printStackTrace();
 		}
 	}
-	//ESTE MÉTODO ES PARA ANADIR UNA TAREA
+
+	// ESTE MÉTODO ES PARA ANADIR UNA TAREA
 	@Override
 	public void anadirTarea(String arg0, String arg1, int arg2, String arg3, int arg4, Date arg5, String arg6,
 			boolean arg7) {
@@ -116,10 +132,10 @@ public class LogicaA implements InformacionEstudiante {
 			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
 			if (cls != null) {
 				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
-				te.anadirTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);						
-			}															
+				te.anadirTarea(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+			}
 		} catch (Exception e) {
-			e.printStackTrace();			
+			e.printStackTrace();
 		}
 	}
 
@@ -132,24 +148,21 @@ public class LogicaA implements InformacionEstudiante {
 	}
 
 	@Override
-	public Enum[] obtenerTiposDeFranjas() {
-		return horarioEstudiante.obtenerTiposDeFranjas();
-	}
-
-	@Override
 	public ArrayList<String[]> solicitarListaTareasFecha(Date fecha) {
 		return consultarTareasPendientes(fecha.toString(), "tpendientes");
 	}
+
 	public ArrayList<String[]> solicitarListaTareasPadreFecha(Date fecha) {
 		return consultarTareasPendientes(fecha.toString(), "tpendienteSinpadre");
 	}
+
 	public ArrayList<String[]> consultarTareasPendientes(String fecha, String caso) {
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
 			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
-			if(cls != null) {
+			if (cls != null) {
 				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
-				switch(caso) {
+				switch (caso) {
 				case "tpendientes":
 					return te.cTareasPendientes(fecha);
 				case "tpendienteSinpadre":
@@ -157,27 +170,28 @@ public class LogicaA implements InformacionEstudiante {
 				default:
 					return null;
 				}
-			}else {
+			} else {
 				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO TAREA ESTUDIANTE");
 				return null;
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
+
 	public ArrayList<String[]> solicitarListaTareasPadre() {
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
 			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
-			if(cls != null) {
-				tareaEstudiante te = (tareaEstudiante) cls.newInstance();								
-				return te.cTareasPadre();											
-			}else {
+			if (cls != null) {
+				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
+				return te.cTareasPadre();
+			} else {
 				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO TAREA ESTUDIANTE");
 				return null;
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -192,16 +206,18 @@ public class LogicaA implements InformacionEstudiante {
 	public ArrayList<String[]> solicitarListaTareasFechaTipo(Date fecha, String tipo) {
 		return consultarTareasSegun(fecha.toString(), tipo, "tipo");
 	}
+
 	public ArrayList<String[]> solicitarListaTareasFechaMateria(Date fecha, String materia) {
 		return consultarTareasSegun(fecha.toString(), materia, "materia");
 	}
-	public ArrayList<String[]> consultarTareasSegun(String fecha, String nombre, String caso){
+
+	public ArrayList<String[]> consultarTareasSegun(String fecha, String nombre, String caso) {
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
 			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
-			if(cls != null) {
+			if (cls != null) {
 				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
-				switch(caso) {
+				switch (caso) {
 				case "tipo":
 					return te.cTareasPorTipo(fecha, nombre);
 				case "dificultad":
@@ -211,30 +227,31 @@ public class LogicaA implements InformacionEstudiante {
 				default:
 					return null;
 				}
-			}else {
+			} else {
 				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO TAREA ESTUDIANTE");
 				return null;
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
 
-	public ArrayList<String> solicitarListaNombresMateria(){
+	public ArrayList<String> solicitarListaNombresMateria() {
 		return consultarNombre("materia");
 	}
-	public ArrayList<String> solicitarListaNombresTareaPadre(){
+
+	public ArrayList<String> solicitarListaNombresTareaPadre() {
 		return consultarNombre("tareap");
 	}
 
-	public ArrayList<String> consultarNombre(String caso){
+	public ArrayList<String> consultarNombre(String caso) {
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
 			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
-			if(cls != null) {
+			if (cls != null) {
 				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
-				switch(caso) {
+				switch (caso) {
 				case "tareap":
 					return te.cNombreTareasPadre();
 				case "materia":
@@ -242,25 +259,20 @@ public class LogicaA implements InformacionEstudiante {
 				default:
 					return null;
 				}
-			}else {
+			} else {
 				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO TAREA ESTUDIANTE");
 				return null;
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-
-	
-
-
 
 	@Override
 	public ArrayList<String> solicitarMaterias() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }
