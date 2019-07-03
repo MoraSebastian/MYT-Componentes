@@ -15,6 +15,9 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.awt.Cursor;
@@ -30,6 +33,8 @@ import com.toedter.components.JSpinField;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import com.toedter.calendar.JCalendar;
+import javax.swing.JFormattedTextField;
 
 public class PanelAgenda extends JPanelAbstracto {
 	
@@ -62,8 +67,10 @@ public class PanelAgenda extends JPanelAbstracto {
 	private JLabel llblTextoTarea8;
 	private JLabel llblTextoTarea9;
 	private JLabel llblTextoTarea10;
-	public PanelAgenda(JFrame frameActual, GestorSolicitudes info) {
-		super.frameActual = frameActual;
+	private JTextField txtFecha;
+	Date date1 = null;
+	public PanelAgenda(JFrame frameActual2, GestorSolicitudes info) {
+		super.frameActual = frameActual2;
 		super.informacion = info;
 		
 		setLayout(null);	
@@ -72,29 +79,34 @@ public class PanelAgenda extends JPanelAbstracto {
 		add(panel);
 		panel.setLayout(null);
 		
-		
+		txtFecha = new JTextField();
+		txtFecha.setBounds(277, 166, 147, 20);
+		panel.add(txtFecha);
+		txtFecha.setColumns(10); 
+	    
 		cbxFranja = new JComboBox();
 		cbxFranja.setEnabled(false);
-		cbxFranja.setBounds(368, 360, 134, 20);
+		cbxFranja.setBounds(368, 304, 134, 20);
 		panel.add(cbxFranja);
 		
 		cbxTipo = new JComboBox();
 		cbxTipo.setModel(new DefaultComboBoxModel(new String[] {"Trabajo", "Lectura", "Investigacion"}));
 		cbxTipo.setEnabled(false);
-		cbxTipo.setBounds(203, 448, 134, 20);
+		cbxTipo.setBounds(203, 392, 134, 20);
 		panel.add(cbxTipo);
 		
 		cbxDificultad = new JComboBox();
-		cbxDificultad.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6"}));
+		cbxDificultad.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
 		cbxDificultad.setEnabled(false);
-		cbxDificultad.setBounds(368, 448, 134, 20);
+		cbxDificultad.setBounds(368, 392, 134, 20);
 		panel.add(cbxDificultad);
 		
 		JRadioButton rdbtnTodas = new JRadioButton("Todas");
+		rdbtnTodas.setEnabled(false);
 		buttonGroup.add(rdbtnTodas);
 		rdbtnTodas.setBackground(Color.PINK);
 		rdbtnTodas.setSelected(true);
-		rdbtnTodas.setBounds(203, 315, 134, 23);
+		rdbtnTodas.setBounds(203, 259, 134, 23);
 		rdbtnTodas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cbxDificultad.setEnabled(false);
@@ -108,7 +120,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		rdbtnPorFranja.setEnabled(false);
 		buttonGroup.add(rdbtnPorFranja);
 		rdbtnPorFranja.setBackground(Color.PINK);
-		rdbtnPorFranja.setBounds(368, 315, 134, 23);
+		rdbtnPorFranja.setBounds(368, 259, 134, 23);
 		rdbtnPorFranja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cbxDificultad.setEnabled(false);
@@ -119,9 +131,10 @@ public class PanelAgenda extends JPanelAbstracto {
 		panel.add(rdbtnPorFranja);
 		
 		JRadioButton rdbtnPorDificultad = new JRadioButton("Por dificultad");
+		rdbtnPorDificultad.setEnabled(false);
 		buttonGroup.add(rdbtnPorDificultad);
 		rdbtnPorDificultad.setBackground(Color.PINK);
-		rdbtnPorDificultad.setBounds(368, 403, 134, 23);
+		rdbtnPorDificultad.setBounds(368, 347, 134, 23);
 		rdbtnPorDificultad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cbxTipo.setEnabled(false);
@@ -132,9 +145,10 @@ public class PanelAgenda extends JPanelAbstracto {
 		panel.add(rdbtnPorDificultad);
 		
 		JRadioButton rdbtnPorTipo = new JRadioButton("Por tipo");
+		rdbtnPorTipo.setEnabled(false);
 		buttonGroup.add(rdbtnPorTipo);
 		rdbtnPorTipo.setBackground(Color.PINK);
-		rdbtnPorTipo.setBounds(203, 403, 134, 23);
+		rdbtnPorTipo.setBounds(203, 347, 134, 23);
 		rdbtnPorTipo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cbxDificultad.setEnabled(false);
@@ -149,15 +163,15 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnFiltrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnTodas.isSelected()){
-					//cargarTareasFecha(dateChooser.getDate());
+					cargarTareasFecha(date1);
 					mostrarListaTareas(filtroFecha);
 				}
 				if(rdbtnPorDificultad.isSelected()){
-					//cargarTareasFechaDificultad(dateChooser.getDate(), Integer.parseInt(cbxDificultad.getSelectedItem().toString()));
+					cargarTareasFechaDificultad(date1, Integer.parseInt(cbxDificultad.getSelectedItem().toString()));
 					mostrarListaTareas(filtroFechaDificultad);
 				}
 				if(rdbtnPorTipo.isSelected()){
-					//cargarTareasFechaTipo(dateChooser.getDate(), cbxTipo.getSelectedItem().toString());
+					cargarTareasFechaTipo(date1, cbxTipo.getSelectedItem().toString());
 					mostrarListaTareas(filtroFechaTipo);
 				}
 			}
@@ -172,14 +186,24 @@ public class PanelAgenda extends JPanelAbstracto {
 		
 		JButton btnVerTareas = new JButton("");
 		btnVerTareas.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent arg0) {
-				//cargarTareasFecha(dateChooser.getDate());
+				rdbtnTodas.setEnabled(true);
+				rdbtnPorDificultad.setEnabled(true);
+				rdbtnPorTipo.setEnabled(true);
+					try {
+						date1 = new SimpleDateFormat("yyyy/MM/dd").parse(txtFecha.getText());
+					} catch (ParseException e1) {
+						e1.printStackTrace();
+					}  
+				    System.out.println(txtFecha.getText()+"\t"+date1); 
+				cargarTareasFecha(date1);
 				mostrarListaTareas(filtroFecha);
 			}
 		});
 		btnVerTareas.setRolloverIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 44@0.75x.png")));
 		btnVerTareas.setIcon(new ImageIcon(PanelAgenda.class.getResource("/edu/recursos/Recurso 45@0.75x.png")));
-		btnVerTareas.setBounds(277, 195, 147, 38);
+		btnVerTareas.setBounds(277, 197, 147, 38);
 		btnVerTareas.setOpaque(false);
 		btnVerTareas.setBorderPainted(false);
 		btnVerTareas.setContentAreaFilled(false);
@@ -204,9 +228,7 @@ public class PanelAgenda extends JPanelAbstracto {
 		btnVolver.setContentAreaFilled(false);
 		panel.add(btnVolver);
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(287, 154, 119, 20);
-		panel.add(dateChooser);
+		
 		
 		
 		panelTareas1 = new JPanel();

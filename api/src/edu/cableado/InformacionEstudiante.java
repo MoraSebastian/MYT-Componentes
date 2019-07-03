@@ -17,6 +17,6 @@ public interface InformacionEstudiante {
 	ArrayList<String[]> solicitarListaTareasFecha(Date fecha);
 	ArrayList<String[]> solicitarListaTareasFechaDificultad(Date fecha, int dificultad);
 	ArrayList<String[]> solicitarListaTareasFechaTipo(Date fecha, String tipo);
-	
+	ArrayList<String[]> solicitarListaTareas();
 	
 }
