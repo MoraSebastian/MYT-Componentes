@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class PanelHorario extends JPanelAbstracto{
 	Comando comando;
+	private JPanel panel;
 	private JFrameGeneral ventana;
 	private JPanelAbstracto panelAgenda;
 	private JTable table;
@@ -31,7 +32,7 @@ public class PanelHorario extends JPanelAbstracto{
 		super.informacion = info;
 		panelAgenda = new PanelAgenda(super.frameActual, super.informacion);
 		setLayout(null);	
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBounds(0, 0, 1160, 700);
 		add(panel);
 		panel.setLayout(null);
@@ -199,5 +200,11 @@ public class PanelHorario extends JPanelAbstracto{
 			{"22:00 - 23:00", lunes.get(22), martes.get(22), miercoles.get(22), jueves.get(22), viernes.get(22), sabado.get(22), domingo.get(22)},
 			{"23:00 - 0:00", lunes.get(23), martes.get(23), miercoles.get(23), jueves.get(23), viernes.get(23), sabado.get(23), domingo.get(23)},
 		};
+		panel.updateUI();
+		table.setModel(new DefaultTableModel(modelo,
+			new String[] {
+				"HORA", "LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO", "DOMINGO"
+			}
+		) );
 	}
 }

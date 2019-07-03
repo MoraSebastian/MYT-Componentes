@@ -68,12 +68,13 @@ public class PanelAgenda extends JPanelAbstracto {
 	private JLabel llblTextoTarea9;
 	private JLabel llblTextoTarea10;
 	private JDateChooser dateChooser;
+	JPanel panel;
 	public PanelAgenda(JFrame frameActual2, GestorSolicitudes info) {
 		super.frameActual = frameActual2;
 		super.informacion = info;
 		
 		setLayout(null);	
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBounds(0, 0, 1160, 700);
 		add(panel);
 		panel.setLayout(null);
@@ -604,6 +605,7 @@ public class PanelAgenda extends JPanelAbstracto {
 	private void mostrarListaTareas(ArrayList<String[]> listaTareas){
 		try{
 			int numeroTareas = listaTareas.size();//7
+			JOptionPane.showMessageDialog(null, "Prueba " + listaTareas.size() );
 			int contador = 0;
 			panelTareas1.setVisible(false);
 			panelTareas2.setVisible(false);
@@ -616,8 +618,16 @@ public class PanelAgenda extends JPanelAbstracto {
 			panelTareas9.setVisible(false);
 			panelTareas10.setVisible(false);
 			if(contador<numeroTareas){
+				String prueba;
 				panelTareas1.setVisible(true);
+<<<<<<< HEAD
 				lblTextoTarea1.setText(listaTareas.get(contador)[1]);
+=======
+				lblTextoTarea1.setText(listaTareas.get(contador)[7]);
+				prueba = listaTareas.get(contador)[7];
+				panelTareas1.updateUI();
+				JOptionPane.showMessageDialog(null, "Prueba " + prueba );
+>>>>>>> cd3bdc620eea278cfd7d973cf40c1a8f36f08912
 				contador++;
 				if(contador<numeroTareas){
 					panelTareas2.setVisible(true);
@@ -665,7 +675,7 @@ public class PanelAgenda extends JPanelAbstracto {
 					}		
 				}
 			}
-				
+			panel.updateUI();
 		} catch (Exception e){
 			JOptionPane.showMessageDialog(null, "No se pudo cargar porque el componente no se encuentra disponible");
 		}
