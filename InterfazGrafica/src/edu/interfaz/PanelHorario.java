@@ -20,6 +20,7 @@ public class PanelHorario extends JPanelAbstracto{
 	private JFrameGeneral ventana;
 	private JPanelAbstracto panelAgenda;
 	private JTable table;
+	private Object[][] modelo;
 	public PanelHorario(JFrame frameActual2, GestorSolicitudes info) {
 		super.frameActual = frameActual2;
 		super.frameActual.setBounds(100, 100, 1160, 700);
@@ -128,33 +129,7 @@ public class PanelHorario extends JPanelAbstracto{
 		
 		table = new JTable();
 		table.setRowHeight(30);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"0:00 - 1:00", null, null, null, null, null, null, null},
-				{"1:00 - 2:00", null, null, null, null, null, null, null},
-				{"2:00 - 3:00", null, null, null, null, null, null, null},
-				{"3:00 - 4:00", null, null, null, null, null, null, null},
-				{"4:00 - 5:00", null, null, null, "", null, null, null},
-				{"5:00 - 6:00", null, null, null, null, null, null, null},
-				{"6:00 - 7:00", null, null, null, null, null, null, null},
-				{"7:00 - 8:00", null, null, null, null, null, null, null},
-				{"8:00 - 9:00", null, null, null, null, null, null, null},
-				{"9:00 - 10:00", null, null, null, null, null, null, null},
-				{"10:00 - 11:00", null, null, null, null, null, null, null},
-				{"11:00 - 12:00", null, null, null, null, null, null, null},
-				{"12:00 - 13:00", null, null, null, null, null, null, null},
-				{"13:00 - 14:00", null, null, null, null, null, null, null},
-				{"14:00 - 15:00", null, null, null, null, null, null, null},
-				{"15:00 - 16:00", null, null, null, null, null, null, null},
-				{"16:00 - 17:00", null, null, null, null, null, null, null},
-				{"17:00 - 18:00", null, null, null, null, null, null, null},
-				{"18:00 - 19:00", null, null, null, null, null, null, null},
-				{"19:00 - 20:00", null, null, null, null, null, null, null},
-				{"20:00 - 21:00", null, null, null, null, null, null, null},
-				{"21:00 - 22:00", null, null, null, null, null, null, null},
-				{"22:00 - 23:00", null, null, null, null, null, null, null},
-				{"23:00 - 0:00", null, null, null, null, null, null, null},
-			},
+		table.setModel(new DefaultTableModel(modelo,
 			new String[] {
 				"HORA", "LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO", "DOMINGO"
 			}
@@ -181,5 +156,35 @@ public class PanelHorario extends JPanelAbstracto{
 	}
 	public JFrame getFrame() {
 		return super.frameActual;
+	}
+	
+	private void llenarModelo(){
+		
+		modelo = new Object[][] {
+			{"0:00 - 1:00", informacion.obtenerFranjasPorDia(0).get(0), informacion.obtenerFranjasPorDia(1).get(0), informacion.obtenerFranjasPorDia(2).get(0), informacion.obtenerFranjasPorDia(3).get(0), informacion.obtenerFranjasPorDia(4).get(0), informacion.obtenerFranjasPorDia(5).get(0), informacion.obtenerFranjasPorDia(6).get(0)},
+			{"1:00 - 2:00", informacion.obtenerFranjasPorDia(0).get(1), informacion.obtenerFranjasPorDia(1).get(1), informacion.obtenerFranjasPorDia(2).get(1), informacion.obtenerFranjasPorDia(3).get(1), informacion.obtenerFranjasPorDia(4).get(1), informacion.obtenerFranjasPorDia(5).get(1), informacion.obtenerFranjasPorDia(6).get(1)},
+			{"2:00 - 3:00", informacion.obtenerFranjasPorDia(0).get(2), informacion.obtenerFranjasPorDia(1).get(2), informacion.obtenerFranjasPorDia(2).get(2), informacion.obtenerFranjasPorDia(3).get(2), informacion.obtenerFranjasPorDia(4).get(2), informacion.obtenerFranjasPorDia(5).get(2), informacion.obtenerFranjasPorDia(6).get(2)},
+			{"3:00 - 4:00", informacion.obtenerFranjasPorDia(0).get(3), informacion.obtenerFranjasPorDia(1).get(3), informacion.obtenerFranjasPorDia(2).get(3), informacion.obtenerFranjasPorDia(3).get(3), informacion.obtenerFranjasPorDia(4).get(3), informacion.obtenerFranjasPorDia(5).get(3), informacion.obtenerFranjasPorDia(6).get(3)},
+			{"4:00 - 5:00", informacion.obtenerFranjasPorDia(0).get(4), informacion.obtenerFranjasPorDia(1).get(4), informacion.obtenerFranjasPorDia(2).get(4), informacion.obtenerFranjasPorDia(3).get(4), informacion.obtenerFranjasPorDia(4).get(4), informacion.obtenerFranjasPorDia(5).get(4), informacion.obtenerFranjasPorDia(6).get(4)},
+			{"5:00 - 6:00", informacion.obtenerFranjasPorDia(0).get(5), informacion.obtenerFranjasPorDia(1).get(5), informacion.obtenerFranjasPorDia(2).get(5), informacion.obtenerFranjasPorDia(3).get(5), informacion.obtenerFranjasPorDia(4).get(5), informacion.obtenerFranjasPorDia(5).get(5), informacion.obtenerFranjasPorDia(6).get(5)},
+			{"6:00 - 7:00", informacion.obtenerFranjasPorDia(0).get(6), informacion.obtenerFranjasPorDia(1).get(6), informacion.obtenerFranjasPorDia(2).get(6), informacion.obtenerFranjasPorDia(3).get(6), informacion.obtenerFranjasPorDia(4).get(6), informacion.obtenerFranjasPorDia(5).get(6), informacion.obtenerFranjasPorDia(6).get(6)},
+			{"7:00 - 8:00", informacion.obtenerFranjasPorDia(0).get(7), informacion.obtenerFranjasPorDia(1).get(7), informacion.obtenerFranjasPorDia(2).get(7), informacion.obtenerFranjasPorDia(3).get(7), informacion.obtenerFranjasPorDia(4).get(7), informacion.obtenerFranjasPorDia(5).get(7), informacion.obtenerFranjasPorDia(6).get(7)},
+			{"8:00 - 9:00", informacion.obtenerFranjasPorDia(0).get(8), informacion.obtenerFranjasPorDia(1).get(8), informacion.obtenerFranjasPorDia(2).get(8), informacion.obtenerFranjasPorDia(3).get(8), informacion.obtenerFranjasPorDia(4).get(8), informacion.obtenerFranjasPorDia(5).get(8), informacion.obtenerFranjasPorDia(6).get(8)},
+			{"9:00 - 10:00", informacion.obtenerFranjasPorDia(0).get(9), informacion.obtenerFranjasPorDia(1).get(9), informacion.obtenerFranjasPorDia(2).get(9), informacion.obtenerFranjasPorDia(3).get(9), informacion.obtenerFranjasPorDia(4).get(9), informacion.obtenerFranjasPorDia(5).get(9), informacion.obtenerFranjasPorDia(6).get(9)},
+			{"10:00 - 11:00", informacion.obtenerFranjasPorDia(0).get(10), informacion.obtenerFranjasPorDia(1).get(10), informacion.obtenerFranjasPorDia(2).get(10), informacion.obtenerFranjasPorDia(3).get(10), informacion.obtenerFranjasPorDia(4).get(10), informacion.obtenerFranjasPorDia(5).get(10), informacion.obtenerFranjasPorDia(10).get(10)},
+			{"11:00 - 12:00", informacion.obtenerFranjasPorDia(0).get(11), informacion.obtenerFranjasPorDia(1).get(11), informacion.obtenerFranjasPorDia(2).get(11), informacion.obtenerFranjasPorDia(3).get(11), informacion.obtenerFranjasPorDia(4).get(11), informacion.obtenerFranjasPorDia(5).get(11), informacion.obtenerFranjasPorDia(6).get(11)},
+			{"12:00 - 13:00", informacion.obtenerFranjasPorDia(0).get(12), informacion.obtenerFranjasPorDia(1).get(12), informacion.obtenerFranjasPorDia(2).get(12), informacion.obtenerFranjasPorDia(3).get(12), informacion.obtenerFranjasPorDia(4).get(12), informacion.obtenerFranjasPorDia(5).get(12), informacion.obtenerFranjasPorDia(6).get(12)},
+			{"13:00 - 14:00", informacion.obtenerFranjasPorDia(0).get(13), informacion.obtenerFranjasPorDia(1).get(13), informacion.obtenerFranjasPorDia(2).get(13), informacion.obtenerFranjasPorDia(3).get(13), informacion.obtenerFranjasPorDia(4).get(13), informacion.obtenerFranjasPorDia(5).get(13), informacion.obtenerFranjasPorDia(6).get(13)},
+			{"14:00 - 15:00", informacion.obtenerFranjasPorDia(0).get(14), informacion.obtenerFranjasPorDia(1).get(14), informacion.obtenerFranjasPorDia(2).get(14), informacion.obtenerFranjasPorDia(3).get(14), informacion.obtenerFranjasPorDia(4).get(14), informacion.obtenerFranjasPorDia(5).get(14), informacion.obtenerFranjasPorDia(6).get(14)},
+			{"15:00 - 16:00", informacion.obtenerFranjasPorDia(0).get(15), informacion.obtenerFranjasPorDia(1).get(15), informacion.obtenerFranjasPorDia(2).get(15), informacion.obtenerFranjasPorDia(3).get(15), informacion.obtenerFranjasPorDia(4).get(15), informacion.obtenerFranjasPorDia(5).get(15), informacion.obtenerFranjasPorDia(6).get(15)},
+			{"16:00 - 17:00", informacion.obtenerFranjasPorDia(0).get(16), informacion.obtenerFranjasPorDia(1).get(16), informacion.obtenerFranjasPorDia(2).get(16), informacion.obtenerFranjasPorDia(3).get(16), informacion.obtenerFranjasPorDia(4).get(16), informacion.obtenerFranjasPorDia(5).get(16), informacion.obtenerFranjasPorDia(6).get(16)},
+			{"17:00 - 18:00", informacion.obtenerFranjasPorDia(0).get(17), informacion.obtenerFranjasPorDia(1).get(17), informacion.obtenerFranjasPorDia(2).get(17), informacion.obtenerFranjasPorDia(3).get(17), informacion.obtenerFranjasPorDia(4).get(17), informacion.obtenerFranjasPorDia(5).get(17), informacion.obtenerFranjasPorDia(6).get(17)},
+			{"18:00 - 19:00", informacion.obtenerFranjasPorDia(0).get(18), informacion.obtenerFranjasPorDia(1).get(18), informacion.obtenerFranjasPorDia(2).get(18), informacion.obtenerFranjasPorDia(3).get(18), informacion.obtenerFranjasPorDia(4).get(18), informacion.obtenerFranjasPorDia(5).get(18), informacion.obtenerFranjasPorDia(6).get(18)},
+			{"19:00 - 20:00", informacion.obtenerFranjasPorDia(0).get(19), informacion.obtenerFranjasPorDia(1).get(19), informacion.obtenerFranjasPorDia(2).get(19), informacion.obtenerFranjasPorDia(3).get(19), informacion.obtenerFranjasPorDia(4).get(19), informacion.obtenerFranjasPorDia(5).get(19), informacion.obtenerFranjasPorDia(6).get(19)},
+			{"20:00 - 21:00", informacion.obtenerFranjasPorDia(0).get(20), informacion.obtenerFranjasPorDia(1).get(20), informacion.obtenerFranjasPorDia(2).get(20), informacion.obtenerFranjasPorDia(3).get(20), informacion.obtenerFranjasPorDia(4).get(20), informacion.obtenerFranjasPorDia(5).get(20), informacion.obtenerFranjasPorDia(6).get(20)},
+			{"21:00 - 22:00", informacion.obtenerFranjasPorDia(0).get(21), informacion.obtenerFranjasPorDia(1).get(21), informacion.obtenerFranjasPorDia(2).get(21), informacion.obtenerFranjasPorDia(3).get(21), informacion.obtenerFranjasPorDia(4).get(21), informacion.obtenerFranjasPorDia(5).get(21), informacion.obtenerFranjasPorDia(6).get(21)},
+			{"22:00 - 23:00", informacion.obtenerFranjasPorDia(0).get(22), informacion.obtenerFranjasPorDia(1).get(22), informacion.obtenerFranjasPorDia(2).get(22), informacion.obtenerFranjasPorDia(3).get(22), informacion.obtenerFranjasPorDia(4).get(22), informacion.obtenerFranjasPorDia(5).get(22), informacion.obtenerFranjasPorDia(6).get(22)},
+			{"23:00 - 0:00", informacion.obtenerFranjasPorDia(0).get(23), informacion.obtenerFranjasPorDia(1).get(23), informacion.obtenerFranjasPorDia(2).get(23), informacion.obtenerFranjasPorDia(3).get(23), informacion.obtenerFranjasPorDia(4).get(23), informacion.obtenerFranjasPorDia(5).get(23), informacion.obtenerFranjasPorDia(6).get(23)},
+		};
 	}
 }

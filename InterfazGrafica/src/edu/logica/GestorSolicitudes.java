@@ -122,4 +122,9 @@ public class GestorSolicitudes {
 		}
 		return franjas;
 	}
+	
+	public ArrayList<String> obtenerFranjasPorDia(int dia){
+		ArrayList<String> listaFranjas = new ArrayList<String>(); 
+		return listaFranjas;
+	}
 }
