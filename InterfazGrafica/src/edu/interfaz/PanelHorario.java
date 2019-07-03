@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JSpinner;
@@ -164,32 +165,39 @@ public class PanelHorario extends JPanelAbstracto{
 	}
 	
 	private void llenarModelo(){
+		ArrayList<String> lunes = informacion.obtenerFranjasPorDia(0);
+		ArrayList<String> martes = informacion.obtenerFranjasPorDia(1);
+		ArrayList<String> miercoles = informacion.obtenerFranjasPorDia(2);
+		ArrayList<String> jueves = informacion.obtenerFranjasPorDia(3);
+		ArrayList<String> viernes = informacion.obtenerFranjasPorDia(4);
+		ArrayList<String> sabado = informacion.obtenerFranjasPorDia(5);
+		ArrayList<String> domingo = informacion.obtenerFranjasPorDia(6);
 		
-		modelo = new Object[][] {
-			{"0:00 - 1:00", informacion.obtenerFranjasPorDia(0).get(0), informacion.obtenerFranjasPorDia(1).get(0), informacion.obtenerFranjasPorDia(2).get(0), informacion.obtenerFranjasPorDia(3).get(0), informacion.obtenerFranjasPorDia(4).get(0), informacion.obtenerFranjasPorDia(5).get(0), informacion.obtenerFranjasPorDia(6).get(0)},
-			{"1:00 - 2:00", informacion.obtenerFranjasPorDia(0).get(1), informacion.obtenerFranjasPorDia(1).get(1), informacion.obtenerFranjasPorDia(2).get(1), informacion.obtenerFranjasPorDia(3).get(1), informacion.obtenerFranjasPorDia(4).get(1), informacion.obtenerFranjasPorDia(5).get(1), informacion.obtenerFranjasPorDia(6).get(1)},
-			{"2:00 - 3:00", informacion.obtenerFranjasPorDia(0).get(2), informacion.obtenerFranjasPorDia(1).get(2), informacion.obtenerFranjasPorDia(2).get(2), informacion.obtenerFranjasPorDia(3).get(2), informacion.obtenerFranjasPorDia(4).get(2), informacion.obtenerFranjasPorDia(5).get(2), informacion.obtenerFranjasPorDia(6).get(2)},
-			{"3:00 - 4:00", informacion.obtenerFranjasPorDia(0).get(3), informacion.obtenerFranjasPorDia(1).get(3), informacion.obtenerFranjasPorDia(2).get(3), informacion.obtenerFranjasPorDia(3).get(3), informacion.obtenerFranjasPorDia(4).get(3), informacion.obtenerFranjasPorDia(5).get(3), informacion.obtenerFranjasPorDia(6).get(3)},
-			{"4:00 - 5:00", informacion.obtenerFranjasPorDia(0).get(4), informacion.obtenerFranjasPorDia(1).get(4), informacion.obtenerFranjasPorDia(2).get(4), informacion.obtenerFranjasPorDia(3).get(4), informacion.obtenerFranjasPorDia(4).get(4), informacion.obtenerFranjasPorDia(5).get(4), informacion.obtenerFranjasPorDia(6).get(4)},
-			{"5:00 - 6:00", informacion.obtenerFranjasPorDia(0).get(5), informacion.obtenerFranjasPorDia(1).get(5), informacion.obtenerFranjasPorDia(2).get(5), informacion.obtenerFranjasPorDia(3).get(5), informacion.obtenerFranjasPorDia(4).get(5), informacion.obtenerFranjasPorDia(5).get(5), informacion.obtenerFranjasPorDia(6).get(5)},
-			{"6:00 - 7:00", informacion.obtenerFranjasPorDia(0).get(6), informacion.obtenerFranjasPorDia(1).get(6), informacion.obtenerFranjasPorDia(2).get(6), informacion.obtenerFranjasPorDia(3).get(6), informacion.obtenerFranjasPorDia(4).get(6), informacion.obtenerFranjasPorDia(5).get(6), informacion.obtenerFranjasPorDia(6).get(6)},
-			{"7:00 - 8:00", informacion.obtenerFranjasPorDia(0).get(7), informacion.obtenerFranjasPorDia(1).get(7), informacion.obtenerFranjasPorDia(2).get(7), informacion.obtenerFranjasPorDia(3).get(7), informacion.obtenerFranjasPorDia(4).get(7), informacion.obtenerFranjasPorDia(5).get(7), informacion.obtenerFranjasPorDia(6).get(7)},
-			{"8:00 - 9:00", informacion.obtenerFranjasPorDia(0).get(8), informacion.obtenerFranjasPorDia(1).get(8), informacion.obtenerFranjasPorDia(2).get(8), informacion.obtenerFranjasPorDia(3).get(8), informacion.obtenerFranjasPorDia(4).get(8), informacion.obtenerFranjasPorDia(5).get(8), informacion.obtenerFranjasPorDia(6).get(8)},
-			{"9:00 - 10:00", informacion.obtenerFranjasPorDia(0).get(9), informacion.obtenerFranjasPorDia(1).get(9), informacion.obtenerFranjasPorDia(2).get(9), informacion.obtenerFranjasPorDia(3).get(9), informacion.obtenerFranjasPorDia(4).get(9), informacion.obtenerFranjasPorDia(5).get(9), informacion.obtenerFranjasPorDia(6).get(9)},
-			{"10:00 - 11:00", informacion.obtenerFranjasPorDia(0).get(10), informacion.obtenerFranjasPorDia(1).get(10), informacion.obtenerFranjasPorDia(2).get(10), informacion.obtenerFranjasPorDia(3).get(10), informacion.obtenerFranjasPorDia(4).get(10), informacion.obtenerFranjasPorDia(5).get(10), informacion.obtenerFranjasPorDia(10).get(10)},
-			{"11:00 - 12:00", informacion.obtenerFranjasPorDia(0).get(11), informacion.obtenerFranjasPorDia(1).get(11), informacion.obtenerFranjasPorDia(2).get(11), informacion.obtenerFranjasPorDia(3).get(11), informacion.obtenerFranjasPorDia(4).get(11), informacion.obtenerFranjasPorDia(5).get(11), informacion.obtenerFranjasPorDia(6).get(11)},
-			{"12:00 - 13:00", informacion.obtenerFranjasPorDia(0).get(12), informacion.obtenerFranjasPorDia(1).get(12), informacion.obtenerFranjasPorDia(2).get(12), informacion.obtenerFranjasPorDia(3).get(12), informacion.obtenerFranjasPorDia(4).get(12), informacion.obtenerFranjasPorDia(5).get(12), informacion.obtenerFranjasPorDia(6).get(12)},
-			{"13:00 - 14:00", informacion.obtenerFranjasPorDia(0).get(13), informacion.obtenerFranjasPorDia(1).get(13), informacion.obtenerFranjasPorDia(2).get(13), informacion.obtenerFranjasPorDia(3).get(13), informacion.obtenerFranjasPorDia(4).get(13), informacion.obtenerFranjasPorDia(5).get(13), informacion.obtenerFranjasPorDia(6).get(13)},
-			{"14:00 - 15:00", informacion.obtenerFranjasPorDia(0).get(14), informacion.obtenerFranjasPorDia(1).get(14), informacion.obtenerFranjasPorDia(2).get(14), informacion.obtenerFranjasPorDia(3).get(14), informacion.obtenerFranjasPorDia(4).get(14), informacion.obtenerFranjasPorDia(5).get(14), informacion.obtenerFranjasPorDia(6).get(14)},
-			{"15:00 - 16:00", informacion.obtenerFranjasPorDia(0).get(15), informacion.obtenerFranjasPorDia(1).get(15), informacion.obtenerFranjasPorDia(2).get(15), informacion.obtenerFranjasPorDia(3).get(15), informacion.obtenerFranjasPorDia(4).get(15), informacion.obtenerFranjasPorDia(5).get(15), informacion.obtenerFranjasPorDia(6).get(15)},
-			{"16:00 - 17:00", informacion.obtenerFranjasPorDia(0).get(16), informacion.obtenerFranjasPorDia(1).get(16), informacion.obtenerFranjasPorDia(2).get(16), informacion.obtenerFranjasPorDia(3).get(16), informacion.obtenerFranjasPorDia(4).get(16), informacion.obtenerFranjasPorDia(5).get(16), informacion.obtenerFranjasPorDia(6).get(16)},
-			{"17:00 - 18:00", informacion.obtenerFranjasPorDia(0).get(17), informacion.obtenerFranjasPorDia(1).get(17), informacion.obtenerFranjasPorDia(2).get(17), informacion.obtenerFranjasPorDia(3).get(17), informacion.obtenerFranjasPorDia(4).get(17), informacion.obtenerFranjasPorDia(5).get(17), informacion.obtenerFranjasPorDia(6).get(17)},
-			{"18:00 - 19:00", informacion.obtenerFranjasPorDia(0).get(18), informacion.obtenerFranjasPorDia(1).get(18), informacion.obtenerFranjasPorDia(2).get(18), informacion.obtenerFranjasPorDia(3).get(18), informacion.obtenerFranjasPorDia(4).get(18), informacion.obtenerFranjasPorDia(5).get(18), informacion.obtenerFranjasPorDia(6).get(18)},
-			{"19:00 - 20:00", informacion.obtenerFranjasPorDia(0).get(19), informacion.obtenerFranjasPorDia(1).get(19), informacion.obtenerFranjasPorDia(2).get(19), informacion.obtenerFranjasPorDia(3).get(19), informacion.obtenerFranjasPorDia(4).get(19), informacion.obtenerFranjasPorDia(5).get(19), informacion.obtenerFranjasPorDia(6).get(19)},
-			{"20:00 - 21:00", informacion.obtenerFranjasPorDia(0).get(20), informacion.obtenerFranjasPorDia(1).get(20), informacion.obtenerFranjasPorDia(2).get(20), informacion.obtenerFranjasPorDia(3).get(20), informacion.obtenerFranjasPorDia(4).get(20), informacion.obtenerFranjasPorDia(5).get(20), informacion.obtenerFranjasPorDia(6).get(20)},
-			{"21:00 - 22:00", informacion.obtenerFranjasPorDia(0).get(21), informacion.obtenerFranjasPorDia(1).get(21), informacion.obtenerFranjasPorDia(2).get(21), informacion.obtenerFranjasPorDia(3).get(21), informacion.obtenerFranjasPorDia(4).get(21), informacion.obtenerFranjasPorDia(5).get(21), informacion.obtenerFranjasPorDia(6).get(21)},
-			{"22:00 - 23:00", informacion.obtenerFranjasPorDia(0).get(22), informacion.obtenerFranjasPorDia(1).get(22), informacion.obtenerFranjasPorDia(2).get(22), informacion.obtenerFranjasPorDia(3).get(22), informacion.obtenerFranjasPorDia(4).get(22), informacion.obtenerFranjasPorDia(5).get(22), informacion.obtenerFranjasPorDia(6).get(22)},
-			{"23:00 - 0:00", informacion.obtenerFranjasPorDia(0).get(23), informacion.obtenerFranjasPorDia(1).get(23), informacion.obtenerFranjasPorDia(2).get(23), informacion.obtenerFranjasPorDia(3).get(23), informacion.obtenerFranjasPorDia(4).get(23), informacion.obtenerFranjasPorDia(5).get(23), informacion.obtenerFranjasPorDia(6).get(23)},
+		modelo = new Object[][] {			
+			{"0:00 - 1:00", lunes.get(0), martes.get(0), miercoles.get(0), jueves.get(0), viernes.get(0), sabado.get(0), domingo.get(0)},
+			{"1:00 - 2:00", lunes.get(1), martes.get(1), miercoles.get(1), jueves.get(1), viernes.get(1), sabado.get(1), domingo.get(1)},
+			{"2:00 - 3:00", lunes.get(2), martes.get(2), miercoles.get(2), jueves.get(2), viernes.get(2), sabado.get(2), domingo.get(2)},
+			{"3:00 - 4:00", lunes.get(3), martes.get(3), miercoles.get(3), jueves.get(3), viernes.get(3), sabado.get(3), domingo.get(3)},
+			{"4:00 - 5:00", lunes.get(4), martes.get(4), miercoles.get(4), jueves.get(4), viernes.get(4), sabado.get(4), domingo.get(4)},
+			{"5:00 - 6:00", lunes.get(5), martes.get(5), miercoles.get(5), jueves.get(5), viernes.get(5), sabado.get(5), domingo.get(5)},
+			{"6:00 - 7:00", lunes.get(6), martes.get(6), miercoles.get(6), jueves.get(6), viernes.get(6), sabado.get(6), domingo.get(6)},
+			{"7:00 - 8:00", lunes.get(7), martes.get(7), miercoles.get(7), jueves.get(7), viernes.get(7), sabado.get(7), domingo.get(7)},
+			{"8:00 - 9:00", lunes.get(8), martes.get(8), miercoles.get(8), jueves.get(8), viernes.get(8), sabado.get(8), domingo.get(8)},
+			{"9:00 - 10:00", lunes.get(9), martes.get(9), miercoles.get(9), jueves.get(9), viernes.get(9), sabado.get(9), domingo.get(9)},
+			{"10:00 - 11:00", lunes.get(10), martes.get(10), miercoles.get(10), jueves.get(10), viernes.get(10), sabado.get(10), domingo.get(10)},
+			{"11:00 - 12:00", lunes.get(11), martes.get(11), miercoles.get(11), jueves.get(11), viernes.get(11), sabado.get(11), domingo.get(11)},
+			{"12:00 - 13:00", lunes.get(12), martes.get(12), miercoles.get(12), jueves.get(12), viernes.get(12), sabado.get(12), domingo.get(12)},
+			{"13:00 - 14:00", lunes.get(13), martes.get(13), miercoles.get(13), jueves.get(13), viernes.get(13), sabado.get(13), domingo.get(13)},
+			{"14:00 - 15:00", lunes.get(14), martes.get(14), miercoles.get(14), jueves.get(14), viernes.get(14), sabado.get(14), domingo.get(14)},
+			{"15:00 - 16:00", lunes.get(15), martes.get(15), miercoles.get(15), jueves.get(15), viernes.get(15), sabado.get(15), domingo.get(15)},
+			{"16:00 - 17:00", lunes.get(16), martes.get(16), miercoles.get(16), jueves.get(16), viernes.get(16), sabado.get(16), domingo.get(16)},
+			{"17:00 - 18:00", lunes.get(17), martes.get(17), miercoles.get(17), jueves.get(17), viernes.get(17), sabado.get(17), domingo.get(17)},
+			{"18:00 - 19:00", lunes.get(18), martes.get(18), miercoles.get(18), jueves.get(18), viernes.get(18), sabado.get(18), domingo.get(18)},
+			{"19:00 - 20:00", lunes.get(19), martes.get(19), miercoles.get(19), jueves.get(19), viernes.get(19), sabado.get(19), domingo.get(19)},
+			{"20:00 - 21:00", lunes.get(20), martes.get(20), miercoles.get(20), jueves.get(20), viernes.get(20), sabado.get(20), domingo.get(20)},
+			{"21:00 - 22:00", lunes.get(21), martes.get(21), miercoles.get(21), jueves.get(21), viernes.get(21), sabado.get(21), domingo.get(21)},
+			{"22:00 - 23:00", lunes.get(22), martes.get(22), miercoles.get(22), jueves.get(22), viernes.get(22), sabado.get(22), domingo.get(22)},
+			{"23:00 - 0:00", lunes.get(23), martes.get(23), miercoles.get(23), jueves.get(23), viernes.get(23), sabado.get(23), domingo.get(23)},
 		};
 	}
 }
