@@ -110,8 +110,7 @@ public class GestorSolicitudes {
 	public String[] obtenerTiposDeFranjas(){
 		String[] franjas= {"Holis"};
 		Enum[] franjaEnum;
-		try{
-			
+		try{			
 			franjaEnum = interfaceSolicitudes.obtenerTiposDeFranjas();
 			franjas =  new String[franjaEnum.length];
 			for(int i=0; i<franjaEnum.length; i++){
