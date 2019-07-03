@@ -16,7 +16,7 @@ import edu.utilidades.Cargador;
 public class LogicaA implements InformacionEstudiante {
 	private static HorarioEstudiante horarioEstudiante = null;
 
-	
+
 	/*
 	public static void main(String[] args) {
 
@@ -32,7 +32,7 @@ public class LogicaA implements InformacionEstudiante {
 			}
 		}else {
 			//System.out.println("algo paso con la consulta de nombres");
-		}		
+		}
 	}*/
 
 	@Override
@@ -42,14 +42,14 @@ public class LogicaA implements InformacionEstudiante {
 		} else {
 			JOptionPane.showMessageDialog(null, "Tarea");
 		}
-				
+
 	}
 
 
-	
+
 	public void Enviar(String arg0, String arg1, int arg2, String arg3, int arg4, Date arg5, String arg6,
 			boolean arg7) {
-		
+
 	}
 
 	public boolean Inf() {
@@ -154,8 +154,8 @@ public class LogicaA implements InformacionEstudiante {
 	public ArrayList<String[]> consultarTareasPendientes(String fecha, String caso) {
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());						
-			if(cls != null) {				
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
+			if(cls != null) {
 				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
 				switch(caso) {
 				case "tpendientes":
@@ -164,18 +164,18 @@ public class LogicaA implements InformacionEstudiante {
 					return te.cTareasPadre(fecha);
 				default:
 					return null;
-				}				
+				}
 			}else {
 				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO TAREA ESTUDIANTE");
 				return null;
-			}				
+			}
 		}catch (Exception e) {
 			e.printStackTrace();
 			return null;
-		}						
+		}
 	}
-	
-	
+
+
 	@Override
 	public ArrayList<String[]> solicitarListaTareasFechaDificultad(Date fecha, int dificultad) {
 		return consultarTareasSegun(fecha.toString(), Integer.toString(dificultad), "dificultad");
@@ -191,8 +191,8 @@ public class LogicaA implements InformacionEstudiante {
 	public ArrayList<String[]> consultarTareasSegun(String fecha, String nombre, String caso){
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());						
-			if(cls != null) {				
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
+			if(cls != null) {
 				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
 				switch(caso) {
 				case "tipo":
@@ -203,48 +203,48 @@ public class LogicaA implements InformacionEstudiante {
 					return te.cTareasPorMateria(fecha, nombre);
 				default:
 					return null;
-				}				
+				}
 			}else {
 				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO TAREA ESTUDIANTE");
 				return null;
-			}				
+			}
 		}catch (Exception e) {
 			e.printStackTrace();
 			return null;
-		}				
+		}
 	}
-	
+
 	public ArrayList<String> solicitarListaNombresMateria(){
 		return consultarNombre("materia");
 	}
 	public ArrayList<String> solicitarListaNombresTareaPadre(){
 		return consultarNombre("tareap");
 	}
-	
+
 	public ArrayList<String> consultarNombre(String caso){
 		Cargador cc = new Cargador("componentes", ClassLoader.getSystemClassLoader());
 		try {
-			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());						
-			if(cls != null) {				
+			Class cls = cc.cargarUnaClaseDesdeSuDirectorio(tareaEstudiante.class.getName());
+			if(cls != null) {
 				tareaEstudiante te = (tareaEstudiante) cls.newInstance();
 				switch(caso) {
 				case "tareap":
 					return te.cNombreTareasPadre();
 				case "materia":
-					return te.cNombreMaterias();				
+					return te.cNombreMaterias();
 				default:
 					return null;
-				}				
+				}
 			}else {
 				JOptionPane.showMessageDialog(null, "ALGO NO SE CARGO TAREA ESTUDIANTE");
 				return null;
-			}				
+			}
 		}catch (Exception e) {
 			e.printStackTrace();
 			return null;
-		}			
+		}
 	}
-	
+
 	@Override
 	public ArrayList<String[]> solicitarListaTareas() {
 		return null;
@@ -257,6 +257,6 @@ public class LogicaA implements InformacionEstudiante {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
+
 }
