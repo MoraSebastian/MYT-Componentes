@@ -108,7 +108,7 @@ public class GestorSolicitudes {
 	}
 	
 	public String[] obtenerTiposDeFranjas(){
-		String[] franjas= {"Holis"};
+		String[] franjas= {""};
 		Enum[] franjaEnum;
 		try{
 			
