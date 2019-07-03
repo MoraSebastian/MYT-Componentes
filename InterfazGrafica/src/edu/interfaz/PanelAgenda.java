@@ -617,43 +617,43 @@ public class PanelAgenda extends JPanelAbstracto {
 			panelTareas10.setVisible(false);
 			if(contador<numeroTareas){
 				panelTareas1.setVisible(true);
-				lblTextoTarea1.setText(listaTareas.get(contador)[7]);
+				lblTextoTarea1.setText(listaTareas.get(contador)[1]);
 				contador++;
 				if(contador<numeroTareas){
 					panelTareas2.setVisible(true);
-					lblTextoTarea2.setText(listaTareas.get(contador)[7]);
+					lblTextoTarea2.setText(listaTareas.get(contador)[1]);
 					contador++;
 					if(contador<=numeroTareas){
 						panelTareas3.setVisible(true);
-						llblTextoTarea3.setText(listaTareas.get(contador)[7]);
+						llblTextoTarea3.setText(listaTareas.get(contador)[1]);
 						contador++;
 						if(contador<=numeroTareas){
 							panelTareas4.setVisible(true);
-							llblTextoTarea4.setText(listaTareas.get(contador)[7]);
+							llblTextoTarea4.setText(listaTareas.get(contador)[1]);
 							contador++;
 							if(contador<=numeroTareas){
 								panelTareas5.setVisible(true);
-								llblTextoTarea5.setText(listaTareas.get(contador)[7]);
+								llblTextoTarea5.setText(listaTareas.get(contador)[1]);
 								contador++;
 								if(contador<=numeroTareas){
 									panelTareas6.setVisible(true);
-									llblTextoTarea6.setText(listaTareas.get(contador)[7]);
+									llblTextoTarea6.setText(listaTareas.get(contador)[1]);
 									contador++;
 									if(contador<=numeroTareas){
 										panelTareas7.setVisible(true);
-										llblTextoTarea7.setText(listaTareas.get(contador)[7]);
+										llblTextoTarea7.setText(listaTareas.get(contador)[1]);
 										contador++;
 										if(contador<=numeroTareas){
 											panelTareas8.setVisible(true);
-											llblTextoTarea8.setText(listaTareas.get(contador)[7]);
+											llblTextoTarea8.setText(listaTareas.get(contador)[1]);
 											contador++;
 											if(contador<=numeroTareas){
 												panelTareas9.setVisible(true);
-												llblTextoTarea9.setText(listaTareas.get(contador)[7]);
+												llblTextoTarea9.setText(listaTareas.get(contador)[1]);
 												contador++;
 												if(contador<=numeroTareas){
 													panelTareas10.setVisible(true);
-													llblTextoTarea10.setText(listaTareas.get(contador)[7]);
+													llblTextoTarea10.setText(listaTareas.get(contador)[1]);
 													contador++;
 												}
 											}
